@@ -12,11 +12,11 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-     $('.slider').slider({
-       full_width: true,
-       indicators: false,
-       height: 600
-     });
+    //  $('.slider').slider({
+    //    full_width: true,
+    //    indicators: false,
+    //    height: 600
+    //  });
   }
 
 }
