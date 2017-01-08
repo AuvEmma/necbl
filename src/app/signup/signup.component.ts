@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     this._loginService.createUser(data)
       .subscribe(
         data  => console.log('data', data),
-        error => console.log('error',error));
+        error => console.log('error',error)
       )
   }
 }
