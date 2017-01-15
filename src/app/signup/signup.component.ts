@@ -23,8 +23,15 @@ export class SignupComponent implements OnInit {
     }
     this._loginService.createUser(data)
       .subscribe(
-        data  => console.log('data', data),
+        data  => {
+          alert('Successful!')
+          this.schoolName = '';
+          this.passcode   = '';
+        },
         error => console.log('error',error)
       )
+  }
+  Back(){
+    this._router.navigateByUrl('/login');
   }
 }

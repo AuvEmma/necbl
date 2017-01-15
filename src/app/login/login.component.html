@@ -1,19 +1,15 @@
 <div class="container">
     <h4>Please Select your school and login</h4>
-    <form>
+    <form (submit)="onSubmit($event)">
       <div class="form-group">
         <label for="school">School Name</label>
-        <select class="form-control" id="school" required>
-          <option value="">School1</option>
-          <option value="">School2</option>
-          <option value="">School3</option>
-          <option value="">School4</option>
-          <option value="">School5</option>
+        <select class="form-control" id="school" required [(ngModel)]="schoolName" name="shcoolName">
+          <option *ngFor="let school of schools" value="{{school.name}}">{{school.name}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="alterEgo">Passcode</label>
-        <input type="text" class="form-control" id="passcode">
+        <input type="text" class="form-control" id="passcode" required="" [(ngModel)]="passcode" name="passcode">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
       <button type="button" class="btn btn-default" (click)="SignupPage()" *ngIf="isSignupShow">Signup</button>
