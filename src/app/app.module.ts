@@ -15,7 +15,7 @@ import { ProgramComponent }             from './component/program/program.compon
 import { SignupComponent }              from './component/signup/signup.component';
 
 import { LoginService }                 from './services';
-import { ApplicationComponent }         from './application/application.component'
+import { ApplicationComponent }         from './component/application/application.component'
 
 import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
 
