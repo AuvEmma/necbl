@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
-import { LoginService }      from '../services'
+import { LoginService }      from '../../services'
 
 @Component({
   selector: 'app-signup',
@@ -23,8 +23,15 @@ export class SignupComponent implements OnInit {
     }
     this._loginService.createUser(data)
       .subscribe(
-        data  => console.log('data', data),
+        data  => {
+          alert('Successful!')
+          this.schoolName = '';
+          this.passcode   = '';
+        },
         error => console.log('error',error)
       )
+  }
+  Back(){
+    this._router.navigateByUrl('/login');
   }
 }
