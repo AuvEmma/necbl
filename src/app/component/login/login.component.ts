@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       )
       window.setTimeout(()=>{
         this.selectOptions = []
-      },10);
+      },50);
   }
 
   onSubmit(e){
@@ -41,12 +41,12 @@ export class LoginComponent implements OnInit {
         console.log('data', data)
         localStorage.setItem('token', data.token);
         localStorage.setItem('id', data.id);
-        this.isLoggedin = true;
-        this._router.navigateByUrl('/application')
+        this._loginService.setIsLoggedIn$(true);
+        this._router.navigateByUrl('/application');
       },
       error => {
         console.error('error',error);
-        alert('Authentication Failed!!')
+        alert('Authentication Failed!!');
       }
     )
 

@@ -16,9 +16,17 @@ export class LoginService {
   private schoolName:any  = null;
   private passcode:any    = null;
   subs:any = [];
+  _isLoggedIn$: Subject<any>;
 
   constructor(private _http:Http){
-
+    let userToken = localStorage.getItem('token');
+    let data      = {
+      token: userToken
+    };
+    this._isLoggedIn$ = <Subject<boolean>>new Subject();
+    this.checkLogin(data).subscribe(e=>{
+      this._isLoggedIn$.next(true);
+    })
   }
 
   // create user
@@ -65,6 +73,14 @@ export class LoginService {
     return this._http.post(_path, data, options)
             .map(this.extractData)
             .catch(this.handleError);
+  }
+
+  get isLoggedIn$(){
+    return this._isLoggedIn$.asObservable();
+  }
+
+  setIsLoggedIn$(isLoggedIn: boolean) {
+    this._isLoggedIn$.next(isLoggedIn);
   }
 
   private extractData(res: Response) {

@@ -8,7 +8,7 @@
     </ul>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="#!" routerLink="/contact">Contact Us</a></li>
-      <li><a href="#!" routerLink="/login">Login</a></li>
+      <li *ngIf="!isLoggedIn"><a href="#!" routerLink="/login">Login</a></li>
       <li *ngIf="isLoggedIn"><a href="#!" (click)="Logout($event)" routerLink="/">Logout</a></li>
     </ul>
   </div>
