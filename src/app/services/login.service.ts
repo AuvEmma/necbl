@@ -53,6 +53,17 @@ export class LoginService {
              .catch(this.handleError);
   }
 
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(){
+   if (!localStorage.getItem('token')){
+     return false;
+   }
+   return true;
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

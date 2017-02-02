@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this._loginService.getUsers()
       .subscribe(
-        data  => this.schools = data,
+        data  => {this.schools = data; console.log(this.schools)},
         error => console.error('error',error)
       )
       window.setTimeout(()=>{
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       data  => {
         console.log('data', data)
         localStorage.setItem('token', data.token);
+        localStorage.setItem('id', data.id);
         this.isLoggedin = true;
         this._router.navigateByUrl('/application')
       },
