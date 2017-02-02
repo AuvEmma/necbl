@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   isLoggedin    : boolean = false;
   schoolName    : string  = '';
   passcode      : string  = '';
+  selectOptions : any     = [];
 
   constructor(private _loginService: LoginService, private _router:Router) { }
 
@@ -22,6 +23,9 @@ export class LoginComponent implements OnInit {
         data  => this.schools = data,
         error => console.error('error',error)
       )
+      window.setTimeout(()=>{
+        this.selectOptions = []
+      },0);
   }
 
   onSubmit(e){
