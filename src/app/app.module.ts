@@ -19,6 +19,7 @@ import { LoginService }                 from './services';
 import { ApplicationComponent }         from './component/application/application.component'
 
 import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
+import { AddplayerComponent }           from './component/addplayer/addplayer.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'program', component: ProgramComponent },
-  { path: 'application', component: ApplicationComponent, canActivate: [ApplicationRouteValidation]},
+  { path: 'application', component: ApplicationComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'addplayer', component: AddplayerComponent, canActivate: [ApplicationRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
 ];
@@ -43,7 +45,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ProgramComponent,
     SignupComponent,
-    ApplicationComponent
+    ApplicationComponent,
+    AddplayerComponent
   ],
   imports: [
     BrowserModule,
