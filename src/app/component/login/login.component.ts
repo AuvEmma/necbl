@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       )
       window.setTimeout(()=>{
         this.selectOptions = []
-      },0);
+      },10);
   }
 
   onSubmit(e){

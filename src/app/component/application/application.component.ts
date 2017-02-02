@@ -12,6 +12,6 @@ export class ApplicationComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(e){
-    
+
   }
 }

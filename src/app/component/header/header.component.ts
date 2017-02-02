@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }  from '@angular/core';
+import { LoginService }       from '../../services'
+import { Router }             from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   isLoggedIn: any = null;
 
-  constructor() { }
+  constructor(private _loginService: LoginService, private _router:Router) {
+  }
 
   ngOnInit() {
+
   }
+
   Logout(e){
     e.preventDefault();
     localStorage.removeItem('id');
