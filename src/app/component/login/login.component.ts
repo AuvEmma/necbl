@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     this._loginService.login(data)
     .subscribe(
       data  => {
-        console.log('data', data)
         localStorage.setItem('token', data.token);
         localStorage.setItem('id', data.id);
         this._loginService.setIsLoggedIn$(true);
