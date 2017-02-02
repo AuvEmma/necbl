@@ -3,6 +3,7 @@ import { NgModule }                     from '@angular/core';
 import { FormsModule }                  from '@angular/forms';
 import { HttpModule }                   from '@angular/http';
 import { RouterModule, Routes }         from '@angular/router';
+import { MaterializeModule }            from 'angular2-materialize';
 
 import { AppComponent }                 from './component/app.component';
 import { FooterComponent }              from './component/footer/footer.component';
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [LoginService, ApplicationRouteValidation],

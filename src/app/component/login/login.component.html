@@ -3,7 +3,7 @@
     <form (submit)="onSubmit($event)">
       <div class="form-group">
         <label for="school">School Name</label>
-        <select class="form-control" id="school" required [(ngModel)]="schoolName" name="shcoolName">
+        <select materialize="material_select" class="form-control" id="school" required [(ngModel)]="schoolName" name="shcoolName">
           <option *ngFor="let school of schools" value="{{school.name}}">{{school.name}}</option>
         </select>
       </div>
