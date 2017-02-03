@@ -20,6 +20,7 @@ import { ApplicationComponent }         from './component/application/applicatio
 
 import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
+import { DashboardComponent }           from './component/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'program', component: ProgramComponent },
   { path: 'application', component: ApplicationComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'addplayer', component: AddplayerComponent, canActivate: [ApplicationRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     ProgramComponent,
     SignupComponent,
     ApplicationComponent,
-    AddplayerComponent
+    AddplayerComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

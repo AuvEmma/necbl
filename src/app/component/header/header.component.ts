@@ -2,6 +2,9 @@ import { Component, OnInit }  from '@angular/core';
 import { LoginService }       from '../../services'
 import { Router }             from '@angular/router';
 
+
+declare var $:any;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -29,7 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    $(".button-collapse").sideNav();
   }
 
   Logout(e){

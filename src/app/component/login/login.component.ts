@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', data.token);
         localStorage.setItem('id', data.id);
         this._loginService.setIsLoggedIn$(true);
-        this._router.navigateByUrl('/application');
+        this._router.navigateByUrl('/dashboard');
       },
       error => {
         console.error('error',error);
