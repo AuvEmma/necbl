@@ -1,0 +1,91 @@
+:host {
+	margin-top: 80px;
+	color: black;
+}
+
+.home-row {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.home-carousel {
+	overflow:hidden;
+	width:100%;
+}
+
+.slides{
+	list-style:none;
+	position:relative;
+	width:500%; /* Number of panes * 100% */
+	overflow:hidden; /* Clear floats */
+		/* Slide effect Animations*/
+	-moz-animation:home-carousel 30s infinite;
+	-webkit-animation:home-carousel 30s infinite;
+	animation:home-carousel 30s infinite;
+}
+.slides > li{
+	position:relative;
+	float:left;
+	width: 20%; /* 100 / number of panes */
+}
+.home-carousel img{
+	display:block;
+	width:100%;
+	max-width:100%;
+}
+.home-carousel h2{
+	margin-bottom: 0;
+	font-size:1em;
+	padding:1.5em 0.5em 1.5em 0.5em;
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	left:0px;
+	text-align:center;
+	color:#fff;
+	background-color:rgba(0,0,0,0.75);
+	text-transform: uppercase;
+}
+
+@keyframes home-carousel{
+	0%    { left:-5%; }
+	11%   { left:-5%; }
+	12.5% { left:-105%; }
+	23.5% { left:-105%; }
+	25%   { left:-205%; }
+	36%   { left:-205%; }
+	37.5% { left:-305%; }
+	48.5% { left:-305%; }
+	50%   { left:-405%; }
+	61%   { left:-405%; }
+	62.5% { left:-305%; }
+	73.5% { left:-305%; }
+	75%   { left:-205%; }
+	86%   { left:-205%; }
+	87.5% { left:-105%; }
+	98.5% { left:-105%; }
+	100%  { left:-5%; }
+}
+
+home-sub-title {
+	font-size: 2em;
+}
+
+.home-content {
+	font-size: 1em;
+	margin-left: 50px !important;
+	height: 200px;
+}
+
+.home-sub-module-right {
+	float: right;
+}
+
+.home-sub-image {
+	width: 100%;
+}
+
+.mission {
+	background-color: green;
+}
+

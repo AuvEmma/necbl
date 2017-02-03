@@ -1,8 +1,0 @@
-.social-link {
-  display: flex;
-  flex-direction: row;
-}
-
-.social-link>li {
-  margin-right: 10px;
-}

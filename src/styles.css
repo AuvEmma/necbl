@@ -1,4 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
 html {
   font-family: 'Noto Sans', sans-serif;
+  background-image: url("assets/image/bg-body.jpg");
+}
+
+.app-wrapper {
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
+}
+
+nav {
+  background-image: url("assets/image/bg-header.jpg");
+}
+
+.btn {
+  background-color: #3e2723 !important;
+}
+
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid #3e2723 !important;
+  box-shadow: 0 1px 0 0 #3e2723 !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+  color: #3e2723 !important;
 }
