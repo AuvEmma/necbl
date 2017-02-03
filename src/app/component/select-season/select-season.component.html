@@ -1,0 +1,13 @@
+<div class="container app-wrapper">
+    <h4>Please Select Cup to Apply</h4>
+    <form materialize (submit)="onSubmit($event)">
+      <div class="form-group">
+        <label for="cup">Cup Name</label>
+        <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="cup" required [(ngModel)]="cupName" name="cupName">
+          <option disabled selected>Select Cup</option>
+          <option *ngFor="let cup of cups" [value]="cup.name">{{cup.name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>

@@ -5,18 +5,15 @@ import { Router }                                   from '@angular/router';
 import { Observable, Subject }                      from 'rxjs/Rx';
 import { environment }                              from '../../environments';
 
-export interface iCartItem {
-  schoolName:string;
-  passcode:string;
-}
-
 @Injectable()
 
 export class LoginService {
   private schoolName:any  = null;
   private passcode:any    = null;
+  
   subs:any = [];
   _isLoggedIn$: Subject<any>;
+  _isAdmin$   : Subject<any>;
 
   constructor(private _http:Http){
     let userToken = localStorage.getItem('token');
@@ -24,6 +21,8 @@ export class LoginService {
       token: userToken
     };
     this._isLoggedIn$ = <Subject<boolean>>new Subject();
+    this._isAdmin$ = <Subject<boolean>>new Subject();
+
     this.checkLogin(data).subscribe(e=>{
       this._isLoggedIn$.next(true);
     })
@@ -83,8 +82,19 @@ export class LoginService {
     this._isLoggedIn$.next(isLoggedIn);
   }
 
+  get isAdmin$(){
+    return this._isAdmin$.asObservable();
+  }
+
+  setIsAdmin$(isAdmin: boolean) {
+    this._isAdmin$.next(isAdmin);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
+    if(body.name === 'New York'){
+      this.setIsAdmin$(true);
+    }
     return body || { };
   }
 

@@ -16,12 +16,15 @@ import { ProgramComponent }             from './component/program/program.compon
 import { SignupComponent }              from './component/signup/signup.component';
 
 import { LoginService }                 from './services';
-import { ApplicationComponent }         from './component/application/application.component'
+import { ApplicationService }           from './services';
 
-import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
+import { ApplicationComponent }         from './component/application/application.component'
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
 import { DashboardComponent }           from './component/dashboard/dashboard.component';
+import { SelectSeasonComponent }           from './component/select-season/select-season.component';
 
+import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations"
+;
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -32,6 +35,7 @@ const appRoutes: Routes = [
   { path: 'application', component: ApplicationComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'addplayer', component: AddplayerComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'selectseason', component: SelectSeasonComponent, canActivate: [ApplicationRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
 ];
@@ -49,7 +53,8 @@ const appRoutes: Routes = [
     SignupComponent,
     ApplicationComponent,
     AddplayerComponent,
-    DashboardComponent
+    DashboardComponent,
+    SelectSeasonComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,7 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginService, ApplicationRouteValidation],
+  providers: [LoginService, ApplicationService, ApplicationRouteValidation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

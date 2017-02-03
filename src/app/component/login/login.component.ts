@@ -14,8 +14,12 @@ export class LoginComponent implements OnInit {
   schoolName    : string  = '';
   passcode      : string  = '';
   selectOptions : any     = [];
-
-  constructor(private _loginService: LoginService, private _router:Router) { }
+  isAdmin       : boolean = false;
+  subs          : any     = [];
+  constructor(private _loginService: LoginService, private _router:Router) {
+    let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
+    this.subs.push(sub);
+  }
 
   ngOnInit() {
     this._loginService.getUsers()

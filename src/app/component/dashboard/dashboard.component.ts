@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }  from '@angular/core';
+import { LoginService }       from '../../services'
+import { ApplicationService } from '../../services'
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  isAdmin       : boolean = false;
+  subs          : any     = [];
+  selectOptions : any     = [];
+  seasons       : any     = [];
+  constructor(private _loginService: LoginService, private _applicationService: ApplicationService) {
+    let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
+    this.subs.push(sub);
+  }
 
   ngOnInit() {
+    this._applicationService.getSeasons()
+      .subscribe(
+        data  => {this.seasons = data; console.log(this.seasons)},
+        error => console.error('error',error)
+      )
+      window.setTimeout(()=>{
+        this.selectOptions = []
+      },50);
   }
 
 }

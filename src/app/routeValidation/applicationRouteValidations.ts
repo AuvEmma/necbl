@@ -15,8 +15,8 @@ export class ApplicationRouteValidation implements CanActivate {
       if (userToken) {
         return this._loginService.checkLogin(data).map(e => {
           if(e === "No School Found"){
-            this._router.navigate(['/']);
             this._loginService.setIsLoggedIn$(false);
+            this._router.navigate(['/']);
             localStorage.removeItem('token');
             localStorage.removeItem('id');
             return false;
