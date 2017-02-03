@@ -27,6 +27,9 @@ export class HeaderComponent implements OnInit {
     e.preventDefault();
     localStorage.removeItem('id');
     localStorage.removeItem('token');
+    localStorage.removeItem('season');
+    localStorage.removeItem('region');
+
     this._loginService.setIsLoggedIn$(false)
   }
 }

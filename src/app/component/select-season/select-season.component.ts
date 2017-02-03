@@ -14,12 +14,13 @@ export class SelectSeasonComponent implements OnInit {
   isCreateBtnShow  : boolean = true;
   seasons       : any     = [];
   seasonName    : string  = '';
+  regionName    : string  = '';
   selectOptions : any     = [];
   isAdmin       : boolean = true;
   subs          : any     = [];
   regions       : any     = [];
 
-  constructor(private _loginService: LoginService, private _applicationService: ApplicationService) {
+  constructor(private _loginService: LoginService, private _applicationService: ApplicationService, private _router:Router) {
     let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
     this.subs.push(sub);
   }
@@ -45,7 +46,18 @@ export class SelectSeasonComponent implements OnInit {
             this.regions = this.seasons[i].regions
         };
     }
+    window.setTimeout(()=>{
+      this.selectOptions = []
+    },50);
     $('select').material_select();
+  }
+
+  Next(e){
+    e.preventDefault();
+    localStorage.setItem('season', this.seasonName);
+    localStorage.setItem('region', this.regionName);
+    this._router.navigateByUrl('/application');
+
   }
 
 }
