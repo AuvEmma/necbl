@@ -19,14 +19,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._applicationService.getSeasons()
-      .subscribe(
-        data  => {this.seasons = data; console.log(this.seasons)},
-        error => console.error('error',error)
-      )
-      window.setTimeout(()=>{
-        this.selectOptions = []
-      },50);
   }
 
 }

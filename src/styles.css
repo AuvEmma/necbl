@@ -13,3 +13,7 @@ html {
 nav {
   background-image: url("assets/image/bg-header.jpg");
 }
+
+.btn {
+  background-color: #3e2723 !important;
+}

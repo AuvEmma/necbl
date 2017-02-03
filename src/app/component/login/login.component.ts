@@ -54,8 +54,4 @@ export class LoginComponent implements OnInit {
     )
 
   }
-
-  SignupPage(){
-    this._router.navigate(['/signup']);
-  }
 }
