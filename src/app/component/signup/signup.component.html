@@ -1,15 +1,15 @@
 <div class="container app-wrapper">
     <h4>Please Enter School Info</h4>
     <form (ngSubmit)="onSubmit($event)" #schoolFom="ngForm">
-      <div class="form-group">
+      <div class="form-group input-field">
         <label for="schoolName">School Name</label>
         <input type="text" class="form-control" id="schoolName" [(ngModel)]="schoolName" name="name" #name="ngModel" required>
       </div>
-      <div class="form-group">
+      <div class="form-group input-field">
         <label for="passcode">Passcode</label>
         <input type="password" class="form-control" id="passcode" [(ngModel)]="passcode" name="passcode" #name="ngModel" required>
       </div>
       <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
-      <button type="button" class="btn btn-default waves-effect waves-light" (click)="Back()">Back</button>
+      <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/login">Back</button>
     </form>
 </div>

@@ -9,7 +9,7 @@ import { LoginService }      from '../../services'
 })
 export class SignupComponent implements OnInit {
   schoolName:string = '';
-  passcode:string = '';
+  passcode:string   = '';
 
   constructor(private _loginService: LoginService, private _router:Router) { }
 
@@ -30,8 +30,5 @@ export class SignupComponent implements OnInit {
         },
         error => console.log('error',error)
       )
-  }
-  Back(){
-    this._router.navigateByUrl('/login');
   }
 }

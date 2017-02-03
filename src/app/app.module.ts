@@ -21,10 +21,11 @@ import { ApplicationService }           from './services';
 import { ApplicationComponent }         from './component/application/application.component'
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
 import { DashboardComponent }           from './component/dashboard/dashboard.component';
-import { SelectSeasonComponent }           from './component/select-season/select-season.component';
+import { SelectSeasonComponent }        from './component/select-season/select-season.component';
 
-import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations"
-;
+import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
+import { CreateSeasonComponent }        from './component/create-season/create-season.component';
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'addplayer', component: AddplayerComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'selectseason', component: SelectSeasonComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'createseason', component: CreateSeasonComponent, canActivate: [ApplicationRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
 ];
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     ApplicationComponent,
     AddplayerComponent,
     DashboardComponent,
-    SelectSeasonComponent
+    SelectSeasonComponent,
+    CreateSeasonComponent
   ],
   imports: [
     BrowserModule,

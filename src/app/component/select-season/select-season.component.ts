@@ -22,10 +22,12 @@ export class SelectSeasonComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.removeItem('season');
     this._applicationService.getSeasons()
       .subscribe(
-        data  => {this.seasons = data; console.log(this.seasons)},
-        error => alert('No Season Found!')
+        data  => {
+          if (Array.isArray(data)) this.seasons = data;
+        },error => console.error('error',error)
       )
       window.setTimeout(()=>{
         this.selectOptions = []

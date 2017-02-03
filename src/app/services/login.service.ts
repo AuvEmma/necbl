@@ -10,7 +10,7 @@ import { environment }                              from '../../environments';
 export class LoginService {
   private schoolName:any  = null;
   private passcode:any    = null;
-  
+
   subs:any = [];
   _isLoggedIn$: Subject<any>;
   _isAdmin$   : Subject<any>;
@@ -21,7 +21,7 @@ export class LoginService {
       token: userToken
     };
     this._isLoggedIn$ = <Subject<boolean>>new Subject();
-    this._isAdmin$ = <Subject<boolean>>new Subject();
+    this._isAdmin$    = <Subject<boolean>>new Subject();
 
     this.checkLogin(data).subscribe(e=>{
       this._isLoggedIn$.next(true);

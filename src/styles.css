@@ -17,3 +17,13 @@ nav {
 .btn {
   background-color: #3e2723 !important;
 }
+
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid #3e2723 !important;
+  box-shadow: 0 1px 0 0 #3e2723 !important;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+  color: #3e2723 !important;
+}
