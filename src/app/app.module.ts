@@ -24,8 +24,10 @@ import { DashboardComponent }           from './component/dashboard/dashboard.co
 import { SelectSeasonComponent }        from './component/select-season/select-season.component';
 
 import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
+
 import { CreateSeasonComponent }        from './component/create-season/create-season.component';
-import { PlayersComponent } from './component/players/players.component';
+import { PlayersComponent }             from './component/players/players.component';
+import { StudentServiceComponent }      from './component/student-service/student-service.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'selectseason', component: SelectSeasonComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'createseason', component: CreateSeasonComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'players', component: PlayersComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'studentservice', component: StudentServiceComponent },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
 ];
@@ -60,7 +63,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     SelectSeasonComponent,
     CreateSeasonComponent,
-    PlayersComponent
+    PlayersComponent,
+    StudentServiceComponent
   ],
   imports: [
     BrowserModule,

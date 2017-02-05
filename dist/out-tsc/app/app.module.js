@@ -28,6 +28,7 @@ import { SelectSeasonComponent } from './component/select-season/select-season.c
 import { ApplicationRouteValidation } from "./routeValidation/applicationRouteValidations";
 import { CreateSeasonComponent } from './component/create-season/create-season.component';
 import { PlayersComponent } from './component/players/players.component';
+import { StudentServiceComponent } from './component/student-service/student-service.component';
 var appRoutes = [
     { path: 'home', component: HomeComponent },
     { path: 'aboutus', component: AboutusComponent },
@@ -41,6 +42,7 @@ var appRoutes = [
     { path: 'selectseason', component: SelectSeasonComponent, canActivate: [ApplicationRouteValidation] },
     { path: 'createseason', component: CreateSeasonComponent, canActivate: [ApplicationRouteValidation] },
     { path: 'players', component: PlayersComponent, canActivate: [ApplicationRouteValidation] },
+    { path: 'studentservice', component: StudentServiceComponent },
     { path: '', component: HomeComponent },
     { path: '*', component: HomeComponent }
 ];
@@ -66,7 +68,8 @@ AppModule = __decorate([
             DashboardComponent,
             SelectSeasonComponent,
             CreateSeasonComponent,
-            PlayersComponent
+            PlayersComponent,
+            StudentServiceComponent
         ],
         imports: [
             BrowserModule,
