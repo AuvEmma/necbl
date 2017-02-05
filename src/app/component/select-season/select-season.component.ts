@@ -42,14 +42,14 @@ export class SelectSeasonComponent implements OnInit {
 
   getRegions(){
     for (let i = 0; i < this.seasons.length; i++) {
-        if (this.seasons[i].name === this.seasonName) {
+        if (this.seasons[i].name === this.seasonName && this.seasons[i].regions) {
             this.regions = this.seasons[i].regions
         };
     }
     window.setTimeout(()=>{
       this.selectOptions = []
-    },50);
-    $('select').material_select();
+      $('select').material_select();
+    },150);
   }
 
   Next(e){

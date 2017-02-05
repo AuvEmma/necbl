@@ -10,11 +10,13 @@ declare var $:any;
   styleUrls: ['./create-season.component.css']
 })
 export class CreateSeasonComponent implements OnInit {
-  seasonName:string = '';
-  regionName:string = '';
-  subs:any          = [];
-  regions:any       = [];
-  seasons:any       = [];
+  seasonName:string     = '';
+  regionName:string     = '';
+  subs:any              = [];
+  regions:any           = [];
+  seasons:any           = [];
+  selectedRegions:any   = [];
+  selected:any          = {};
 
   constructor(private _applicationService: ApplicationService, private _router:Router) {
     // this._applicationService.getRegions()
@@ -55,7 +57,7 @@ export class CreateSeasonComponent implements OnInit {
       .subscribe(
         data  => {
           this.regionName = '';
-          this.getRegions();
+          // this.getRegions();
         },
         error => console.log('error',error)
       )
@@ -75,11 +77,23 @@ export class CreateSeasonComponent implements OnInit {
       )
   }
 
+  selectRegion(e, _id){
+    e.preventDefault();
+    for (let i = 0; i < this.regions.length; i++) {
+        if(this.regions[i]._id == _id){
+            this.selectedRegions.push(this.regions[i])
+            this.selected[_id] = true;
+            console.log(this.selected)
+            // $('#'+_id).prop('disabled', true);
+        }
+    }
+  }
+
   onSubmit(e) {
     e.preventDefault();
     let data = {
       'seasonName': this.seasonName,
-      'regions': this.regions
+      'regions': this.selectedRegions
     }
     console.log(data)
     this._applicationService.createSeason(data)

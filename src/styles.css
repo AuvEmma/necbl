@@ -27,3 +27,7 @@ nav {
 .dropdown-content li > a, .dropdown-content li > span {
   color: #3e2723 !important;
 }
+
+.input-field .prefix.active{
+  color: #3e2723 !important;
+}

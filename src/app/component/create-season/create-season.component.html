@@ -39,7 +39,8 @@
         <tr *ngFor="let region of regions">
           <td>{{region._id}}</td>
           <td>{{region.name}}</td>
-          <td><button type="button" class='btn btn-default waves-effect waves-light right' name="button" (click)="deleteRegion($event, region._id)">Delete</button></td>
+          <!-- <td><button type="button" class='btn btn-default waves-effect waves-light right' name="button" (click)="deleteRegion($event, region._id)">Delete</button></td> -->
+          <td><button type="button" class='btn btn-default waves-effect waves-light right' name="button" (click)="selectRegion($event, region._id)" id="{{region._id}}" [class.disabled]="selected[_id]">Select</button></td>
         </tr>
       </tbody>
     </table>
