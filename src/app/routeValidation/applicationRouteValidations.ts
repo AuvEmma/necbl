@@ -9,6 +9,13 @@ export class ApplicationRouteValidation implements CanActivate {
   constructor( @Inject(Router) private _router:Router, @Inject(LoginService) private _loginService: LoginService) {}
   canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot):Observable<boolean> | boolean {
       var userToken = localStorage.getItem('token');
+      if (!userToken) {
+        localStorage.removeItem('regionId');
+        localStorage.removeItem('schoolId');
+        localStorage.removeItem('seasonId');
+        this._router.navigate(['/']);
+        return false;
+      }
       var data      = {
         token: userToken
       };
@@ -18,7 +25,9 @@ export class ApplicationRouteValidation implements CanActivate {
             this._loginService.setIsLoggedIn$(false);
             this._router.navigate(['/']);
             localStorage.removeItem('token');
-            localStorage.removeItem('id');
+            localStorage.removeItem('regionId');
+            localStorage.removeItem('schoolId');
+            localStorage.removeItem('seasonId');
             return false;
           }
           else{

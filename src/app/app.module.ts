@@ -25,6 +25,7 @@ import { SelectSeasonComponent }        from './component/select-season/select-s
 
 import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
 import { CreateSeasonComponent }        from './component/create-season/create-season.component';
+import { PlayersComponent } from './component/players/players.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'addplayer', component: AddplayerComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'selectseason', component: SelectSeasonComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'createseason', component: CreateSeasonComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'players', component: PlayersComponent, canActivate: [ApplicationRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
 ];
@@ -57,7 +59,8 @@ const appRoutes: Routes = [
     AddplayerComponent,
     DashboardComponent,
     SelectSeasonComponent,
-    CreateSeasonComponent
+    CreateSeasonComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,
