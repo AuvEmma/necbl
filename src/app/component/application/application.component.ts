@@ -18,7 +18,6 @@ export class ApplicationComponent implements OnInit {
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
   ngOnInit() {
-    $('.modal').modal();
 
     if(localStorage.getItem('seasonId') && localStorage.getItem('regionId')){
       this.seasonId = localStorage.getItem('seasonId');
@@ -34,7 +33,7 @@ export class ApplicationComponent implements OnInit {
     if(this.players.length < 6){
       alert('Not enough players!')
     }else{
-      
+
     }
   }
 

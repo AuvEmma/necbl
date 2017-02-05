@@ -10,19 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from '../../services';
-var ApplicationComponent = (function () {
-    function ApplicationComponent(_applicationService, _router) {
+var PlayersComponent = (function () {
+    function PlayersComponent(_applicationService, _router) {
         this._applicationService = _applicationService;
         this._router = _router;
-        this.seasonId = '';
-        this.regionId = '';
         this.players = [];
         this.schoolId = '';
     }
-    ApplicationComponent.prototype.ngOnInit = function () {
+    PlayersComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('seasonId') && localStorage.getItem('regionId')) {
-            this.seasonId = localStorage.getItem('seasonId');
-            this.regionId = localStorage.getItem('regionId');
             this.schoolId = localStorage.getItem('schoolId');
             this.getPlayers(this.schoolId);
         }
@@ -30,15 +26,7 @@ var ApplicationComponent = (function () {
             this._router.navigate(['/dashboard']);
         }
     };
-    ApplicationComponent.prototype.onSubmit = function (e) {
-        e.preventDefault();
-        if (this.players.length < 6) {
-            alert('Not enough players!');
-        }
-        else {
-        }
-    };
-    ApplicationComponent.prototype.getPlayers = function (schoolId) {
+    PlayersComponent.prototype.getPlayers = function (schoolId) {
         var _this = this;
         this._applicationService.getPlayers(schoolId)
             .subscribe(function (data) {
@@ -50,22 +38,15 @@ var ApplicationComponent = (function () {
             }
         }, function (error) { return console.log('error', error); });
     };
-    ApplicationComponent.prototype.deletePlayer = function (e, playerId) {
-        var _this = this;
-        this._applicationService.deletePlayer(playerId)
-            .subscribe(function (data) {
-            _this.getPlayers(_this.schoolId);
-        }, function (error) { return console.log('error', error); });
-    };
-    return ApplicationComponent;
+    return PlayersComponent;
 }());
-ApplicationComponent = __decorate([
+PlayersComponent = __decorate([
     Component({
-        selector: 'app-application',
-        templateUrl: './application.component.html',
-        styleUrls: ['./application.component.css']
+        selector: 'app-players',
+        templateUrl: './players.component.html',
+        styleUrls: ['./players.component.css']
     }),
     __metadata("design:paramtypes", [ApplicationService, Router])
-], ApplicationComponent);
-export { ApplicationComponent };
-//# sourceMappingURL=../../../../../src/app/component/application/application.component.js.map
+], PlayersComponent);
+export { PlayersComponent };
+//# sourceMappingURL=../../../../../src/app/component/players/players.component.js.map
