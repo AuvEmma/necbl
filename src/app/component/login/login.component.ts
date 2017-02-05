@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data  => {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('id', data.id);
+        console.log(data)
+        localStorage.setItem('schoolId', data.id);
         this._loginService.setIsLoggedIn$(true);
         this._router.navigateByUrl('/dashboard');
       },

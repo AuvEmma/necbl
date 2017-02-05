@@ -31,3 +31,13 @@ nav {
 .input-field .prefix.active{
   color: #3e2723 !important;
 }
+
+textarea.materialize-textarea:focus {
+  border-bottom: 1px solid #3e2723 !important;
+  box-shadow:0 1px 00 #3e2723 !important;
+}
+
+
+textarea.materialize-textarea:focus + label{
+  color: #3e2723 !important;
+}

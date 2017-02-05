@@ -26,13 +26,13 @@ export class SelectSeasonComponent implements OnInit {
   }
 
   ngOnInit() {
-    localStorage.removeItem('season');
-    localStorage.removeItem('region');
+    localStorage.removeItem('seasonId');
+    localStorage.removeItem('regionId');
 
     this._applicationService.getSeasons()
       .subscribe(
         data  => {
-          if (Array.isArray(data)) this.seasons = data; this.regions = data.regions;
+          if (Array.isArray(data)) this.seasons = data; this.regions = data.regions;console.log(data)
         },error => console.error('error',error)
       )
       window.setTimeout(()=>{
@@ -42,20 +42,20 @@ export class SelectSeasonComponent implements OnInit {
 
   getRegions(){
     for (let i = 0; i < this.seasons.length; i++) {
-        if (this.seasons[i].name === this.seasonName && this.seasons[i].regions) {
+        if (this.seasons[i]._id === this.seasonName && this.seasons[i].regions) {
             this.regions = this.seasons[i].regions
         };
     }
     window.setTimeout(()=>{
       this.selectOptions = []
       $('select').material_select();
-    },150);
+    },100);
   }
 
   Next(e){
     e.preventDefault();
-    localStorage.setItem('season', this.seasonName);
-    localStorage.setItem('region', this.regionName);
+    localStorage.setItem('seasonId', this.seasonName);
+    localStorage.setItem('regionId', this.regionName);
     this._router.navigateByUrl('/application');
 
   }

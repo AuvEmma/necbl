@@ -1,3 +1,44 @@
-<p>
-  addplayer works!
-</p>
+<div class="container app-wrapper">
+    <h4>Add Player</h4>
+    <form (submit)="onSubmit($event)">
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <label for="legalName">Legal Name（姓名)</label>
+          <input type="text" class="form-control" id="legalName" required="" name="legalName"  [(ngModel)]="name" required>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">class</i>
+          <label for="grade">Grade（年级)</label>
+          <input type="text" class="form-control" id="grade" required="" name="grade" [(ngModel)]="grade" required>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">email</i>
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" required="" name="email" [(ngModel)]="email" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="position">Position（位置)</label>
+          <input type="text" class="form-control" id="position" required="" name="position" [(ngModel)]="position" required>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">info</i>
+          <label for="height">Height（身高cm)</label>
+          <input type="number" class="form-control" id="height" required="" name="height" [(ngModel)]="height" required>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">stars</i>
+          <label for="number">No.（球衣号码)</label>
+          <input type="number" class="form-control" id="number" required="" name="number" [(ngModel)]="number" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
+      <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/application">Back</button>
+
+    </form>
+</div>

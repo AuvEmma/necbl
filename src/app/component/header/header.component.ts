@@ -25,10 +25,10 @@ export class HeaderComponent implements OnInit {
 
   Logout(e){
     e.preventDefault();
-    localStorage.removeItem('id');
+    localStorage.removeItem('schoolId');
     localStorage.removeItem('token');
-    localStorage.removeItem('season');
-    localStorage.removeItem('region');
+    localStorage.removeItem('seasonId');
+    localStorage.removeItem('regionId');
 
     this._loginService.setIsLoggedIn$(false)
   }
