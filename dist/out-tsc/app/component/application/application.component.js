@@ -32,6 +32,12 @@ var ApplicationComponent = (function () {
         }
     };
     ApplicationComponent.prototype.onSubmit = function (e) {
+        e.preventDefault();
+        if (this.players.length < 6) {
+            alert('Not enough players!');
+        }
+        else {
+        }
     };
     ApplicationComponent.prototype.getPlayers = function (schoolId) {
         var _this = this;

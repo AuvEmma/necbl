@@ -19,6 +19,7 @@ var AddplayerComponent = (function () {
         this.school = [];
         this.season = [];
         this.region = [];
+        this.selectOptions = [];
     }
     AddplayerComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('seasonId') && localStorage.getItem('regionId') && localStorage.getItem('schoolId')) {

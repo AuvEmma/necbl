@@ -24,6 +24,8 @@ export class AddplayerComponent implements OnInit {
   season    : any = [];
   region    : any = [];
   photo?    : string;
+  selectOptions : any = [];
+
 
   constructor(private _applicationService: ApplicationService, private _router:Router) {}
 

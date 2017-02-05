@@ -30,7 +30,12 @@ export class ApplicationComponent implements OnInit {
     }
   }
   onSubmit(e){
-
+    e.preventDefault();
+    if(this.players.length < 6){
+      alert('Not enough players!')
+    }else{
+      
+    }
   }
 
   getPlayers(schoolId){

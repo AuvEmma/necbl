@@ -9,8 +9,16 @@
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">class</i>
-          <label for="grade">Grade（年级)</label>
-          <input type="text" class="form-control" id="grade" required="" name="grade" [(ngModel)]="grade" required>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" required [(ngModel)]="grade" name="grade">
+            <option value="" disabled selected>Choose Grade</option>
+            <option value="Freshman">Freshman</option>
+            <option value="Sephomore">Sephomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+            <option value="Graduate">Graduate</option>
+            <option value="Alumni">Alumni</option>
+          </select>
+          <label>Grade（年级)</label>
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">email</i>
@@ -22,8 +30,16 @@
       <div class="row">
         <div class="input-field col s4">
           <i class="material-icons prefix">person_pin</i>
-          <label for="position">Position（位置)</label>
-          <input type="text" class="form-control" id="position" required="" name="position" [(ngModel)]="position" required>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" required [(ngModel)]="position" name="position">
+            <option value="" disabled selected>Choose Position</option>
+            <option value="PG">Point Guard</option>
+            <option value="SG">Shooting Guard</option>
+            <option value="PF">Point Forward</option>
+            <option value="SF">Small Forward</option>
+            <option value="C">Center</option>
+          </select>
+          <label>Position（位置)</label>
+          <!-- <input type="text" class="form-control" id="position" required="" name="position" [(ngModel)]="position" required> -->
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">info</i>
