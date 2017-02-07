@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Player } from '../../model/player';
+import { Player } from '../../models/player';
 import { ApplicationService } from '../../services';
 var AddplayerComponent = (function () {
     function AddplayerComponent(_applicationService, _router) {
@@ -48,9 +48,9 @@ var AddplayerComponent = (function () {
                 _this.number = undefined;
                 _this.email = '';
                 _this.height = '';
-                _this.school = '';
-                _this.season = '';
-                _this.region = '';
+                _this.school = [];
+                _this.season = [];
+                _this.region = [];
             }
             else {
                 alert('Server Error! Please Check Your Entries.');

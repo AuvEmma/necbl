@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
 import { Router }                   from '@angular/router';
-import { Player }                   from '../../model/player';
+import { Player }                   from '../../models/player';
 import { ApplicationService }       from '../../services';
 
 @Component({
@@ -57,9 +57,9 @@ export class AddplayerComponent implements OnInit {
             this.number    = undefined;
             this.email     ='';
             this.height    ='';
-            this.school    ='';
-            this.season    ='';
-            this.region    ='';
+            this.school    =[];
+            this.season    =[];
+            this.region    =[];
           } else {
             alert('Server Error! Please Check Your Entries.')
           }

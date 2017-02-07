@@ -10,14 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from '../../services';
+import { Application } from '../../models/application';
 var ApplicationComponent = (function () {
     function ApplicationComponent(_applicationService, _router) {
         this._applicationService = _applicationService;
         this._router = _router;
+        this.schoolId = '';
+        this.schoolName = '';
+        this.managerName = '';
+        this.captainName = '';
+        this.teamName = '';
+        this.managerPhone = '';
+        this.captainPhone = '';
+        this.description = '';
         this.seasonId = '';
         this.regionId = '';
         this.players = [];
-        this.schoolId = '';
     }
     ApplicationComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('seasonId') && localStorage.getItem('regionId')) {
@@ -32,10 +40,20 @@ var ApplicationComponent = (function () {
     };
     ApplicationComponent.prototype.onSubmit = function (e) {
         e.preventDefault();
-        if (this.players.length < 6) {
+        if (this.players.length < 5) {
             alert('Not enough players!');
         }
         else {
+            var data = new Application(this.schoolId, this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description, this.seasonId, this.regionId, this.players);
+            this._applicationService.createApplication(data)
+                .subscribe(function (data) {
+                if (data.ok) {
+                    alert('Thank you for completing your application!');
+                }
+                else {
+                    alert('Please double check you entries and try again!');
+                }
+            }, function (error) { return console.log('error', error); });
         }
     };
     ApplicationComponent.prototype.getPlayers = function (schoolId) {

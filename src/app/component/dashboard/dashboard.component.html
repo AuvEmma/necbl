@@ -1,13 +1,14 @@
 <div class="container app-wrapper">
   <div class="row">
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/selectseason">Application</button>
+          <button *ngIf="!isAppComplete" type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/selectseason">Application</button>
+          <button *ngIf="isAppComplete" type="button" name="button" class="btn btn-primary orange waves-effect" diabled>Application Completed</button>
         </div>
       </div>
     </div>
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
           <button type="button" name="button" class="btn btn-primary orange waves-effect"><a href="../../assets/NECBL_Waiver_Template.pdf" download>Waiver</a></button>
@@ -16,14 +17,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
           <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/players">Players</button>
         </div>
       </div>
     </div>
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
           <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/home">Stats</button>
@@ -35,7 +36,7 @@
     <div class="col s12">
       <blockquote>
         球队合照和球员免责协议Waiver：<br />
-        球队都需要递交一张最新的团队合照， 每一位参赛的球员都必须签署免责协议，再将合照，免责协议一同Email至necbl.info@gmail.com。注：Email标题请使用 “NECBL（赛区) - (球队名称)”， 如： NECBLLake12 - University of Rochester。 如不使用规范格式，邮件可能会被系统忽略，耽误球队报名时间。
+        球队都需要递交一张最新的团队合照， 每一位参赛的球员都必须签署免责协议(点击右上方Waiver下载表格)，再将合照，免责协议一同Email至necbl.info@gmail.com。注：Email标题请使用 “NECBL（赛区) - (球队名称)”， 如： NECBLLake12 - University of Rochester。 如不使用规范格式，邮件可能会被系统忽略，耽误球队报名时间。
       </blockquote>
     </div>
   </div>

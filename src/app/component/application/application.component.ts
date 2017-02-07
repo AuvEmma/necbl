@@ -1,6 +1,7 @@
 import { Component, OnInit }        from '@angular/core';
 import { Router }                   from '@angular/router';
 import { ApplicationService }       from '../../services';
+import { Application }              from '../../models/application';
 
 declare var $:any;
 
@@ -10,10 +11,17 @@ declare var $:any;
   styleUrls: ['./application.component.css']
 })
 export class ApplicationComponent implements OnInit {
-  seasonId    : string  = '';
-  regionId    : string  = '';
-  players     : any     = [];
-  schoolId    : string  = '';
+  schoolId     : string  = '';
+  schoolName   : string  = '';
+  managerName  : string  = '';
+  captainName  : string  = '';
+  teamName     : string  = '';
+  managerPhone : string  = '';
+  captainPhone : string  = '';
+  description  : string  = '';
+  seasonId     : string  = '';
+  regionId     : string  = '';
+  players      : any     = [];
 
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
@@ -30,9 +38,21 @@ export class ApplicationComponent implements OnInit {
   }
   onSubmit(e){
     e.preventDefault();
-    if(this.players.length < 6){
+    if(this.players.length < 5){
       alert('Not enough players!')
     }else{
+      let data = new Application(this.schoolId,this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description,this.seasonId,this.regionId,this.players)
+      this._applicationService.createApplication(data)
+      .subscribe(
+        data  => {
+          if (data.ok) {
+              alert('Thank you for completing your application!')
+          }else{
+              alert('Please double check you entries and try again!')
+          }
+        },
+        error => console.log('error',error)
+      )
 
     }
   }
