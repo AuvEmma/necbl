@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     this._applicationService.getApplication(schoolId, seasonId)
     .subscribe(
       data  => {
-        if (data.length > 0 ) {
+        if (data != 'No_Application_Found') {
           this.isAppComplete = true
         }
       },

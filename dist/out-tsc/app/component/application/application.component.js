@@ -28,6 +28,7 @@ var ApplicationComponent = (function () {
         this.players = [];
     }
     ApplicationComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (localStorage.getItem('seasonId') && localStorage.getItem('regionId')) {
             this.seasonId = localStorage.getItem('seasonId');
             this.regionId = localStorage.getItem('regionId');
@@ -37,8 +38,15 @@ var ApplicationComponent = (function () {
         else {
             this._router.navigate(['/dashboard']);
         }
+        this._applicationService.getApplication(this.schoolId, this.seasonId)
+            .subscribe(function (data) {
+            if (data != 'No_Application_Found') {
+                _this._router.navigateByUrl('/dashboard');
+            }
+        }, function (error) { return console.log('error', error); });
     };
     ApplicationComponent.prototype.onSubmit = function (e) {
+        var _this = this;
         e.preventDefault();
         if (this.players.length < 5) {
             alert('Not enough players!');
@@ -49,6 +57,7 @@ var ApplicationComponent = (function () {
                 .subscribe(function (data) {
                 if (data.ok) {
                     alert('Thank you for completing your application!');
+                    _this._router.navigateByUrl('/dashboard');
                 }
                 else {
                     alert('Please double check you entries and try again!');

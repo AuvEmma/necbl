@@ -26,7 +26,6 @@ export class ApplicationComponent implements OnInit {
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
   ngOnInit() {
-
     if(localStorage.getItem('seasonId') && localStorage.getItem('regionId')){
       this.seasonId = localStorage.getItem('seasonId');
       this.regionId = localStorage.getItem('regionId');
@@ -35,6 +34,15 @@ export class ApplicationComponent implements OnInit {
     }else{
       this._router.navigate(['/dashboard']);
     }
+    this._applicationService.getApplication(this.schoolId, this.seasonId)
+    .subscribe(
+      data  => {
+        if (data != 'No_Application_Found') {
+          this._router.navigateByUrl('/dashboard')
+        }
+      },
+      error => console.log('error',error)
+    )
   }
   onSubmit(e){
     e.preventDefault();
@@ -47,6 +55,7 @@ export class ApplicationComponent implements OnInit {
         data  => {
           if (data.ok) {
               alert('Thank you for completing your application!')
+              this._router.navigateByUrl('/dashboard');
           }else{
               alert('Please double check you entries and try again!')
           }

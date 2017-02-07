@@ -29,7 +29,7 @@ var DashboardComponent = (function () {
         var schoolId = localStorage.getItem('schoolId');
         this._applicationService.getApplication(schoolId, seasonId)
             .subscribe(function (data) {
-            if (data.length > 0) {
+            if (data != 'No_Application_Found') {
                 _this.isAppComplete = true;
             }
         }, function (error) { return console.log('error', error); });
