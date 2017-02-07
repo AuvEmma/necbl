@@ -17,6 +17,7 @@ import { SignupComponent }              from './component/signup/signup.componen
 
 import { LoginService }                 from './services';
 import { ApplicationService }           from './services';
+import { StatService }                  from './services';
 
 import { ApplicationComponent }         from './component/application/application.component'
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
@@ -73,7 +74,7 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginService, ApplicationService, ApplicationRouteValidation],
+  providers: [LoginService, ApplicationService, StatService, ApplicationRouteValidation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
