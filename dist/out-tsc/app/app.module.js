@@ -21,6 +21,7 @@ import { ProgramComponent } from './component/program/program.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { LoginService } from './services';
 import { ApplicationService } from './services';
+import { StatService } from './services';
 import { ApplicationComponent } from './component/application/application.component';
 import { AddplayerComponent } from './component/addplayer/addplayer.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -78,7 +79,7 @@ AppModule = __decorate([
             MaterializeModule,
             RouterModule.forRoot(appRoutes)
         ],
-        providers: [LoginService, ApplicationService, ApplicationRouteValidation],
+        providers: [LoginService, ApplicationService, StatService, ApplicationRouteValidation],
         bootstrap: [AppComponent]
     })
 ], AppModule);

@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
 import { Router }                   from '@angular/router';
-import { Player }                   from '../../model/player';
+import { Player }                   from '../../models/player';
 import { ApplicationService }       from '../../services';
 
 @Component({
@@ -26,7 +26,6 @@ export class AddplayerComponent implements OnInit {
   photo?    : string;
   selectOptions : any = [];
 
-
   constructor(private _applicationService: ApplicationService, private _router:Router) {}
 
   ngOnInit() {
@@ -38,6 +37,17 @@ export class AddplayerComponent implements OnInit {
     }else{
       this._router.navigate(['/dashboard']);
     }
+
+    this._applicationService.getApplication(this.schoolId, this.seasonId)
+    .subscribe(
+      data  => {
+        if (data != 'No_Application_Found') {
+          this._router.navigateByUrl('/dashboard')
+        }
+      },
+      error => console.log('error',error)
+    )
+
   }
 
   onSubmit(e){
@@ -57,9 +67,9 @@ export class AddplayerComponent implements OnInit {
             this.number    = undefined;
             this.email     ='';
             this.height    ='';
-            this.school    ='';
-            this.season    ='';
-            this.region    ='';
+            this.school    =[];
+            this.season    =[];
+            this.region    =[];
           } else {
             alert('Server Error! Please Check Your Entries.')
           }

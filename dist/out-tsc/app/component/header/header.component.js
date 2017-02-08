@@ -16,9 +16,15 @@ var HeaderComponent = (function () {
         this._loginService = _loginService;
         this._router = _router;
         this.subs = [];
-        this.isLoggedIn = null;
-        var sub = this._loginService.isLoggedIn$.subscribe(function (isLoggedIn) { return _this.isLoggedIn = isLoggedIn; }, function (error) { });
-        this.subs.push(sub);
+        this.isLoggedIn = false;
+        this.isAdmin = false;
+        this.userInfo = {};
+        var sub1 = this._loginService.isLoggedIn$.subscribe(function (isLoggedIn) { return _this.isLoggedIn = isLoggedIn; }, function (error) { });
+        var sub2 = this._loginService.isAdmin$.subscribe(function (isAdmin) { return _this.isAdmin = isAdmin; }, function (error) { });
+        var sub3 = this._loginService.userInfo$.subscribe(function (userInfo) { return _this.userInfo = userInfo; }, function (error) { });
+        this.subs.push(sub1);
+        this.subs.push(sub2);
+        this.subs.push(sub3);
     }
     HeaderComponent.prototype.ngOnInit = function () {
         $(".button-collapse").sideNav();
@@ -30,6 +36,8 @@ var HeaderComponent = (function () {
         localStorage.removeItem('seasonId');
         localStorage.removeItem('regionId');
         this._loginService.setIsLoggedIn$(false);
+        this._loginService.setIsAdmin$(false);
+        this._loginService.setuserInfo$({});
     };
     return HeaderComponent;
 }());

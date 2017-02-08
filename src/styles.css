@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quattrocento Sans', sans-serif !important;
   background-image: url("assets/image/bg-body.jpg");
 }
 

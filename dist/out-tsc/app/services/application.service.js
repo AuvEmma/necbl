@@ -80,6 +80,22 @@ var ApplicationService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    ApplicationService.prototype.createApplication = function (data) {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/applications';
+        return this._http.post(_path, data, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    ApplicationService.prototype.getApplication = function (schoolId, seasonId) {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/applications?schoolid=' + schoolId + '&seasonid=' + seasonId;
+        return this._http.get(_path, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     Object.defineProperty(ApplicationService.prototype, "regions", {
         get: function () {
             return this._regions$.asObservable();

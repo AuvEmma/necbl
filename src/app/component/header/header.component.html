@@ -12,7 +12,9 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="#!" routerLink="/contact">Contact Us</a></li>
       <li *ngIf="!isLoggedIn"><a href="#!" routerLink="/login">Login</a></li>
-      <li *ngIf="isLoggedIn"><a href="#!" routerLink="/dashboard">My Page</a></li>
+      <li *ngIf="isLoggedIn&&userInfo"><a href="#!" routerLink="/dashboard">{{userInfo.name}}</a></li>
+      <li *ngIf="isLoggedIn&&!userInfo"><a href="#!" routerLink="/dashboard">My Page</a></li>
+      <li *ngIf="isLoggedIn&&isAdmin"><a href="#!" routerLink="/admin">Admin</a></li>
       <li *ngIf="isLoggedIn"><a href="#!" (click)="Logout($event)" routerLink="/">Logout</a></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">

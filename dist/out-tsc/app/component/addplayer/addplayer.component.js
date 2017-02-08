@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Player } from '../../model/player';
+import { Player } from '../../models/player';
 import { ApplicationService } from '../../services';
 var AddplayerComponent = (function () {
     function AddplayerComponent(_applicationService, _router) {
@@ -22,6 +22,7 @@ var AddplayerComponent = (function () {
         this.selectOptions = [];
     }
     AddplayerComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (localStorage.getItem('seasonId') && localStorage.getItem('regionId') && localStorage.getItem('schoolId')) {
             this.seasonId = localStorage.getItem('seasonId');
             this.regionId = localStorage.getItem('regionId');
@@ -30,6 +31,12 @@ var AddplayerComponent = (function () {
         else {
             this._router.navigate(['/dashboard']);
         }
+        this._applicationService.getApplication(this.schoolId, this.seasonId)
+            .subscribe(function (data) {
+            if (data != 'No_Application_Found') {
+                _this._router.navigateByUrl('/dashboard');
+            }
+        }, function (error) { return console.log('error', error); });
     };
     AddplayerComponent.prototype.onSubmit = function (e) {
         var _this = this;
@@ -48,9 +55,9 @@ var AddplayerComponent = (function () {
                 _this.number = undefined;
                 _this.email = '';
                 _this.height = '';
-                _this.school = '';
-                _this.season = '';
-                _this.region = '';
+                _this.school = [];
+                _this.season = [];
+                _this.region = [];
             }
             else {
                 alert('Server Error! Please Check Your Entries.');
