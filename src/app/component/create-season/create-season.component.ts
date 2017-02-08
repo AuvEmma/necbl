@@ -1,6 +1,7 @@
 import { Component, OnInit }       from '@angular/core';
 import { Router }                  from '@angular/router';
 import { ApplicationService }      from '../../services';
+import { LoginService }             from '../../services'
 
 declare var $:any;
 
@@ -17,21 +18,23 @@ export class CreateSeasonComponent implements OnInit {
   seasons:any           = [];
   selectedRegions:any   = [];
   selected:any          = {};
+  isAdmin :boolean      = false;
 
-  constructor(private _applicationService: ApplicationService, private _router:Router) {
-    // this._applicationService.getRegions()
-    // .subscribe(
-    //   data  => {
-    //     this._applicationService.setRegions$(data)
-    //   },
-    //   error => console.log('error',error)
-    // )
-    // let sub: any = this._applicationService.getRegion.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn, error => {/*console.log('Error: ', error)*/});
-    // this.subs.push(sub);
-
+  constructor(private _applicationService: ApplicationService, private _router:Router, private _loginService: LoginService) {
+    let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
+    this.subs.push(sub);
   }
 
   ngOnInit() {
+    let userToken = localStorage.getItem('token');
+    let data      = {
+      token: userToken
+    };
+    this._loginService.checkLogin(data).subscribe(e=>{
+      if(e[0].name != 'New York'){
+        this._router.navigateByUrl('/dashboard')
+      }
+    })
     $('.modal').modal();
     this.getRegions();
   }

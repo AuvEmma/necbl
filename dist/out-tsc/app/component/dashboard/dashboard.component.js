@@ -20,13 +20,24 @@ var DashboardComponent = (function () {
         this.selectOptions = [];
         this.seasons = [];
         this.isAppComplete = false;
-        var sub = this._loginService.isAdmin$.subscribe(function (isAdmin) { return _this.isAdmin = isAdmin; }, function (error) { });
-        this.subs.push(sub);
+        var sub1 = this._loginService.isAdmin$.subscribe(function (isAdmin) { return _this.isAdmin = isAdmin; }, function (error) { });
+        this.subs.push(sub1);
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         var seasonId = localStorage.getItem('seasonId');
         var schoolId = localStorage.getItem('schoolId');
+        var userToken = localStorage.getItem('token');
+        var data = {
+            token: userToken
+        };
+        this._loginService.checkLogin(data).subscribe(function (e) {
+            if (e[0].name == 'New York') {
+                setTimeout(function () {
+                    _this._loginService.setIsAdmin$(true);
+                }, 0);
+            }
+        });
         this._applicationService.getApplication(schoolId, seasonId)
             .subscribe(function (data) {
             if (data != 'No_Application_Found') {

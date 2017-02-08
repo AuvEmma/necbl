@@ -26,7 +26,6 @@ export class AddplayerComponent implements OnInit {
   photo?    : string;
   selectOptions : any = [];
 
-
   constructor(private _applicationService: ApplicationService, private _router:Router) {}
 
   ngOnInit() {
@@ -38,6 +37,17 @@ export class AddplayerComponent implements OnInit {
     }else{
       this._router.navigate(['/dashboard']);
     }
+
+    this._applicationService.getApplication(this.schoolId, this.seasonId)
+    .subscribe(
+      data  => {
+        if (data != 'No_Application_Found') {
+          this._router.navigateByUrl('/dashboard')
+        }
+      },
+      error => console.log('error',error)
+    )
+
   }
 
   onSubmit(e){

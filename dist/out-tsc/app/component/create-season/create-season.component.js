@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from '../../services';
+import { LoginService } from '../../services';
 var CreateSeasonComponent = (function () {
-    function CreateSeasonComponent(_applicationService, _router) {
+    function CreateSeasonComponent(_applicationService, _router, _loginService) {
+        var _this = this;
         this._applicationService = _applicationService;
         this._router = _router;
+        this._loginService = _loginService;
         this.seasonName = '';
         this.regionName = '';
         this.subs = [];
@@ -21,8 +24,21 @@ var CreateSeasonComponent = (function () {
         this.seasons = [];
         this.selectedRegions = [];
         this.selected = {};
+        this.isAdmin = false;
+        var sub = this._loginService.isAdmin$.subscribe(function (isAdmin) { return _this.isAdmin = isAdmin; }, function (error) { });
+        this.subs.push(sub);
     }
     CreateSeasonComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var userToken = localStorage.getItem('token');
+        var data = {
+            token: userToken
+        };
+        this._loginService.checkLogin(data).subscribe(function (e) {
+            if (e[0].name != 'New York') {
+                _this._router.navigateByUrl('/dashboard');
+            }
+        });
         $('.modal').modal();
         this.getRegions();
     };
@@ -89,7 +105,7 @@ CreateSeasonComponent = __decorate([
         templateUrl: './create-season.component.html',
         styleUrls: ['./create-season.component.css']
     }),
-    __metadata("design:paramtypes", [ApplicationService, Router])
+    __metadata("design:paramtypes", [ApplicationService, Router, LoginService])
 ], CreateSeasonComponent);
 export { CreateSeasonComponent };
 //# sourceMappingURL=../../../../../src/app/component/create-season/create-season.component.js.map

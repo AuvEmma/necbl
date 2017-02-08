@@ -44,9 +44,12 @@ var LoginComponent = (function () {
         this._loginService.login(data)
             .subscribe(function (data) {
             localStorage.setItem('token', data.token);
-            console.log(data);
             localStorage.setItem('schoolId', data.id);
             _this._loginService.setIsLoggedIn$(true);
+            _this._loginService.setuserInfo$(data);
+            if (data.name === "New York") {
+                _this._loginService.setIsAdmin$(true);
+            }
             _this._router.navigateByUrl('/dashboard');
         }, function (error) {
             console.error('error', error);
