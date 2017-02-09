@@ -13,7 +13,7 @@
         </tr>
         <tr *ngFor="let player of players">
           <td>{{player.school.name}}</td>
-          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a></td>
+          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a>  <button type="button" class="btn btn-floating waves-effect waves-light small flat" routerLink="/addstat/{{player._id}}">Stat</button></td>
           <td>{{player.grade}}</td>
           <td>{{player.position}}</td>
           <td>{{player.height}}</td>

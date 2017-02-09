@@ -17,6 +17,8 @@ var ApplicationComponent = (function () {
         this._router = _router;
         this.schoolId = '';
         this.schoolName = '';
+        this.regionName = '';
+        this.seasonName = '';
         this.managerName = '';
         this.captainName = '';
         this.teamName = '';
@@ -26,6 +28,9 @@ var ApplicationComponent = (function () {
         this.seasonId = '';
         this.regionId = '';
         this.players = [];
+        this.season = {};
+        this.region = {};
+        this.school = {};
     }
     ApplicationComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -33,6 +38,15 @@ var ApplicationComponent = (function () {
             this.seasonId = localStorage.getItem('seasonId');
             this.regionId = localStorage.getItem('regionId');
             this.schoolId = localStorage.getItem('schoolId');
+            this.seasonName = localStorage.getItem('seasonName');
+            this.regionName = localStorage.getItem('regionName');
+            this.schoolName = localStorage.getItem('schoolName');
+            this.season['id'] = this.seasonId;
+            this.season['name'] = this.seasonName;
+            this.region['id'] = this.regionId;
+            this.region['name'] = this.regionName;
+            this.school['id'] = this.schoolId;
+            this.school['name'] = this.schoolName;
             this.getPlayers(this.schoolId);
         }
         else {
@@ -52,7 +66,7 @@ var ApplicationComponent = (function () {
             alert('Not enough players!');
         }
         else {
-            var data = new Application(this.schoolId, this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description, this.seasonId, this.regionId, this.players);
+            var data = new Application(this.schoolId, this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description, this.season, this.region, this.players);
             this._applicationService.createApplication(data)
                 .subscribe(function (data) {
                 if (data.ok) {

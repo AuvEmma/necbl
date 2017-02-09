@@ -15,7 +15,7 @@ export class SelectSeasonComponent implements OnInit {
   seasons          : any     = [];
   seasonId         : string  = '';
   regionId         : string  = '';
-
+  schoolId         : string  = '';
   seasonName    : string  = '';
   regionName    : string  = '';
   selectOptions : any     = [];
@@ -59,6 +59,17 @@ export class SelectSeasonComponent implements OnInit {
     e.preventDefault();
     localStorage.setItem('seasonId', this.seasonId);
     localStorage.setItem('regionId', this.regionId);
+    // localStorage.getItem('schoolId', this.schoolId);
+
+    this._applicationService.getApplication(this.schoolId, this.seasonId)
+    .subscribe(
+      data  => {
+        if (data != 'No_Application_Found') {
+          alert('You have already applied!')
+        }
+      },
+      error => console.log('error',error)
+    )
     for (let i = 0; i < this.seasons.length; i++) {
         if (this.seasons[i]._id === this.seasonId) {
             localStorage.setItem('seasonName', this.seasons[i].name);

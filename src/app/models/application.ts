@@ -8,8 +8,8 @@ export class Application {
     public managerphone: string,
     public captainphone: string,
     public description: string,
-    public seasonid: string,
-    public regionid: string,
+    public season: any={},
+    public region: any={},
     public players: any=[],
     public photo?: string
   ) {  }

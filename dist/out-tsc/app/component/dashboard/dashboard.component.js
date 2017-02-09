@@ -38,12 +38,6 @@ var DashboardComponent = (function () {
                 }, 0);
             }
         });
-        this._applicationService.getApplication(schoolId, seasonId)
-            .subscribe(function (data) {
-            if (data != 'No_Application_Found') {
-                _this.isAppComplete = true;
-            }
-        }, function (error) { return console.log('error', error); });
     };
     return DashboardComponent;
 }());

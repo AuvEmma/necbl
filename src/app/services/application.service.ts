@@ -122,6 +122,16 @@ export class ApplicationService {
              .catch(this.handleError);
   }
 
+  getAllApplications(): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/applications';
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
   get regions(){
     return this._regions$.asObservable();
   }

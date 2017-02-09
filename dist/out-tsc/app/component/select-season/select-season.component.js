@@ -21,6 +21,7 @@ var SelectSeasonComponent = (function () {
         this.seasons = [];
         this.seasonId = '';
         this.regionId = '';
+        this.schoolId = '';
         this.seasonName = '';
         this.regionName = '';
         this.selectOptions = [];
@@ -62,6 +63,12 @@ var SelectSeasonComponent = (function () {
         e.preventDefault();
         localStorage.setItem('seasonId', this.seasonId);
         localStorage.setItem('regionId', this.regionId);
+        this._applicationService.getApplication(this.schoolId, this.seasonId)
+            .subscribe(function (data) {
+            if (data != 'No_Application_Found') {
+                alert('You have already applied!');
+            }
+        }, function (error) { return console.log('error', error); });
         for (var i = 0; i < this.seasons.length; i++) {
             if (this.seasons[i]._id === this.seasonId) {
                 localStorage.setItem('seasonName', this.seasons[i].name);

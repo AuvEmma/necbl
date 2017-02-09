@@ -34,15 +34,6 @@ export class DashboardComponent implements OnInit {
         }, 0);
       }
     })
-    this._applicationService.getApplication(schoolId, seasonId)
-    .subscribe(
-      data  => {
-        if (data != 'No_Application_Found') {
-          this.isAppComplete = true
-        }
-      },
-      error => console.log('error',error)
-    )
   }
 
 }

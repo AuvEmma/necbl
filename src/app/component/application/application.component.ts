@@ -13,6 +13,8 @@ declare var $:any;
 export class ApplicationComponent implements OnInit {
   schoolId     : string  = '';
   schoolName   : string  = '';
+  regionName   : string  = '';
+  seasonName   : string  = '';
   managerName  : string  = '';
   captainName  : string  = '';
   teamName     : string  = '';
@@ -22,6 +24,10 @@ export class ApplicationComponent implements OnInit {
   seasonId     : string  = '';
   regionId     : string  = '';
   players      : any     = [];
+  season       : any     = {};
+  region       : any     = {};
+  school       : any     = {};
+
 
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
@@ -30,6 +36,16 @@ export class ApplicationComponent implements OnInit {
       this.seasonId = localStorage.getItem('seasonId');
       this.regionId = localStorage.getItem('regionId');
       this.schoolId = localStorage.getItem('schoolId');
+      this.seasonName = localStorage.getItem('seasonName');
+      this.regionName = localStorage.getItem('regionName');
+      this.schoolName = localStorage.getItem('schoolName');
+
+      this.season['id'] = this.seasonId;
+      this.season['name'] = this.seasonName;
+      this.region['id'] = this.regionId;
+      this.region['name'] = this.regionName;
+      this.school['id'] = this.schoolId;
+      this.school['name'] = this.schoolName;
       this.getPlayers(this.schoolId);
     }else{
       this._router.navigate(['/dashboard']);
@@ -49,7 +65,7 @@ export class ApplicationComponent implements OnInit {
     if(this.players.length < 5){
       alert('Not enough players!')
     }else{
-      let data = new Application(this.schoolId,this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description,this.seasonId,this.regionId,this.players)
+      let data = new Application(this.schoolId,this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description,this.season,this.region,this.players)
       this._applicationService.createApplication(data)
       .subscribe(
         data  => {

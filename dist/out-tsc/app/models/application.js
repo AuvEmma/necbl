@@ -1,5 +1,7 @@
 var Application = (function () {
-    function Application(schoolid, schoolname, managername, captainname, teamname, managerphone, captainphone, description, seasonid, regionid, players, photo) {
+    function Application(schoolid, schoolname, managername, captainname, teamname, managerphone, captainphone, description, season, region, players, photo) {
+        if (season === void 0) { season = {}; }
+        if (region === void 0) { region = {}; }
         if (players === void 0) { players = []; }
         this.schoolid = schoolid;
         this.schoolname = schoolname;
@@ -9,8 +11,8 @@ var Application = (function () {
         this.managerphone = managerphone;
         this.captainphone = captainphone;
         this.description = description;
-        this.seasonid = seasonid;
-        this.regionid = regionid;
+        this.season = season;
+        this.region = region;
         this.players = players;
         this.photo = photo;
     }
