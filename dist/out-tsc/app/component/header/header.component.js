@@ -37,7 +37,7 @@ var HeaderComponent = (function () {
         localStorage.removeItem('regionId');
         this._loginService.setIsLoggedIn$(false);
         this._loginService.setIsAdmin$(false);
-        this._loginService.setuserInfo$({});
+        this._loginService.setuserInfo$(false);
     };
     return HeaderComponent;
 }());

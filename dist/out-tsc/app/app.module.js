@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { AppComponent } from './component/app.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -22,6 +23,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { LoginService } from './services';
 import { ApplicationService } from './services';
 import { StatService } from './services';
+import { UploadService } from './services';
 import { ApplicationComponent } from './component/application/application.component';
 import { AddplayerComponent } from './component/addplayer/addplayer.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
@@ -30,6 +32,7 @@ import { ApplicationRouteValidation } from "./routeValidation/applicationRouteVa
 import { CreateSeasonComponent } from './component/create-season/create-season.component';
 import { PlayersComponent } from './component/players/players.component';
 import { StudentServiceComponent } from './component/student-service/student-service.component';
+import { FileUploaderComponent } from './component/file-uploader/file-uploader.component';
 var appRoutes = [
     { path: 'home', component: HomeComponent },
     { path: 'aboutus', component: AboutusComponent },
@@ -70,7 +73,10 @@ AppModule = __decorate([
             SelectSeasonComponent,
             CreateSeasonComponent,
             PlayersComponent,
-            StudentServiceComponent
+            StudentServiceComponent,
+            FileSelectDirective,
+            FileDropDirective,
+            FileUploaderComponent
         ],
         imports: [
             BrowserModule,
@@ -79,7 +85,7 @@ AppModule = __decorate([
             MaterializeModule,
             RouterModule.forRoot(appRoutes)
         ],
-        providers: [LoginService, ApplicationService, StatService, ApplicationRouteValidation],
+        providers: [LoginService, ApplicationService, StatService, UploadService, ApplicationRouteValidation],
         bootstrap: [AppComponent]
     })
 ], AppModule);

@@ -28,6 +28,15 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var userToken = localStorage.getItem('token');
+        var data = {
+            token: userToken
+        };
+        this._loginService.checkLogin(data).subscribe(function (e) {
+            if (e[0]) {
+                _this._router.navigateByUrl('/dashboard');
+            }
+        });
         this._loginService.getUsers()
             .subscribe(function (data) { _this.schools = data; console.log(_this.schools); }, function (error) { return console.error('error', error); });
         window.setTimeout(function () {

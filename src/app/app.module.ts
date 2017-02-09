@@ -4,6 +4,8 @@ import { FormsModule }                  from '@angular/forms';
 import { HttpModule }                   from '@angular/http';
 import { RouterModule, Routes }         from '@angular/router';
 import { MaterializeModule }            from 'angular2-materialize';
+import { FileSelectDirective,
+          FileDropDirective }           from 'ng2-file-upload';
 
 import { AppComponent }                 from './component/app.component';
 import { FooterComponent }              from './component/footer/footer.component';
@@ -18,6 +20,7 @@ import { SignupComponent }              from './component/signup/signup.componen
 import { LoginService }                 from './services';
 import { ApplicationService }           from './services';
 import { StatService }                  from './services';
+import { UploadService }                from './services';
 
 import { ApplicationComponent }         from './component/application/application.component'
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
@@ -29,6 +32,7 @@ import { ApplicationRouteValidation }   from "./routeValidation/applicationRoute
 import { CreateSeasonComponent }        from './component/create-season/create-season.component';
 import { PlayersComponent }             from './component/players/players.component';
 import { StudentServiceComponent }      from './component/student-service/student-service.component';
+import { FileUploaderComponent }        from './component/file-uploader/file-uploader.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -65,7 +69,10 @@ const appRoutes: Routes = [
     SelectSeasonComponent,
     CreateSeasonComponent,
     PlayersComponent,
-    StudentServiceComponent
+    StudentServiceComponent,
+    FileSelectDirective,
+    FileDropDirective,
+    FileUploaderComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +81,7 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginService, ApplicationService, StatService, ApplicationRouteValidation],
+  providers: [LoginService, ApplicationService, StatService, UploadService, ApplicationRouteValidation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

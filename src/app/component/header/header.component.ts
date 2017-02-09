@@ -38,6 +38,6 @@ export class HeaderComponent implements OnInit {
 
     this._loginService.setIsLoggedIn$(false);
     this._loginService.setIsAdmin$(false);
-    this._loginService.setuserInfo$({});
+    this._loginService.setuserInfo$(false);
   }
 }
