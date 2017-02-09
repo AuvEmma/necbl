@@ -21,6 +21,7 @@ import { LoginService }                 from './services';
 import { ApplicationService }           from './services';
 import { StatService }                  from './services';
 import { UploadService }                from './services';
+import { GameService }                  from './services';
 
 import { ApplicationComponent }         from './component/application/application.component'
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
