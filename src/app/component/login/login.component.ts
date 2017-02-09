@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
       data  => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('schoolId', data.id);
+        localStorage.setItem('schoolName', data.name);
+
         this._loginService.setIsLoggedIn$(true);
         this._loginService.setuserInfo$(data)
         if(data.name === "New York"){

@@ -24,9 +24,7 @@ var ApplicationRouteValidation = (function () {
         var _this = this;
         var userToken = localStorage.getItem('token');
         if (!userToken) {
-            localStorage.removeItem('regionId');
-            localStorage.removeItem('schoolId');
-            localStorage.removeItem('seasonId');
+            localStorage.clear();
             this._router.navigate(['/']);
             return false;
         }
@@ -38,10 +36,7 @@ var ApplicationRouteValidation = (function () {
                 if (e === "No_School_Found") {
                     _this._loginService.setIsLoggedIn$(false);
                     _this._router.navigate(['/']);
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('regionId');
-                    localStorage.removeItem('schoolId');
-                    localStorage.removeItem('seasonId');
+                    localStorage.clear();
                     return false;
                 }
                 else {

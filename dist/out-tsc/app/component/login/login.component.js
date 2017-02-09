@@ -54,6 +54,7 @@ var LoginComponent = (function () {
             .subscribe(function (data) {
             localStorage.setItem('token', data.token);
             localStorage.setItem('schoolId', data.id);
+            localStorage.setItem('schoolName', data.name);
             _this._loginService.setIsLoggedIn$(true);
             _this._loginService.setuserInfo$(data);
             if (data.name === "New York") {

@@ -58,7 +58,7 @@ var LoginService = (function () {
             .catch(this.handleError);
     };
     LoginService.prototype.logout = function () {
-        localStorage.removeItem('token');
+        localStorage.clear();
     };
     LoginService.prototype.checkLogin = function (data) {
         var headers = new Headers({ 'Content-Type': 'application/json' });

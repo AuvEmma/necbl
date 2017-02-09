@@ -1,4 +1,4 @@
-import { Component, OnInit }        from '@angular/core';
+{}import { Component, OnInit }        from '@angular/core';
 import { Router }                   from '@angular/router';
 import { Player }                   from '../../models/player';
 import { ApplicationService }       from '../../services';
@@ -20,11 +20,14 @@ export class AddplayerComponent implements OnInit {
   number    : number;
   email     : string;
   height    : string;
-  school    : any = [];
-  season    : any = [];
-  region    : any = [];
+  school    : any = {};
+  season    : any = {};
+  region    : any = {};
   photo?    : string;
   selectOptions : any = [];
+  seasonName: string;
+  regionName: string;
+  schoolName: string;
 
   constructor(private _applicationService: ApplicationService, private _router:Router) {}
 
@@ -33,6 +36,9 @@ export class AddplayerComponent implements OnInit {
       this.seasonId = localStorage.getItem('seasonId');
       this.regionId = localStorage.getItem('regionId');
       this.schoolId = localStorage.getItem('schoolId')
+      this.seasonName = localStorage.getItem('seasonName');
+      this.regionName = localStorage.getItem('regionName');
+      this.schoolName = localStorage.getItem('schoolName')
 
     }else{
       this._router.navigate(['/dashboard']);
@@ -52,9 +58,13 @@ export class AddplayerComponent implements OnInit {
 
   onSubmit(e){
     e.preventDefault();
-    this.season.push(this.seasonId);
-    this.region.push(this.regionId);
-    this.school.push(this.schoolId);
+    this.season['id']= this.seasonId;
+    this.region['id']=this.regionId;
+    this.school['id']=this.schoolId;
+    this.season['name']= this.seasonName;
+    this.region['name']=this.regionName;
+    this.school['name']=this.schoolName;
+
     let data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region)
     this._applicationService.createPlayer(data)
       .subscribe(
@@ -67,9 +77,9 @@ export class AddplayerComponent implements OnInit {
             this.number    = undefined;
             this.email     ='';
             this.height    ='';
-            this.school    =[];
-            this.season    =[];
-            this.region    =[];
+            this.school    ={};
+            this.season    ={};
+            this.region    ={};
           } else {
             alert('Server Error! Please Check Your Entries.')
           }

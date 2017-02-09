@@ -18,7 +18,7 @@ var PlayersComponent = (function () {
         this.schoolId = '';
     }
     PlayersComponent.prototype.ngOnInit = function () {
-        if (localStorage.getItem('seasonId') && localStorage.getItem('regionId')) {
+        if (localStorage.getItem('schoolId')) {
             this.schoolId = localStorage.getItem('schoolId');
             this.getPlayers(this.schoolId);
         }

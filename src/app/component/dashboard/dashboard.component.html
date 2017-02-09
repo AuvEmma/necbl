@@ -20,18 +20,19 @@
     <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/players">Players</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/myplayers">My Players</button>
         </div>
       </div>
     </div>
     <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/home">Stats</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/mygames">My Games</button>
         </div>
       </div>
     </div>
   </div>
+
   <div class="row" *ngIf="isAdmin">
     <div class="col s12 m6">
       <div class="card-panel brown darken-4">
@@ -43,7 +44,7 @@
     <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/createseason">Create Game</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/creategame">Create Game</button>
         </div>
       </div>
     </div>
@@ -52,17 +53,33 @@
     <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/createseason">All Applications</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/applications/all">All Applications</button>
         </div>
       </div>
     </div>
     <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/createseason">All Games</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/games/all">All Games</button>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row" *ngIf="isAdmin">
+    <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/players/all">All Players</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/games/all">All Games</button>
+        </div>
+      </div>
+    </div> -->
   </div>
   <div class="row">
     <div class="col s12">
