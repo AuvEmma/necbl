@@ -6,9 +6,9 @@ export class Player {
     public number: number,
     public email: string,
     public height: string,
-    public school: string,
-    public season: any =[],
-    public region: any =[],
+    public school: any ={},
+    public season: any ={},
+    public region: any ={},
     public photo?: string
   ) {  }
 }

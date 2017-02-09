@@ -28,6 +28,15 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var userToken = localStorage.getItem('token');
+        var data = {
+            token: userToken
+        };
+        this._loginService.checkLogin(data).subscribe(function (e) {
+            if (e[0]) {
+                _this._router.navigateByUrl('/dashboard');
+            }
+        });
         this._loginService.getUsers()
             .subscribe(function (data) { _this.schools = data; console.log(_this.schools); }, function (error) { return console.error('error', error); });
         window.setTimeout(function () {
@@ -45,6 +54,7 @@ var LoginComponent = (function () {
             .subscribe(function (data) {
             localStorage.setItem('token', data.token);
             localStorage.setItem('schoolId', data.id);
+            localStorage.setItem('schoolName', data.name);
             _this._loginService.setIsLoggedIn$(true);
             _this._loginService.setuserInfo$(data);
             if (data.name === "New York") {

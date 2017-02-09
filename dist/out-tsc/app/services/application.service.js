@@ -72,6 +72,14 @@ var ApplicationService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    ApplicationService.prototype.allPlayers = function () {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players';
+        return this._http.get(_path, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     ApplicationService.prototype.deletePlayer = function (playerId) {
         var headers = new Headers({ 'Content-Type': 'application/json' });
         var options = new RequestOptions({ headers: headers });

@@ -4,6 +4,8 @@ import { FormsModule }                  from '@angular/forms';
 import { HttpModule }                   from '@angular/http';
 import { RouterModule, Routes }         from '@angular/router';
 import { MaterializeModule }            from 'angular2-materialize';
+import { FileSelectDirective,
+          FileDropDirective }           from 'ng2-file-upload';
 
 import { AppComponent }                 from './component/app.component';
 import { FooterComponent }              from './component/footer/footer.component';
@@ -18,6 +20,7 @@ import { SignupComponent }              from './component/signup/signup.componen
 import { LoginService }                 from './services';
 import { ApplicationService }           from './services';
 import { StatService }                  from './services';
+import { UploadService }                from './services';
 
 import { ApplicationComponent }         from './component/application/application.component'
 import { AddplayerComponent }           from './component/addplayer/addplayer.component';
@@ -25,10 +28,18 @@ import { DashboardComponent }           from './component/dashboard/dashboard.co
 import { SelectSeasonComponent }        from './component/select-season/select-season.component';
 
 import { ApplicationRouteValidation }   from "./routeValidation/applicationRouteValidations";
+import { AdminRouteValidation }         from "./routeValidation/adminRouteValidations";
 
 import { CreateSeasonComponent }        from './component/create-season/create-season.component';
 import { PlayersComponent }             from './component/players/players.component';
 import { StudentServiceComponent }      from './component/student-service/student-service.component';
+import { FileUploaderComponent }        from './component/file-uploader/file-uploader.component';
+import { AllapplicationsComponent }     from './component/allapplications/allapplications.component';
+import { AllgamesComponent }            from './component/allgames/allgames.component';
+import { AllplayersComponent }          from './component/allplayers/allplayers.component';
+import { CreategameComponent }          from './component/creategame/creategame.component';
+import { MygamesComponent }             from './component/mygames/mygames.component';
+import { PlayerstatComponent }          from './component/playerstat/playerstat.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -41,8 +52,15 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'addplayer', component: AddplayerComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'selectseason', component: SelectSeasonComponent, canActivate: [ApplicationRouteValidation] },
-  { path: 'createseason', component: CreateSeasonComponent, canActivate: [ApplicationRouteValidation] },
-  { path: 'players', component: PlayersComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'createseason', component: CreateSeasonComponent, canActivate: [AdminRouteValidation] },
+  { path: 'myplayers', component: PlayersComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'mygames', component: MygamesComponent, canActivate: [ApplicationRouteValidation] },
+
+  { path: 'players/all', component: AllplayersComponent, canActivate: [AdminRouteValidation] },
+  { path: 'applications/all', component: AllapplicationsComponent, canActivate: [AdminRouteValidation] },
+  { path: 'games/all', component: AllgamesComponent, canActivate: [AdminRouteValidation] },
+  { path: 'creategame', component: CreategameComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'playerstat/:playerid', component: PlayerstatComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'studentservice', component: StudentServiceComponent },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
@@ -65,7 +83,16 @@ const appRoutes: Routes = [
     SelectSeasonComponent,
     CreateSeasonComponent,
     PlayersComponent,
-    StudentServiceComponent
+    StudentServiceComponent,
+    FileSelectDirective,
+    FileDropDirective,
+    FileUploaderComponent,
+    AllapplicationsComponent,
+    AllgamesComponent,
+    AllplayersComponent,
+    CreategameComponent,
+    MygamesComponent,
+    PlayerstatComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +101,7 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginService, ApplicationService, StatService, ApplicationRouteValidation],
+  providers: [LoginService, ApplicationService, StatService, UploadService, ApplicationRouteValidation, AdminRouteValidation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

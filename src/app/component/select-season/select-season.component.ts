@@ -12,7 +12,10 @@ declare var $:any;
 })
 export class SelectSeasonComponent implements OnInit {
   isCreateBtnShow  : boolean = true;
-  seasons       : any     = [];
+  seasons          : any     = [];
+  seasonId         : string  = '';
+  regionId         : string  = '';
+
   seasonName    : string  = '';
   regionName    : string  = '';
   selectOptions : any     = [];
@@ -42,7 +45,7 @@ export class SelectSeasonComponent implements OnInit {
 
   getRegions(){
     for (let i = 0; i < this.seasons.length; i++) {
-        if (this.seasons[i]._id === this.seasonName && this.seasons[i].regions) {
+        if (this.seasons[i]._id === this.seasonId && this.seasons[i].regions) {
             this.regions = this.seasons[i].regions
         };
     }
@@ -54,8 +57,18 @@ export class SelectSeasonComponent implements OnInit {
 
   Next(e){
     e.preventDefault();
-    localStorage.setItem('seasonId', this.seasonName);
-    localStorage.setItem('regionId', this.regionName);
+    localStorage.setItem('seasonId', this.seasonId);
+    localStorage.setItem('regionId', this.regionId);
+    for (let i = 0; i < this.seasons.length; i++) {
+        if (this.seasons[i]._id === this.seasonId) {
+            localStorage.setItem('seasonName', this.seasons[i].name);
+        };
+    }
+    for (let i = 0; i < this.regions.length; i++) {
+        if (this.regions[i]._id === this.regionId) {
+            localStorage.setItem('regionName', this.regions[i].name);
+        };
+    }
     this._router.navigateByUrl('/application');
 
   }

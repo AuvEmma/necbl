@@ -31,13 +31,10 @@ export class HeaderComponent implements OnInit {
 
   Logout(e){
     e.preventDefault();
-    localStorage.removeItem('schoolId');
-    localStorage.removeItem('token');
-    localStorage.removeItem('seasonId');
-    localStorage.removeItem('regionId');
+    localStorage.clear();
 
     this._loginService.setIsLoggedIn$(false);
     this._loginService.setIsAdmin$(false);
-    this._loginService.setuserInfo$({});
+    this._loginService.setuserInfo$(false);
   }
 }

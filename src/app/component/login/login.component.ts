@@ -22,6 +22,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    let userToken = localStorage.getItem('token');
+    let data      = {
+      token: userToken
+    };
+    this._loginService.checkLogin(data).subscribe(e=>{
+      if(e[0]){
+        this._router.navigateByUrl('/dashboard')
+      }
+    })
     this._loginService.getUsers()
       .subscribe(
         data  => {this.schools = data; console.log(this.schools)},
@@ -44,6 +53,8 @@ export class LoginComponent implements OnInit {
       data  => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('schoolId', data.id);
+        localStorage.setItem('schoolName', data.name);
+
         this._loginService.setIsLoggedIn$(true);
         this._loginService.setuserInfo$(data)
         if(data.name === "New York"){

@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+{ }
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Player } from '../../models/player';
@@ -16,9 +17,9 @@ var AddplayerComponent = (function () {
         this._applicationService = _applicationService;
         this._router = _router;
         this.schoolId = [];
-        this.school = [];
-        this.season = [];
-        this.region = [];
+        this.school = {};
+        this.season = {};
+        this.region = {};
         this.selectOptions = [];
     }
     AddplayerComponent.prototype.ngOnInit = function () {
@@ -27,6 +28,9 @@ var AddplayerComponent = (function () {
             this.seasonId = localStorage.getItem('seasonId');
             this.regionId = localStorage.getItem('regionId');
             this.schoolId = localStorage.getItem('schoolId');
+            this.seasonName = localStorage.getItem('seasonName');
+            this.regionName = localStorage.getItem('regionName');
+            this.schoolName = localStorage.getItem('schoolName');
         }
         else {
             this._router.navigate(['/dashboard']);
@@ -41,9 +45,12 @@ var AddplayerComponent = (function () {
     AddplayerComponent.prototype.onSubmit = function (e) {
         var _this = this;
         e.preventDefault();
-        this.season.push(this.seasonId);
-        this.region.push(this.regionId);
-        this.school.push(this.schoolId);
+        this.season['id'] = this.seasonId;
+        this.region['id'] = this.regionId;
+        this.school['id'] = this.schoolId;
+        this.season['name'] = this.seasonName;
+        this.region['name'] = this.regionName;
+        this.school['name'] = this.schoolName;
         var data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region);
         this._applicationService.createPlayer(data)
             .subscribe(function (data) {
@@ -55,9 +62,9 @@ var AddplayerComponent = (function () {
                 _this.number = undefined;
                 _this.email = '';
                 _this.height = '';
-                _this.school = [];
-                _this.season = [];
-                _this.region = [];
+                _this.school = {};
+                _this.season = {};
+                _this.region = {};
             }
             else {
                 alert('Server Error! Please Check Your Entries.');

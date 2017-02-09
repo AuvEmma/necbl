@@ -82,6 +82,16 @@ export class ApplicationService {
              .catch(this.handleError);
   }
 
+  allPlayers(): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players';
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
   deletePlayer(playerId):Observable<any>{
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

@@ -10,11 +10,11 @@ import { ApplicationService }       from '../../services';
 export class PlayersComponent implements OnInit {
   players     : any     = [];
   schoolId    : string  = '';
-  
+
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
   ngOnInit() {
-    if(localStorage.getItem('seasonId') && localStorage.getItem('regionId')){
+    if(localStorage.getItem('schoolId')){
       this.schoolId = localStorage.getItem('schoolId');
       this.getPlayers(this.schoolId);
     }else{

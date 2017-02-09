@@ -19,6 +19,8 @@ var SelectSeasonComponent = (function () {
         this._router = _router;
         this.isCreateBtnShow = true;
         this.seasons = [];
+        this.seasonId = '';
+        this.regionId = '';
         this.seasonName = '';
         this.regionName = '';
         this.selectOptions = [];
@@ -46,7 +48,7 @@ var SelectSeasonComponent = (function () {
     SelectSeasonComponent.prototype.getRegions = function () {
         var _this = this;
         for (var i = 0; i < this.seasons.length; i++) {
-            if (this.seasons[i]._id === this.seasonName && this.seasons[i].regions) {
+            if (this.seasons[i]._id === this.seasonId && this.seasons[i].regions) {
                 this.regions = this.seasons[i].regions;
             }
             ;
@@ -58,8 +60,20 @@ var SelectSeasonComponent = (function () {
     };
     SelectSeasonComponent.prototype.Next = function (e) {
         e.preventDefault();
-        localStorage.setItem('seasonId', this.seasonName);
-        localStorage.setItem('regionId', this.regionName);
+        localStorage.setItem('seasonId', this.seasonId);
+        localStorage.setItem('regionId', this.regionId);
+        for (var i = 0; i < this.seasons.length; i++) {
+            if (this.seasons[i]._id === this.seasonId) {
+                localStorage.setItem('seasonName', this.seasons[i].name);
+            }
+            ;
+        }
+        for (var i = 0; i < this.regions.length; i++) {
+            if (this.regions[i]._id === this.regionId) {
+                localStorage.setItem('regionName', this.regions[i].name);
+            }
+            ;
+        }
         this._router.navigateByUrl('/application');
     };
     return SelectSeasonComponent;

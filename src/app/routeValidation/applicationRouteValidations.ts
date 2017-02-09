@@ -10,9 +10,7 @@ export class ApplicationRouteValidation implements CanActivate {
   canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot):Observable<boolean> | boolean {
       var userToken = localStorage.getItem('token');
       if (!userToken) {
-        localStorage.removeItem('regionId');
-        localStorage.removeItem('schoolId');
-        localStorage.removeItem('seasonId');
+        localStorage.clear()
         this._router.navigate(['/']);
         return false;
       }
@@ -24,10 +22,7 @@ export class ApplicationRouteValidation implements CanActivate {
           if(e === "No_School_Found"){
             this._loginService.setIsLoggedIn$(false);
             this._router.navigate(['/']);
-            localStorage.removeItem('token');
-            localStorage.removeItem('regionId');
-            localStorage.removeItem('schoolId');
-            localStorage.removeItem('seasonId');
+            localStorage.clear()
             return false;
           }
           else{
