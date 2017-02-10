@@ -1,6 +1,22 @@
 :host {
 	color: black;
+	margin-top: -5%;
 }
+
+ul {
+	width: 100%;
+}
+
+.home-introduction span h4 {
+	margin-top: 5%;
+	font-size: 2em;
+}
+
+.home-introduction span p {
+	margin-top: 2%;
+	font-size: 1.2em;
+}
+
 
 .home-row {
 	margin-top: 50px;
@@ -8,18 +24,21 @@
 }
 
 .gallery {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+home-page-gallery {
+	text-align: center;
 	width: 100%;
 }
 
 .home-sub-title {
-	font-size: 2em;
     text-align: center;
 }
 
 .home-content {
 	font-size: 1.2em;
-	margin-left: 50px !important;
-	height: 200px;
 }
 
 .home-sub-module-right {
@@ -37,4 +56,6 @@
 .mission {
 	background-color: green;
 }
+
+
 

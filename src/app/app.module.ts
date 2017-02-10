@@ -16,6 +16,7 @@ import { ContactComponent }             from './component/contact/contact.compon
 import { LoginComponent }               from './component/login/login.component';
 import { ProgramComponent }             from './component/program/program.component';
 import { SignupComponent }              from './component/signup/signup.component';
+import { GalleryComponent }             from './component/home/gallery/gallery.component';
 
 import { LoginService }                 from './services';
 import { ApplicationService }           from './services';
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
     AllplayersComponent,
     CreategameComponent,
     MygamesComponent,
-    PlayerstatComponent
+    PlayerstatComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
