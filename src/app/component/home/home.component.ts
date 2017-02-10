@@ -1,29 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-// import { HomeImage } from './home-image.interface';
-
-declare var $:any;
+import { GalleryComponent } from './gallery/gallery.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  // public images = IMAGES;
+	public images;
 
-  constructor() { }
-
-  ngOnInit() {}
+	constructor() {
+		this.images = [
+			{
+				"url": "../../../assets/image/gallery_1.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_2.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_3.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_4.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_5.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_6.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_7.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_8.gif"
+			},
+			{
+				"url": "../../../assets/image/gallery_9.gif"
+			}
+		];
+	}	
 
 }
-
-// TODO
-// var IMAGES: HomeImage[] = [
-//   { "title": "We are covered", "url": "images/covered.jpg" },
-//   { "title": "Generation Gap", "url": "images/generation.jpg" },
-//   { "title": "Potter Me", "url": "images/potter.jpg" },
-//   { "title": "Pre-School Kids", "url": "images/preschool.jpg" },
-//   { "title": "Young Peter Cech", "url": "images/soccer.jpg" } 
-// ];
