@@ -102,7 +102,7 @@ const appRoutes: Routes = [
     MaterializeModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginService, ApplicationService, StatService, UploadService, ApplicationRouteValidation, AdminRouteValidation],
+  providers: [LoginService, ApplicationService, StatService, UploadService, GameService, ApplicationRouteValidation, AdminRouteValidation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

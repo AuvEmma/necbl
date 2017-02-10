@@ -9,7 +9,36 @@ export class GameService {
 
   constructor(private _http:Http) {}
 
-  
+  createGame(data):Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games';
+    return this._http.post(_path, data, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
+  getMyGames(schoolId): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games?schoolid=' + schoolId;
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
+  getAllGames(): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games';
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

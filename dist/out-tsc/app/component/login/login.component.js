@@ -38,7 +38,7 @@ var LoginComponent = (function () {
             }
         });
         this._loginService.getUsers()
-            .subscribe(function (data) { _this.schools = data; console.log(_this.schools); }, function (error) { return console.error('error', error); });
+            .subscribe(function (data) { return _this.schools = data; }, function (error) { return console.error('error', error); });
         window.setTimeout(function () {
             _this.selectOptions = [];
         }, 50);

@@ -8,12 +8,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../../environments';
 var GameService = (function () {
     function GameService(_http) {
         this._http = _http;
     }
+    GameService.prototype.createGame = function (data) {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games';
+        return this._http.post(_path, data, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    GameService.prototype.getMyGames = function (schoolId) {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games?schoolid=' + schoolId;
+        return this._http.get(_path, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    GameService.prototype.getAllGames = function () {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games';
+        return this._http.get(_path, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     GameService.prototype.extractData = function (res) {
         var body = res.json();
         return body || {};

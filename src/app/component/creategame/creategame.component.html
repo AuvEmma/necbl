@@ -1,3 +1,97 @@
-<p>
-  creategame works!
-</p>
+<div class="container app-wrapper">
+    <h4>Create Game</h4>
+    <form (submit)="onSubmit($event)">
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="homeName" required [(ngModel)]="home" name="home">
+            <option disabled selected>Select Home School</option>
+            <option *ngFor="let school of allSchools" [value]="school.name">{{school.name}}</option>
+          </select>
+          <label for="homeName">Home School</label>
+        </div>
+        <div class="input-field col s2">
+          <i class="material-icons prefix">perm_contact_calendar</i>
+          <input type="time" name="time" id="time" value="" required [(ngModel)]="time">
+          <!-- <label for="time">Time</label> -->
+        </div>
+        <div class="input-field col s2">
+          <input type="text" class="datepicker" id="date" name="date" value="" required [(ngModel)]="date">
+          <label for="date">Date</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="awayName" required [(ngModel)]="away" name="away">
+            <option disabled selected>Select Away School</option>
+            <option *ngFor="let school of allSchools" [value]="school.name">{{school.name}}</option>
+          </select>
+          <label for="awayName">Away School</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="season" required [(ngModel)]="season" name="season">
+            <option disabled selected>Select Season</option>
+            <option *ngFor="let season of seasons" [value]="season.name">{{season.name}}</option>
+          </select>
+          <label for="season">Season</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">account_circle</i>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="region" required [(ngModel)]="region" name="region">
+            <option disabled selected>Select Region</option>
+            <option *ngFor="let region of regions" [value]="region.name">{{region.name}}</option>
+          </select>
+          <label for="region">Region</label>
+        </div>
+        <div class="input-field col s4">
+          <i class="material-icons prefix">room</i>
+          <label for="location">Location</label>
+          <input type="text" class="form-control" id="location" required name="location" [(ngModel)]="location" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
+      <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/application">Back</button>
+      <!-- Modal Trigger -->
+      <a class="waves-effect waves-light btn" href="#modal1">Add Refs</a>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Ref Name</th>
+          <th>Ref Number</th>
+          <th>Ref Email</th>
+        </tr>
+        <tr *ngFor="let ref of refs">
+          <td>{{ref.name}}</td>
+          <td>{{ref.number}}</td>
+          <td>{{ref.email}}</td>
+        </tr>
+      </thead>
+    </table>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Add Refs</h4>
+        <form #regionForm="ngForm">
+          <div class="form-group input-field">
+            <label for="refName">Ref Name</label>
+            <input type="text" class="form-control" id="refName" [(ngModel)]="refName" name="name" #name="ngModel" required>
+          </div>
+          <div class="form-group input-field">
+            <label for="refNumber">Ref Number</label>
+            <input type="tel" class="form-control" id="refNumber" [(ngModel)]="refNumber" name="number" #name="ngModel" required>
+          </div>
+          <div class="form-group input-field">
+            <label for="refEmail">Ref Email</label>
+            <input type="tel" class="form-control" id="refEmail" [(ngModel)]="refEmail" name="email" #name="ngModel" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-brown btn-flat" (click)="addRef($event)">Add</a>
+      </div>
+    </div>
+</div>

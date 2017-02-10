@@ -1,3 +1,26 @@
-<p>
-  allgames works!
-</p>
+<div class="container app-wrapper">
+    <h4>All Games</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Home School</th>
+          <th>Away School</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Season</th>
+          <th>Region</th>
+
+        </tr>
+        <tr *ngFor="let game of games">
+          <td>{{game.home}}</td>
+          <td>{{game.away}}</td>
+          <td>{{game.location}}</td>
+          <td>{{game.date}}</td>
+          <td>{{game.time}}</td>
+          <td>{{game.season}}</td>
+          <td>{{game.region}}</td>
+        </tr>
+      </thead>
+    </table>
+</div>
