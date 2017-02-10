@@ -39,7 +39,6 @@ export class SelectSeasonComponent implements OnInit {
         },error => console.error('error',error)
       )
       window.setTimeout(()=>{
-        this.selectOptions = []
         $('select').material_select();
       },500);
   }
@@ -51,7 +50,6 @@ export class SelectSeasonComponent implements OnInit {
         };
     }
     window.setTimeout(()=>{
-      this.selectOptions = []
       $('select').material_select();
     },500);
   }
