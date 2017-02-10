@@ -40,7 +40,8 @@ export class SelectSeasonComponent implements OnInit {
       )
       window.setTimeout(()=>{
         this.selectOptions = []
-      },50);
+        $('select').material_select();
+      },500);
   }
 
   getRegions(){
@@ -52,7 +53,7 @@ export class SelectSeasonComponent implements OnInit {
     window.setTimeout(()=>{
       this.selectOptions = []
       $('select').material_select();
-    },100);
+    },500);
   }
 
   Next(e){
