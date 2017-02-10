@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
         data  => this.schools = data,
         error => console.error('error',error)
       )
-      window.setTimeout(()=>{
-        this.selectOptions = []
-      },50);
+    window.setTimeout(()=>{
+      this.selectOptions = []
+    },500);
   }
 
   onSubmit(e){

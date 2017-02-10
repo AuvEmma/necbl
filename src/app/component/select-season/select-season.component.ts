@@ -76,6 +76,7 @@ export class SelectSeasonComponent implements OnInit {
                   localStorage.setItem('regionName', this.regions[i].name);
               };
           }
+
           this._router.navigateByUrl('/application')
 
         }else{
