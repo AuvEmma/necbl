@@ -1,3 +1,23 @@
-<p>
-  playerstat works!
-</p>
+<div class="container app-wrapper" *ngIf="player">
+    <h3>{{player.name}}</h3>
+    <div class="row">
+      <div class="col m4 s12">
+        <h4>Attended Season</h4>
+        <ul>
+          <li *ngFor="let season of player.seasonshistory">{{season.name}}</li>
+        </ul>
+      </div>
+      <div class="col m4 s12">
+        <h4>Attended Region</h4>
+        <ul>
+          <li *ngFor="let region of player.regionshistory">{{region.name}}</li>
+        </ul>
+      </div>
+      <div class="col m4 s12">
+        <h4>Game History</h4>
+        <ul>
+          <li *ngFor="let game of player.gameshistory">{{game.name}}</li>
+        </ul>
+      </div>
+    </div>
+</div>

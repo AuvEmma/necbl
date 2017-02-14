@@ -23,6 +23,11 @@ export class AddplayerComponent implements OnInit {
   school    : any = {};
   season    : any = {};
   region    : any = {};
+  seasonshistory: any =[];
+  regionshistory: any =[];
+  gameshistory: any =[];
+  schoolshistory: any =[];
+
   photo?    : string;
   selectOptions : any = [];
   seasonName: string;
@@ -66,21 +71,25 @@ export class AddplayerComponent implements OnInit {
     this.region['name']=this.regionName;
     this.school['name']=this.schoolName;
 
-    let data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region)
+    this.seasonshistory.push(this.season);
+    this.regionshistory.push(this.region);
+    this.schoolshistory.push(this.school);
+
+    let data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region, this.seasonshistory, this.regionshistory, [], this.schoolshistory)
     this._applicationService.createPlayer(data)
       .subscribe(
         data  => {
           if (data.ok) {
-            alert('Successful!');
-            this.name      ='';
-            this.grade     ='';
-            this.position  ='';
-            this.number    = undefined;
-            this.email     ='';
-            this.height    ='';
-            this.school    ={};
-            this.season    ={};
-            this.region    ={};
+              this._router.navigateByUrl('/application')
+            // this.name      ='';
+            // this.grade     ='';
+            // this.position  ='';
+            // this.number    = undefined;
+            // this.email     ='';
+            // this.height    ='';
+            // this.school    ={};
+            // this.season    ={};
+            // this.region    ={};
           } else {
             this.errorMessage = 'Server Error! Please Check Your Entries.'
           }

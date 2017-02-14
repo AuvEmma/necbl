@@ -9,6 +9,10 @@ export class Player {
     public school: any ={},
     public season: any ={},
     public region: any ={},
+    public seasonshistory: any =[],
+    public regionshistory: any =[],
+    public gameshistory: any =[],
+    public schoolhistory: any=[],
     public photo?: string
   ) {  }
 }

@@ -69,7 +69,6 @@ export class ApplicationComponent implements OnInit {
       let isDuplicate = valueArr.some(function(item, idx){
           return valueArr.indexOf(item) != idx
       });
-      console.log(isDuplicate);
       if(isDuplicate){
         this.errorMessage = 'Duplicate Player numbers detected! 单次申请中球员号码不能重复！'
         return

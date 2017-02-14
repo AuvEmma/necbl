@@ -10,34 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StatService } from '../../services';
-var PlayerstatComponent = (function () {
-    function PlayerstatComponent(_route, _router, _statService) {
+var AddstatComponent = (function () {
+    function AddstatComponent(_route, _router, _statService) {
         this._route = _route;
         this._router = _router;
         this._statService = _statService;
         this.playerId = '';
         this.player = null;
     }
-    PlayerstatComponent.prototype.ngOnInit = function () {
+    AddstatComponent.prototype.ngOnInit = function () {
         var _this = this;
         var sub = this._route.params.subscribe(function (params) {
             _this.playerId = params['playerid'];
         });
         this.getPlayer(this.playerId);
     };
-    PlayerstatComponent.prototype.getPlayer = function (playerid) {
+    AddstatComponent.prototype.getPlayer = function (playerid) {
         var _this = this;
-        this._statService.getPlayer(playerid).subscribe(function (data) { _this.player = data[0]; console.log(data); }, function (error) { return console.error(error); });
+        this._statService.getPlayer(playerid).subscribe(function (data) { return _this.player = data[0]; }, function (error) { return console.error(error); });
     };
-    return PlayerstatComponent;
+    return AddstatComponent;
 }());
-PlayerstatComponent = __decorate([
+AddstatComponent = __decorate([
     Component({
-        selector: 'app-playerstat',
-        templateUrl: './playerstat.component.html',
-        styleUrls: ['./playerstat.component.css']
+        selector: 'app-addstat',
+        templateUrl: './addstat.component.html',
+        styleUrls: ['./addstat.component.css']
     }),
     __metadata("design:paramtypes", [ActivatedRoute, Router, StatService])
-], PlayerstatComponent);
-export { PlayerstatComponent };
-//# sourceMappingURL=../../../../../src/app/component/playerstat/playerstat.component.js.map
+], AddstatComponent);
+export { AddstatComponent };
+//# sourceMappingURL=../../../../../src/app/component/addstat/addstat.component.js.map

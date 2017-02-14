@@ -20,6 +20,10 @@ var AddplayerComponent = (function () {
         this.school = {};
         this.season = {};
         this.region = {};
+        this.seasonshistory = [];
+        this.regionshistory = [];
+        this.gameshistory = [];
+        this.schoolshistory = [];
         this.selectOptions = [];
     }
     AddplayerComponent.prototype.ngOnInit = function () {
@@ -51,20 +55,14 @@ var AddplayerComponent = (function () {
         this.season['name'] = this.seasonName;
         this.region['name'] = this.regionName;
         this.school['name'] = this.schoolName;
-        var data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region);
+        this.seasonshistory.push(this.season);
+        this.regionshistory.push(this.region);
+        this.schoolshistory.push(this.school);
+        var data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region, this.seasonshistory, this.regionshistory, [], this.schoolshistory);
         this._applicationService.createPlayer(data)
             .subscribe(function (data) {
             if (data.ok) {
-                alert('Successful!');
-                _this.name = '';
-                _this.grade = '';
-                _this.position = '';
-                _this.number = undefined;
-                _this.email = '';
-                _this.height = '';
-                _this.school = {};
-                _this.season = {};
-                _this.region = {};
+                _this._router.navigateByUrl('/application');
             }
             else {
                 _this.errorMessage = 'Server Error! Please Check Your Entries.';

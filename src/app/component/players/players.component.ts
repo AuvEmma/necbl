@@ -10,6 +10,7 @@ import { ApplicationService }       from '../../services';
 export class PlayersComponent implements OnInit {
   players     : any     = [];
   schoolId    : string  = '';
+  errorMessage:string='';
 
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
@@ -28,6 +29,7 @@ export class PlayersComponent implements OnInit {
         data  => {
           if(data === 'No_Player_Found'){
             this.players = [];
+            this.errorMessage = "No Players Avaliable";
           } else {
             this.players = data;
           }

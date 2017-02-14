@@ -3,14 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StatService }            from '../../services';
 
 @Component({
-  selector: 'app-playerstat',
-  templateUrl: './playerstat.component.html',
-  styleUrls: ['./playerstat.component.css']
+  selector: 'app-addstat',
+  templateUrl: './addstat.component.html',
+  styleUrls: ['./addstat.component.css']
 })
-export class PlayerstatComponent implements OnInit {
+export class AddstatComponent implements OnInit {
   playerId:string = '';
   player:any = null;
-
   constructor(protected _route: ActivatedRoute, private _router:Router, private _statService: StatService) { }
 
   ngOnInit() {
@@ -18,11 +17,12 @@ export class PlayerstatComponent implements OnInit {
       this.playerId = params['playerid'];
     });
     this.getPlayer(this.playerId);
+
   }
 
   getPlayer(playerid){
     this._statService.getPlayer(playerid).subscribe(
-      data => {this.player = data[0];console.log(data)},
+      data => this.player = data[0],
       error => console.error(error)
     )
   }

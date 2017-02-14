@@ -71,7 +71,6 @@ var ApplicationComponent = (function () {
             var isDuplicate = valueArr_1.some(function (item, idx) {
                 return valueArr_1.indexOf(item) != idx;
             });
-            console.log(isDuplicate);
             if (isDuplicate) {
                 this.errorMessage = 'Duplicate Player numbers detected! 单次申请中球员号码不能重复！';
                 return;

@@ -11,7 +11,7 @@ import { GameService }             from '../../services'
 })
 export class MygamesComponent implements OnInit {
   games:any = [];
-
+  errorMessage:string='';
   constructor(private _applicationService: ApplicationService, private _router:Router, private _loginService: LoginService, private _gameService: GameService) {
   }
   ngOnInit() {
@@ -22,7 +22,13 @@ export class MygamesComponent implements OnInit {
       this._router.navigateByUrl('/login');
     }
     this._gameService.getMyGames(schoolId).subscribe(
-      data => this.games = data,
+      data => {
+        if (data === 'No_Game_Found') {
+          this.errorMessage = "No Games Avaliable";
+        }else{
+          this.games = data
+        }
+      },
       error => console.error(error)
     )
   }

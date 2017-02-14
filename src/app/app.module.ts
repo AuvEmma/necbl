@@ -43,6 +43,7 @@ import { CreategameComponent }          from './component/creategame/creategame.
 import { MygamesComponent }             from './component/mygames/mygames.component';
 import { PlayerstatComponent }          from './component/playerstat/playerstat.component';
 import { ConfirmationComponent }        from './component/confirmation/confirmation.component';
+import { AddstatComponent }             from './component/addstat/addstat.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
   { path: 'creategame', component: CreategameComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'playerstat/:playerid', component: PlayerstatComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'studentservice', component: StudentServiceComponent },
+  { path: 'addstat/:playerid', component: AddstatComponent, canActivate: [AdminRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '*', component: HomeComponent }
 ];
@@ -97,7 +99,8 @@ const appRoutes: Routes = [
     MygamesComponent,
     PlayerstatComponent,
     GalleryComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    AddstatComponent
   ],
   imports: [
     BrowserModule,

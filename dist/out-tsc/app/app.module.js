@@ -43,6 +43,7 @@ import { CreategameComponent } from './component/creategame/creategame.component
 import { MygamesComponent } from './component/mygames/mygames.component';
 import { PlayerstatComponent } from './component/playerstat/playerstat.component';
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
+import { AddstatComponent } from './component/addstat/addstat.component';
 var appRoutes = [
     { path: 'home', component: HomeComponent },
     { path: 'aboutus', component: AboutusComponent },
@@ -64,6 +65,7 @@ var appRoutes = [
     { path: 'creategame', component: CreategameComponent, canActivate: [ApplicationRouteValidation] },
     { path: 'playerstat/:playerid', component: PlayerstatComponent, canActivate: [ApplicationRouteValidation] },
     { path: 'studentservice', component: StudentServiceComponent },
+    { path: 'addstat/:playerid', component: AddstatComponent, canActivate: [AdminRouteValidation] },
     { path: '', component: HomeComponent },
     { path: '*', component: HomeComponent }
 ];
@@ -101,7 +103,8 @@ AppModule = __decorate([
             MygamesComponent,
             PlayerstatComponent,
             GalleryComponent,
-            ConfirmationComponent
+            ConfirmationComponent,
+            AddstatComponent
         ],
         imports: [
             BrowserModule,
