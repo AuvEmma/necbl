@@ -12,4 +12,8 @@ export class PlayerstatComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPlayer(playerID){
+    
+  }
+
 }

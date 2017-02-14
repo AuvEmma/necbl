@@ -82,8 +82,7 @@ export class ApplicationComponent implements OnInit {
       .subscribe(
         data  => {
           if (data.ok) {
-              alert('Thank you for completing your application!')
-              this._router.navigateByUrl('/dashboard');
+              this._router.navigateByUrl('/thankyou');
           }else{
             this.errorMessage = 'Please double check you entries and try again!'
           }

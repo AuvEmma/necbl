@@ -42,6 +42,7 @@ import { AllplayersComponent }          from './component/allplayers/allplayers.
 import { CreategameComponent }          from './component/creategame/creategame.component';
 import { MygamesComponent }             from './component/mygames/mygames.component';
 import { PlayerstatComponent }          from './component/playerstat/playerstat.component';
+import { ConfirmationComponent }        from './component/confirmation/confirmation.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
   { path: 'createseason', component: CreateSeasonComponent, canActivate: [AdminRouteValidation] },
   { path: 'myplayers', component: PlayersComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'mygames', component: MygamesComponent, canActivate: [ApplicationRouteValidation] },
-
+  { path: 'thankyou', component: ConfirmationComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'players/all', component: AllplayersComponent, canActivate: [AdminRouteValidation] },
   { path: 'applications/all', component: AllapplicationsComponent, canActivate: [AdminRouteValidation] },
   { path: 'games/all', component: AllgamesComponent, canActivate: [AdminRouteValidation] },
@@ -95,7 +96,8 @@ const appRoutes: Routes = [
     CreategameComponent,
     MygamesComponent,
     PlayerstatComponent,
-    GalleryComponent
+    GalleryComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

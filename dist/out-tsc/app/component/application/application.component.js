@@ -84,8 +84,7 @@ var ApplicationComponent = (function () {
             this._applicationService.createApplication(data)
                 .subscribe(function (data) {
                 if (data.ok) {
-                    alert('Thank you for completing your application!');
-                    _this._router.navigateByUrl('/dashboard');
+                    _this._router.navigateByUrl('/thankyou');
                 }
                 else {
                     _this.errorMessage = 'Please double check you entries and try again!';
