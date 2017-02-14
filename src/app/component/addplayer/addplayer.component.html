@@ -1,5 +1,6 @@
 <div class="container app-wrapper">
     <h4>Add Player</h4>
+    <p class="red-text">{{errorMessage}}</p>
     <form (submit)="onSubmit($event)">
       <div class="row">
         <div class="input-field col s4">
@@ -22,8 +23,8 @@
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">email</i>
-          <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" required="" name="email" [(ngModel)]="email" required>
+          <label for="email" data-error="Wrong Email Format" data-success="">Email</label>
+          <input type="email" class="form-control validate" id="email" required="" name="email" [(ngModel)]="email" required>
         </div>
       </div>
 

@@ -41,3 +41,7 @@ textarea.materialize-textarea:focus {
 textarea.materialize-textarea:focus + label{
   color: #3e2723 !important;
 }
+
+.red-text{
+  color: red;
+}

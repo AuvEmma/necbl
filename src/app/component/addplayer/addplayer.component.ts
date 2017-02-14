@@ -28,6 +28,7 @@ export class AddplayerComponent implements OnInit {
   seasonName: string;
   regionName: string;
   schoolName: string;
+  errorMessage:string;
 
   constructor(private _applicationService: ApplicationService, private _router:Router) {}
 
@@ -81,7 +82,7 @@ export class AddplayerComponent implements OnInit {
             this.season    ={};
             this.region    ={};
           } else {
-            alert('Server Error! Please Check Your Entries.')
+            this.errorMessage = 'Server Error! Please Check Your Entries.'
           }
         },
         error => console.log('error',error)

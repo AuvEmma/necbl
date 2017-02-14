@@ -22,7 +22,7 @@ export class SelectSeasonComponent implements OnInit {
   isAdmin       : boolean = true;
   subs          : any     = [];
   regions       : any     = [];
-
+  errorMessage  : string  = '';
   constructor(private _loginService: LoginService, private _applicationService: ApplicationService, private _router:Router) {
     let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
     this.subs.push(sub);
@@ -79,15 +79,14 @@ export class SelectSeasonComponent implements OnInit {
 
         }else{
           console.log(data)
-
-          alert(`You have already applied for ${data[0].season.name}!`);
-          localStorage.removeItem('regionId');
-          localStorage.removeItem('regionName');
-          localStorage.removeItem('seasonName');
-          localStorage.removeItem('seasonId');
-
-
-          this._router.navigateByUrl('/dashboard')
+          this.errorMessage = `You have already applied for ${data[0].season.name}!`
+          // localStorage.removeItem('regionId');
+          // localStorage.removeItem('regionName');
+          // localStorage.removeItem('seasonName');
+          // localStorage.removeItem('seasonId');
+          //
+          //
+          // this._router.navigateByUrl('/dashboard')
         }
       },
       error => console.log('error',error)

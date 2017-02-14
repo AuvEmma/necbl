@@ -27,7 +27,7 @@ export class ApplicationComponent implements OnInit {
   season       : any     = {};
   region       : any     = {};
   school       : any     = {};
-
+  errorMessage : string  = '';
 
   constructor(private _applicationService: ApplicationService, private _router:Router) { }
 
@@ -63,8 +63,20 @@ export class ApplicationComponent implements OnInit {
   onSubmit(e){
     e.preventDefault();
     if(this.players.length < 5){
-      alert('Not enough players!')
+      this.errorMessage = 'Not enough players!'
     }else{
+      let valueArr = this.players.map(function(item){ return item.number });
+      let isDuplicate = valueArr.some(function(item, idx){
+          return valueArr.indexOf(item) != idx
+      });
+      console.log(isDuplicate);
+      if(isDuplicate){
+        this.errorMessage = 'Duplicate Player numbers detected! 单次申请中球员号码不能重复！'
+        return
+      }else if(this.description.length < 150){
+        this.errorMessage = 'Please enter at least 150 characters in description!'
+        return
+      }
       let data = new Application(this.schoolId,this.schoolName, this.managerName, this.captainName, this.teamName, this.managerPhone, this.captainPhone, this.description,this.season,this.region,this.players)
       this._applicationService.createApplication(data)
       .subscribe(
@@ -73,7 +85,7 @@ export class ApplicationComponent implements OnInit {
               alert('Thank you for completing your application!')
               this._router.navigateByUrl('/dashboard');
           }else{
-              alert('Please double check you entries and try again!')
+            this.errorMessage = 'Please double check you entries and try again!'
           }
         },
         error => console.log('error',error)
@@ -97,12 +109,20 @@ export class ApplicationComponent implements OnInit {
   }
 
   deletePlayer(e, playerId){
-    this._applicationService.deletePlayer(playerId)
-      .subscribe(
-        data  => {
-          this.getPlayers(this.schoolId);
-        },
-        error => console.log('error',error)
-      )
+    for (let i = 0; i < this.players.length; i++) {
+        if(this.players[i]._id === playerId){
+          this.players.splice(i,1);
+        }
+    }
   }
+
+//   deletePlayer(e, playerId){
+//     this._applicationService.deletePlayer(playerId)
+//       .subscribe(
+//         data  => {
+//           this.getPlayers(this.schoolId);
+//         },
+//         error => console.log('error',error)
+//       )
+//   }
 }

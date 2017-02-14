@@ -1,5 +1,6 @@
 <div class="container app-wrapper">
     <h4>Application Form <h6>温馨提示：表格一旦提交将无法修改</h6></h4>
+    <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
     <!-- <app-file-uploader></app-file-uploader> -->
     <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/addplayer">Add Player</button>
     <table>
@@ -24,7 +25,7 @@
         </tr>
       </thead>
     </table>
-    <form (submit)="onSubmit($event)">
+    <form (submit)="onSubmit($event)" id="formValidate">
       <div class="row">
         <div class="input-field col s4">
           <i class="material-icons prefix">stars</i>
@@ -52,25 +53,27 @@
         <div class="input-field col s4">
           <i class="material-icons prefix">phone</i>
           <label for="managerPhone">Manager Phone</label>
-          <input type="tel" class="form-control" [(ngModel)]="managerPhone" id="managerPhone" required name="managerPhone" required>
+          <input type="number" class="form-control validate" [(ngModel)]="managerPhone" id="managerPhone" required name="managerPhone" required>
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">phone</i>
           <label for="captainPhone">Captain Phone</label>
-          <input type="tel" class="form-control" [(ngModel)]="captainPhone" id="captainPhone" required name="captainPhone" required>
+          <input type="number" class="form-control validate" [(ngModel)]="captainPhone" id="captainPhone" required name="captainPhone" required>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">library_books</i>
-          <textarea [(ngModel)]="description" name="description" id="teamDesc" class="materialize-textarea" required></textarea>
-          <label for="teamDesc">Description</label>
+          <textarea [(ngModel)]="description" name="description" id="teamDesc" class="materialize-textarea validate" required></textarea>
+          <label for="teamDesc" data-error="Please enter at least 150 characters" data-success="">Description</label>
         </div>
       </div>
       <div class="row">
 
       </div>
+      <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
+
       <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
       <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/dashboard">Back</button>
     </form>

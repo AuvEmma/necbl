@@ -1,5 +1,6 @@
 <div class="container app-wrapper">
     <h4>Please Select Season to Apply</h4>
+    <p class="red-text">{{errorMessage}}</p>
     <form materialize (submit)="onSubmit($event)">
       <div class="form-group">
         <label for="season">Season Name</label>
