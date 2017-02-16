@@ -63,3 +63,9 @@ iframe{
 .sebm-google-map-container {
   height: 500px;
 }
+
+.top-background {
+    /*margin-top: -10%;*/
+    width: auto;
+    max-height: 700px;
+}

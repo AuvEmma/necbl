@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { GalleryComponent } from './gallery/gallery.component';
 
+declare var Materialize:any;
+declare var jQuery:any;
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -10,9 +11,6 @@ import { GalleryComponent } from './gallery/gallery.component';
 export class HomeComponent implements OnInit  {
 
 	public images;
-	title: string = 'My first angular2-google-maps project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
 	constructor() {
 		this.images = [
 			{
@@ -45,7 +43,13 @@ export class HomeComponent implements OnInit  {
 		];
 	}
 	ngOnInit() {
-
+		let options=[
+			{selector:'#map',callback: function(el) {
+        	Materialize.fadeInImage(jQuery(el))
+				}
+			}
+		]
+		Materialize.scrollFire(options);
 	}
 
 
