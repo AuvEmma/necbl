@@ -1,6 +1,7 @@
 import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StatService }            from '../../services';
+declare var $:any;
 
 @Component({
   selector: 'app-playerstat',
@@ -10,6 +11,7 @@ import { StatService }            from '../../services';
 export class PlayerstatComponent implements OnInit {
   playerId:string = '';
   player:any = null;
+  selectOptions : any     = [];
 
   constructor(protected _route: ActivatedRoute, private _router:Router, private _statService: StatService) { }
 
@@ -18,11 +20,14 @@ export class PlayerstatComponent implements OnInit {
       this.playerId = params['playerid'];
     });
     this.getPlayer(this.playerId);
+    window.setTimeout(()=>{
+      $('select').material_select();
+    },500);
   }
 
   getPlayer(playerid){
     this._statService.getPlayer(playerid).subscribe(
-      data => {this.player = data[0];console.log(data)},
+      data => this.player = data[0],
       error => console.error(error)
     )
   }

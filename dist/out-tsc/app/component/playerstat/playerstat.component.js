@@ -17,6 +17,7 @@ var PlayerstatComponent = (function () {
         this._statService = _statService;
         this.playerId = '';
         this.player = null;
+        this.selectOptions = [];
     }
     PlayerstatComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -24,10 +25,13 @@ var PlayerstatComponent = (function () {
             _this.playerId = params['playerid'];
         });
         this.getPlayer(this.playerId);
+        window.setTimeout(function () {
+            $('select').material_select();
+        }, 500);
     };
     PlayerstatComponent.prototype.getPlayer = function (playerid) {
         var _this = this;
-        this._statService.getPlayer(playerid).subscribe(function (data) { _this.player = data[0]; console.log(data); }, function (error) { return console.error(error); });
+        this._statService.getPlayer(playerid).subscribe(function (data) { return _this.player = data[0]; }, function (error) { return console.error(error); });
     };
     return PlayerstatComponent;
 }());

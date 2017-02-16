@@ -60,7 +60,12 @@ export class LoginComponent implements OnInit {
         if(data.name === "New York"){
           this._loginService.setIsAdmin$(true);
         }
-        this._router.navigateByUrl('/dashboard');
+        // TODO: implement change password function
+        // if(data.canChangePassword){
+        //   this._router.navigateByUrl('/signup');
+        // }else{
+          this._router.navigateByUrl('/dashboard');
+        // }
       },
       error => {
         console.error('error',error);
