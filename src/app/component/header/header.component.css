@@ -14,8 +14,9 @@ nav ul li {
 }
 
 .top-background {
-    margin-top: -10%;
-    width: 100%;
+    /*margin-top: -10%;*/
+    width: auto;
+    max-height: 700px;
 }
 
 /*.real-time-billboard img {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { GalleryComponent } from './gallery/gallery.component';
 
@@ -7,10 +7,12 @@ import { GalleryComponent } from './gallery/gallery.component';
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit  {
 
 	public images;
-
+	title: string = 'My first angular2-google-maps project';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
 	constructor() {
 		this.images = [
 			{
@@ -41,6 +43,10 @@ export class HomeComponent {
 				"url": "../../../assets/image/gallery_9.gif"
 			}
 		];
-	}	
+	}
+	ngOnInit() {
+
+	}
+
 
 }

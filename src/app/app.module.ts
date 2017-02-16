@@ -45,6 +45,9 @@ import { PlayerstatComponent }          from './component/playerstat/playerstat.
 import { ConfirmationComponent }        from './component/confirmation/confirmation.component';
 import { AddstatComponent }             from './component/addstat/addstat.component';
 
+// import { AgmCoreModule }                from 'angular2-google-maps/core';
+
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'aboutus', component: AboutusComponent },
@@ -108,6 +111,9 @@ const appRoutes: Routes = [
     HttpModule,
     MaterializeModule,
     RouterModule.forRoot(appRoutes)
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyCxxSvfy-1blN_DxcOHdlNtfvj6De1Z6h0'
+    // })
   ],
   providers: [LoginService, ApplicationService, StatService, UploadService, GameService, ApplicationRouteValidation, AdminRouteValidation],
   bootstrap: [AppComponent]

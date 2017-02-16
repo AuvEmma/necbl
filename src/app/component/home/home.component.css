@@ -46,16 +46,20 @@ home-page-gallery {
 }
 
 .home-sub-image {
-	width: 100%;
+	width: 65%;
 	border-top-right-radius: 2em;
     border-top-left-radius: 2em;
 	border-bottom-right-radius: 2em;
     border-bottom-left-radius: 2em;
 }
-
+iframe{
+	width: 100%;
+	height: 500px;
+}
 .mission {
 	background-color: green;
 }
 
-
-
+.sebm-google-map-container {
+  height: 500px;
+}
