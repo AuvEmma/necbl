@@ -1,6 +1,13 @@
 <div class="container app-wrapper">
     <h4>Add Player</h4>
     <p class="red-text">{{errorMessage}}</p>
+    <div class="row">
+      <div class="col s4 m4">
+        <img *ngIf="avatar" [src]="avatar" alt="avatar" class="avatar">
+        <img *ngIf="!avatar" src='../../assets/image/default_avatar.png' class="avatar" alt="avatar">
+      </div>
+    </div>
+    <app-file-uploader (avatar)='onAvatar($event)'></app-file-uploader>
     <form (submit)="onSubmit($event)">
       <div class="row">
         <div class="input-field col s4">

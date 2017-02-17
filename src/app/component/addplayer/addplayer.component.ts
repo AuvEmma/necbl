@@ -34,7 +34,7 @@ export class AddplayerComponent implements OnInit {
   regionName: string;
   schoolName: string;
   errorMessage:string;
-
+  avatar:string;
   constructor(private _applicationService: ApplicationService, private _router:Router) {}
 
   ngOnInit() {
@@ -75,7 +75,7 @@ export class AddplayerComponent implements OnInit {
     this.regionshistory.push(this.region);
     this.schoolshistory.push(this.school);
 
-    let data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region, this.seasonshistory, this.regionshistory, [], this.schoolshistory)
+    let data = new Player(this.name, this.grade, this.position, this.number, this.email, this.height, this.school, this.season, this.region, this.seasonshistory, this.regionshistory, [], this.schoolshistory, this.avatar)
     this._applicationService.createPlayer(data)
       .subscribe(
         data  => {
@@ -96,6 +96,10 @@ export class AddplayerComponent implements OnInit {
         },
         error => console.log('error',error)
       )
+  }
+
+  onAvatar(e){
+    this.avatar = e;
   }
 
 }

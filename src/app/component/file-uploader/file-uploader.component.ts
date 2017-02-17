@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FileUploader }      from 'ng2-file-upload';
 import { environment }       from '../../../environments';
 
@@ -12,7 +12,9 @@ export class FileUploaderComponent implements OnInit {
   public uploader:FileUploader = new FileUploader({url: URL});
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
-
+  sizeLimit:number= 300000;
+  errorMessage:string='';
+  @Output()avatar: EventEmitter<string> = new EventEmitter<string>();
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
@@ -20,14 +22,18 @@ export class FileUploaderComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
-  constructor() { }
+  constructor() {
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      var responsePath = JSON.parse(response);
+      this.avatar.emit(environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/images/' + responsePath.name)
+    };
+  }
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
   }
 
-  upload(){
+  onChange(e){
     
   }
-
 }

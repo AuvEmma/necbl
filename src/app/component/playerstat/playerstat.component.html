@@ -1,7 +1,8 @@
 <div class="container app-wrapper" *ngIf="player">
   <div class="row">
     <div class="col m3">
-      <img class="responsive-img circle" src="../../assets/image/default_avatar.png" alt="">
+      <img *ngIf="!player.photo" class="responsive-img circle" src="../../assets/image/default_avatar.png" alt="">
+      <img *ngIf="player.photo" class="responsive-img circle" [src]="player.photo" alt="">
     </div>
     <div class="col m9">
       <h1>{{player.name}}</h1>
