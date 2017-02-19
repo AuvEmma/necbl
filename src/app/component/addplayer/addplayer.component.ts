@@ -64,6 +64,9 @@ export class AddplayerComponent implements OnInit {
 
   onSubmit(e){
     e.preventDefault();
+    if (!this.avatar) {
+        this.avatar = '../../assets/image/default_avatar.png';
+    }
     this.season['id']= this.seasonId;
     this.region['id']=this.regionId;
     this.school['id']=this.schoolId;
@@ -81,15 +84,6 @@ export class AddplayerComponent implements OnInit {
         data  => {
           if (data.ok) {
               this._router.navigateByUrl('/application')
-            // this.name      ='';
-            // this.grade     ='';
-            // this.position  ='';
-            // this.number    = undefined;
-            // this.email     ='';
-            // this.height    ='';
-            // this.school    ={};
-            // this.season    ={};
-            // this.region    ={};
           } else {
             this.errorMessage = 'Server Error! Please Check Your Entries.'
           }

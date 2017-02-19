@@ -35,7 +35,7 @@ export class SelectSeasonComponent implements OnInit {
     this._applicationService.getSeasons()
       .subscribe(
         data  => {
-          if (Array.isArray(data)) this.seasons = data; this.regions = data.regions;console.log(data)
+          if (Array.isArray(data)) this.seasons = data; this.regions = data.regions;
         },error => console.error('error',error)
       )
       window.setTimeout(()=>{
