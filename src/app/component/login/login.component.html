@@ -1,5 +1,6 @@
 <div class="container app-wrapper">
     <h4>Please Select your school and login</h4>
+    <p class="red-text">{{errorMessage}}</p>
     <form materialize (submit)="onSubmit($event)">
       <div class="form-group">
         <label for="school">School Name</label>
@@ -13,7 +14,7 @@
         <input type="password" class="form-control" id="passcode" required="" [(ngModel)]="passcode" name="passcode">
       </div>
       <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
-      <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/signup" *ngIf="isSignupShow">Signup</button>
+      <!-- <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/signup" *ngIf="isSignupShow">Signup</button> -->
     </form>
     <div class="row">
       <p>*2017年美东杯已经截止报名，目前只接受受邀学校的申请表格，如果有意向参加下一届美东杯，请发邮件至 <a href="mailto:necbl.info@gmail.com">necbl.info@gmail.com</a>, 或者添加微信号NECBLinfo</p>

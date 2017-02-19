@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   selectOptions : any     = [];
   isAdmin       : boolean = false;
   subs          : any     = [];
+  errorMessage  : string  = '';
   constructor(private _loginService: LoginService, private _router:Router) {
     let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
     this.subs.push(sub);
@@ -33,7 +34,14 @@ export class LoginComponent implements OnInit {
     })
     this._loginService.getUsers()
       .subscribe(
-        data  => this.schools = data,
+        data  => {
+          if (data != 'No_School_Found') {
+            this.schools = data;
+          }else{
+            this.errorMessage = 'No School Found!'
+          }
+
+        },
         error => console.error('error',error)
       )
     window.setTimeout(()=>{
