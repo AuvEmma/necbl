@@ -53,7 +53,7 @@ const appRoutes: Routes = [
   { path: 'aboutus', component: AboutusComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent, canActivate: [AdminRouteValidation]},
+  // { path: 'signup', component: SignupComponent, canActivate: [AdminRouteValidation]},
   { path: 'program', component: ProgramComponent },
   { path: 'application', component: ApplicationComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [ApplicationRouteValidation] },
@@ -71,7 +71,7 @@ const appRoutes: Routes = [
   { path: 'studentservice', component: StudentServiceComponent },
   { path: 'addstat/:playerid', component: AddstatComponent, canActivate: [AdminRouteValidation] },
   { path: '', component: HomeComponent },
-  { path: '*', component: HomeComponent }
+  { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
