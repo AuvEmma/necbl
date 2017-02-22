@@ -1,6 +1,7 @@
 :host {
 	color: black;
 	margin-top: -5%;
+	background-image: url('../../assets/image/web.png');
 }
 
 ul {
@@ -52,10 +53,24 @@ home-page-gallery {
 	border-bottom-right-radius: 2em;
     border-bottom-left-radius: 2em;
 }
-iframe{
+.map-wrapper{
 	width: 100%;
+	overflow: hidden;
 	height: 500px;
+	border-top-right-radius: 2em;
+	border-top-left-radius: 2em;
+	border-bottom-right-radius: 2em;
+	border-bottom-left-radius: 2em;
 }
+
+#map{
+	border: none;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	top: -48px;
+}
+
 .mission {
 	background-color: green;
 }
@@ -68,4 +83,21 @@ iframe{
     /*margin-top: -10%;*/
     width: auto;
     max-height: 700px;
+}
+a{
+	color: #3e2723;
+}
+
+.necbl{
+	max-height: 200px;
+}
+.header-title{
+	height: 100vh;
+	padding-top: 250px;
+}
+.team{
+	max-height: 100px;
+}
+.goal{
+	max-height: 100px;
 }

@@ -1,8 +1,11 @@
 <div>
+	<div class="row center-align header-title">
+		<img class="responsive-img necbl" src="../../../assets/image/web_NECBL.png" alt="home_page_sample">
+		<br>
+		<img class="responsive-img team" src="../../../assets/image/web_team.png" alt="home_page_sample">
+		<img class="responsive-img goal" src="../../../assets/image/web_goal.png" alt="home_page_sample">
+	</div>
 	<div class="container app-wrapper">
-		<div class="row center-align">
-			<img class="top-background responsive-img" src="../../../assets/image/cupLogo.png" alt="home_page_sample">
-		</div>
 		<ul>
 			<!-- <li class="gallery row">
 				<home-page-gallery [datasource] = images></home-page-gallery>
@@ -10,21 +13,22 @@
 
 			<li  class="home-introduction row home-row">
 				<div class="row">
-					<span class="col s12 center-align home-sub-module-right">
-						<h4 class="home-sub-title">Regional Tournament</h4>
+					<span class="col m6 s12 center-align">
+						<h4 class="home-sub-title"><a class="white-text hoverable" href="JavaScript:void(0);" routerLink="/program">NECBL Cup</a></h4>
+						<img class="home-sub-image" src="../../assets/image/cupLogo.png" alt="#">
+						<p class="white-text">每届美东杯都举办于春暖花开的春季，参赛球队从分区赛中脱颖而出，争夺北美最强之巅</p>
+					</span>
+
+					<span class="col m6 s12 center-align home-sub-module-right">
+						<h4 class="home-sub-title"><a class="white-text hoverable" href="JavaScript:void(0);" routerLink="/program">Regional Tournament</a></h4>
 						<!-- <sebm-google-map [latitude]="lat" [longitude]="lng">
 							<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
 						</sebm-google-map> -->
-						<iframe id="map" src="https://www.google.com/maps/d/embed?mid=1J_a9o2Z0GWhcC8CT3uj-Xtl81CU"></iframe>
+						<div class="map-wrapper">
+							<iframe id="map" src="https://www.google.com/maps/d/embed?mid=1J_a9o2Z0GWhcC8CT3uj-Xtl81CU"></iframe>
+						</div>
 						<!-- <img class="home-sub-image" src="../../assets/image/regional2.jpg" alt="#"> -->
-						<p>六大分区，覆盖全美22州，各路豪强，争夺美东杯晋级名额</p>
-					</span>
-				</div>
-				<div class="row">
-					<span class="col s12 center-align">
-						<h4 class="home-sub-title">NECBL Cup</h4>
-						<img class="home-sub-image" src="../../assets/image/necbl2.jpg" alt="#">
-						<p>每届美东杯都举办于春暖花开的春季，参赛球队从分区赛中脱颖而出，争夺北美最强之巅</p>
+						<p class="white-text">六大分区，覆盖全美22州，各路豪强，争夺美东杯晋级名额</p>
 					</span>
 				</div>
 			</li>
