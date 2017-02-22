@@ -34,17 +34,30 @@
     margin-top: 5%;
 }
 
-.region-info li img{
-    width: 100%;
+.region-info {
+    margin-top: 5%;
+}
+
+.region-info img{
+    width: 15%;
+    vertical-align: middle;
+}
+
+.region-info span {
+    font-size: 3em;
+    margin-left: 30%;
 }
 
 .region-info ul li ul{
-    margin-top: 10%;
     text-align: center;
 }
 
 .region-info ul li ul li h5{
-    margin-top: 4%;
+    margin-top: 3%;
+}
+
+#jinji {
+    margin-top: 5%;
 }
 
 #jinji p {
