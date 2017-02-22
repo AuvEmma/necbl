@@ -91,15 +91,15 @@ a{
 }
 
 .necbl{
-	max-height: 200px;
+	max-height: 20vh;
 }
 .header-title{
 	height: 100vh;
-	padding-top: 250px;
+	padding-top: 20%;
 }
 .team{
-	max-height: 100px;
+	max-height: 10vh;
 }
 .goal{
-	max-height: 100px;
+	max-height: 10vh;
 }
