@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./app/shared/global-variables.css");
 
 html {
-  font-family: 'Quattrocento Sans', sans-serif !important;
+  font-family: 'quattro', 'yahei', 'yahei-bold', sans-serif !important;
   background-image: url("assets/image/bg-body.jpg");
 }
 
