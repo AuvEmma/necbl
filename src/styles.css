@@ -45,3 +45,11 @@ textarea.materialize-textarea:focus + label{
 .red-text{
   color: red;
 }
+
+.white-text{
+  color:white;
+}
+
+.brown-text{
+  color: #3e2723;
+}

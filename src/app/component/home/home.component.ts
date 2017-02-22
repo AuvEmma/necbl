@@ -43,13 +43,16 @@ export class HomeComponent implements OnInit  {
 		];
 	}
 	ngOnInit() {
-		let options=[
-			{selector:'#map',callback: function(el) {
-        	Materialize.fadeInImage(jQuery(el))
-				}
-			}
-		]
-		Materialize.scrollFire(options);
+		// let options=[
+		// 	{selector:'#map',callback: function(el) {
+    //     	Materialize.fadeInImage(jQuery(el))
+		// 		}
+		// 	}
+		// ]
+		// Materialize.scrollFire(options);
+		jQuery(".necbl, .team, .goal").hide().each(function(i){
+			jQuery(this).delay(i*1000).fadeIn(1000)
+		})
 	}
 
 
