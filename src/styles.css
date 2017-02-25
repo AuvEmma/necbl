@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./app/shared/global-variables.css");
 
 html {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'quattro', 'yahei', 'yahei-bold', sans-serif !important;
   background-image: url("assets/image/bg-body.jpg");
 }
 
@@ -26,4 +27,38 @@ nav {
 
 .dropdown-content li > a, .dropdown-content li > span {
   color: #3e2723 !important;
+}
+
+.input-field .prefix.active{
+  color: #3e2723 !important;
+}
+
+textarea.materialize-textarea:focus {
+  border-bottom: 1px solid #3e2723 !important;
+  box-shadow:0 1px 00 #3e2723 !important;
+}
+
+
+textarea.materialize-textarea:focus + label{
+  color: #3e2723 !important;
+}
+
+.red-text{
+  color: red;
+}
+
+.white-text{
+  color:white;
+}
+
+.brown-text{
+  color: #3e2723;
+}
+
+.loader{
+  width: 1231px;
+  height: 320px;
+  background-image: url('./assets/image/web_NECBL.png');
+  background-repeat: no-repeat;
+  margin: auto;
 }

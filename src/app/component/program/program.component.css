@@ -1,0 +1,65 @@
+:host {
+    margin: 5% 10%;
+}
+
+#top-bar {
+    width: 100%;
+}
+
+#necbl img {
+    width: 100%;
+}
+
+#linan {
+    margin-top: 5%;
+    margin-left: 15%;
+}
+
+#linan img {
+    width: 100%
+}
+
+#region-introduction h4{
+    margin-bottom: 3%;
+}
+
+#region-introduction img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+#region-introduction p {
+    font-size: 1.2em;
+    margin-top: 5%;
+}
+
+.region-info {
+    margin-top: 5%;
+}
+
+.region-info img{
+    width: 15%;
+    vertical-align: middle;
+}
+
+.region-info span {
+    font-size: 3em;
+    margin-left: 30%;
+}
+
+.region-info ul li ul{
+    text-align: center;
+}
+
+.region-info ul li ul li h5{
+    margin-top: 3%;
+}
+
+#jinji {
+    margin-top: 5%;
+}
+
+#jinji p {
+    font-size: 1.5em;
+}

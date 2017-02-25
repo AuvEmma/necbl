@@ -14,6 +14,7 @@ export class LoginService {
   subs:any = [];
   _isLoggedIn$: Subject<any>;
   _isAdmin$   : Subject<any>;
+  _userInfo$  : Subject<any>;
 
   constructor(private _http:Http){
     let userToken = localStorage.getItem('token');
@@ -22,9 +23,14 @@ export class LoginService {
     };
     this._isLoggedIn$ = <Subject<boolean>>new Subject();
     this._isAdmin$    = <Subject<boolean>>new Subject();
+    this._userInfo$   = <Subject<any>>new Subject();
 
     this.checkLogin(data).subscribe(e=>{
+      this._userInfo$.next(e[0]);
       this._isLoggedIn$.next(true);
+      if(e[0].name == 'New York'){
+        this._isAdmin$.next(true);
+      }
     })
   }
 
@@ -61,7 +67,7 @@ export class LoginService {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.clear();
   }
 
   checkLogin(data){
@@ -73,6 +79,15 @@ export class LoginService {
             .map(this.extractData)
             .catch(this.handleError);
   }
+
+  get userInfo$(){
+    return this._userInfo$.asObservable();
+  }
+
+  setuserInfo$(userInfo: boolean) {
+    this._userInfo$.next(userInfo);
+  }
+
 
   get isLoggedIn$(){
     return this._isLoggedIn$.asObservable();
@@ -92,9 +107,6 @@ export class LoginService {
 
   private extractData(res: Response) {
     let body = res.json();
-    if(body.name === 'New York'){
-      this.setIsAdmin$(true);
-    }
     return body || { };
   }
 

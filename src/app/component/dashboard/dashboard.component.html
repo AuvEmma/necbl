@@ -1,34 +1,136 @@
 <div class="container app-wrapper">
   <div class="row">
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/selectseason">Application</button>
+          <button *ngIf="!isAppComplete" type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/selectseason">Application</button>
+          <button *ngIf="isAppComplete" type="button" name="button" class="btn btn-primary orange waves-effect" diabled>Application Completed</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect"(click)="scrollToAnchor('instruction')">填写指南</button>
         </div>
       </div>
     </div>
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/home">Waiver</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect"><a href="../../assets/NECBL_Waiver_Template.pdf" download>Waiver</a></button>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/home">Players</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/myplayers">My Players</button>
         </div>
       </div>
     </div>
-    <div class="col s6">
+    <div class="col s12 m6">
       <div class="card-panel brown darken-4">
         <div class="center-align">
-          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/home">Stats</button>
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/mygames">My Games</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="isAdmin">
+    <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/createseason">Create Season</button>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/creategame">Create Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="isAdmin">
+    <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/applications/all">All Applications</button>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/games/all">All Games</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="isAdmin">
+    <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/players/all">All Players</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col s12 m6">
+      <div class="card-panel brown darken-4">
+        <div class="center-align">
+          <button type="button" name="button" class="btn btn-primary orange waves-effect" routerLink="/games/all">All Games</button>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <blockquote>
+        <h5>球队合照和球员免责协议Waiver：</h5><br />
+        球队都需要递交一张最新的团队合照， 每一位参赛的球员都必须签署免责协议(点击右上方Waiver下载表格)，再将合照，免责协议一同Email至necbl.info@gmail.com。注：Email标题请使用 “NECBL（赛区) - (球队名称)”， 如： NECBLLake12 - University of Rochester。 如不使用规范格式，邮件可能会被系统忽略，耽误球队报名时间。
+        <h5>Checklist</h5>
+        <ul>
+          <li><i class="material-icons">trending_flat</i>Waiver</li>
+          <li><i class="material-icons">trending_flat</i>团队合照</li>
+          <li><i class="material-icons">trending_flat</i>定金</li>
+        </ul>
+      </blockquote>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <blockquote>
+        <h5>定金（$500) 可以通过以下方式递交：</h5><br/>
+        <table class="bordered">
+          <tr>
+            <th>Chase QuickPay: necbl.info@gmail.com</th>
+            <th>Venmo: @miao-huang</th>
+          </tr>
+          <tr>
+            <th>Bank of America transfer: garyran88@hotmail.com</th>
+            <th>Paypal: 3154809161</th>
+          </tr>
+        </table>
+        付款时请注明 “2017 NECBL” + "赛区名称" + "学校名称" <br/>
+        注：率先完成申请，将团队合照，每位球员的免责协议，定金交齐的球队将优先获得参赛资格 <br/>
+        更改花名册：报名截止后修改花名册每次费用为$50美金
+      </blockquote>
+    </div>
+  </div>
+  <div class="row" id="instruction">
+    <div class="col s12">
+      <blockquote>
+        <h5>申请表填写指南</h5>
+        <p>请点击左上方<button type="button" name="button" class="btn orange btn-primary waves-effect">APPLICATION</button>并选择赛季/地区进入申请表页面, 2017春季美东杯请选择New York作为赛区</p>
+        <p>进入申请页面后，请点击 <button type="button" name="button" class="btn btn-primary waves-effect">ADD PLAYER</button>添加参赛队员， 填写表格过程中请遵守以下规则</p>
+        <ul>
+          <li><i class="material-icons">trending_flat</i>参赛人数不得少于五人</li>
+          <li><i class="material-icons">trending_flat</i>秋衣号码不得重复</li>
+          <li><i class="material-icons">trending_flat</i>请使用真实姓名及邮箱</li>
+          <li><i class="material-icons">trending_flat</i>球队介绍不能少于150字符</li>
+        </ul>
+        <p>填写完毕并提交申请后请尽快提交团队照片，waiver免责声明和定金</p>
+        <p>在所有队伍填写完申请表格后，我们会公布赛程，届时请登录necbl账号并在<button type="button" name="button" class="btn orange btn-primary waves-effect">MY GAMES</button>中查询</p>
+      </blockquote>
     </div>
   </div>
 </div>

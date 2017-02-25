@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'quattro';
+	src: url('../../assets/fonts/quattrocentosans-regular-webfont.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'yahei';
+	src: url('../../assets/fonts/msyh.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'yahei-bold';
+	src: url('../../assets/fonts/msyh-bold.ttf') format('truetype');
+}

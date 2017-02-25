@@ -1,0 +1,25 @@
+<div class="container app-wrapper">
+    <h4>All Players</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>School（学校）</th>
+          <th>Legal Name（姓名）</th>
+          <th>Grade（年级）</th>
+          <th>Position （位置）</th>
+          <th>Height （身高cm）</th>
+          <th>No.（球衣号码）</th>
+          <th>Email</th>
+        </tr>
+        <tr *ngFor="let player of players">
+          <td>{{player.school.name}}</td>
+          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a>  <button type="button" class="btn btn-floating waves-effect waves-light small flat" routerLink="/addstat/{{player._id}}">Stat</button></td>
+          <td>{{player.grade}}</td>
+          <td>{{player.position}}</td>
+          <td>{{player.height}}</td>
+          <td>{{player.number}}</td>
+          <td>{{player.email}}</td>
+        </tr>
+      </thead>
+    </table>
+</div>

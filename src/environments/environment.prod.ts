@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  serverProtocol: 'https://',
+  serverProtocol: 'http://',
   serverUrl:'54.237.242.64',
   serverPort: '3001'
 };

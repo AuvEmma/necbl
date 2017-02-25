@@ -1,0 +1,28 @@
+<div class="container app-wrapper">
+    <h4>All Applications</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Season</th>
+          <th>Region</th>
+          <th>Team Name </th>
+          <th>School </th>
+          <th>Manager Name</th>
+          <th>Manager Phone</th>
+          <th>Captain Name</th>
+          <th>Captain Phone</th>
+        </tr>
+        <tr *ngFor="let application of applications">
+          <td>{{application.season.name}}</td>
+          <td>{{application.region.name}}</td>
+          <td>{{application.teamname}}</td>
+          <td>{{application.schoolname}}</td>
+          <td>{{application.managername}}</td>
+          <td>{{application.managerphone}}</td>
+          <td>{{application.captainname}}</td>
+          <td>{{application.captainphone}}</td>
+
+        </tr>
+      </thead>
+    </table>
+</div>
