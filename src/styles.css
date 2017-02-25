@@ -54,3 +54,11 @@ textarea.materialize-textarea:focus + label{
 .brown-text{
   color: #3e2723;
 }
+
+.loader{
+  width: 1231px;
+  height: 320px;
+  background-image: url('./assets/image/web_NECBL.png');
+  background-repeat: no-repeat;
+  margin: auto;
+}
