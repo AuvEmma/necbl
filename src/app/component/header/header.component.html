@@ -11,7 +11,7 @@
     </ul>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="#!" routerLink="/contact">Contact Us</a></li>
-      <li *ngIf="!isLoggedIn"><a href="#!" routerLink="/login">Login</a></li>
+      <li *ngIf="!isLoggedIn"><a href="#!" routerLink="/login">Login (提交申请表)</a></li>
       <li *ngIf="isLoggedIn&&userInfo"><a href="#!" routerLink="/dashboard">{{userInfo.name}} Dashboard</a></li>
       <li *ngIf="isLoggedIn&&!userInfo"><a href="#!" routerLink="/dashboard">My Page</a></li>
       <li *ngIf="isLoggedIn&&isAdmin"><a href="JavaScript:void(0);">Admin</a></li>
@@ -22,7 +22,7 @@
       <li><a href="#!" routerLink="/aboutus">About Us</a></li>
       <li><a href="#!" routerLink="/program">Our Program</a></li>
       <li><a href="#!" routerLink="/contact">Contact Us</a></li>
-      <li *ngIf="!isLoggedIn"><a href="#!" routerLink="/login">Login</a></li>
+      <li *ngIf="!isLoggedIn"><a href="#!" routerLink="/login">Login (提交申请表)</a></li>
       <li *ngIf="isLoggedIn"><a href="#!" routerLink="/dashboard">My Page</a></li>
       <li *ngIf="isLoggedIn"><a href="#!" (click)="Logout($event)" routerLink="/">Logout</a></li>
     </ul>

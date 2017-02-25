@@ -2,6 +2,8 @@ import { Component, OnInit }  from '@angular/core';
 import { LoginService }       from '../../services'
 import { ApplicationService } from '../../services'
 
+declare var jQuery:any;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -36,4 +38,10 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  scrollToAnchor(aid: any) {
+    setTimeout(() => {
+      let aTag: any = jQuery("#" + aid);
+      jQuery('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');
+    }, 100);
+  }
 }
