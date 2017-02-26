@@ -1,6 +1,6 @@
 :host {
 	color: black;
-	margin-top: -5%;
+	margin-top: -64px;
 	background-image: url('../../assets/image/web.png');
 	background-size: 100% auto;
 	background-repeat: no-repeat;
@@ -96,6 +96,11 @@ a{
 .header-title{
 	height: 100vh;
 	padding-top: 20%;
+}
+@media(max-width: 1024px){
+	.header-title{
+		padding-top: 58%;
+	}
 }
 .team{
 	max-height: 10vh;
