@@ -29,8 +29,12 @@ export class HeaderComponent implements OnInit {
     $(".button-collapse").sideNav();
   }
 
+  closeSideNav(){
+    $('#mobile-demo').sideNav('hide')
+  }
   Logout(e){
     e.preventDefault();
+    $('#mobile-demo').sideNav('hide')
     localStorage.clear();
 
     this._loginService.setIsLoggedIn$(false);

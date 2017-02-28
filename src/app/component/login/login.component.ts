@@ -1,6 +1,8 @@
 import { Component, OnInit }  from '@angular/core';
 import { Router }             from '@angular/router';
-import { LoginService }       from '../../services'
+import { LoginService }       from '../../services';
+
+declare var $:any;
 
 @Component({
   selector: 'app-login',
@@ -45,8 +47,19 @@ export class LoginComponent implements OnInit {
         error => console.error('error',error)
       )
     window.setTimeout(()=>{
+      $('select').material_select();
       this.selectOptions = []
-    },500);
+      $('input.select-dropdown').trigger('close');
+       var onMouseDown = function(e) {
+         // preventing the default still allows the scroll, but blocks the blur.
+         // We're inside the scrollbar if the clientX is >= the clientWidth.
+         if (e.clientX >= e.target.clientWidth || e.clientY >= e.target.clientHeight) {
+           e.preventDefault();
+         }
+       };
+       $('select').siblings('input.select-dropdown').on('mousedown', onMouseDown);
+
+      },500);
   }
 
   onSubmit(e){
