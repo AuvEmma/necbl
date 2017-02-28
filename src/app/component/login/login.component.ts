@@ -38,9 +38,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data  => {
           if (data != 'No_School_Found') {
-            window.setTimeout(()=>{
-              this.schools = data;
-            },500);
+            this.schools = data;
           }else{
             this.errorMessage = 'No School Found!'
           }
@@ -48,10 +46,10 @@ export class LoginComponent implements OnInit {
         },
         error => console.error('error',error)
       )
-    // window.setTimeout(()=>{
-    //   $('select').material_select();
-    //   this.selectOptions = []
-    // },500);
+    window.setTimeout(()=>{
+      $('select').material_select();
+      this.selectOptions = []
+    },500);
   }
 
   onSubmit(e){
