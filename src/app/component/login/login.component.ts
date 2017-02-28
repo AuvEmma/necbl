@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data  => {
           if (data != 'No_School_Found') {
-            this.schools = data;
+            window.setTimeout(()=>{
+              this.schools = data;
+            },500);
           }else{
             this.errorMessage = 'No School Found!'
           }
