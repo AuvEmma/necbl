@@ -56,6 +56,10 @@ export class SelectSeasonComponent implements OnInit {
 
   Next(e){
     e.preventDefault();
+    if (!this.seasonId || !this.regionId) {
+        this.errorMessage = "Please select both season and region";
+        return;
+    }
     localStorage.setItem('seasonId', this.seasonId);
     localStorage.setItem('regionId', this.regionId);
     this.schoolId = localStorage.getItem('schoolId');
@@ -78,15 +82,7 @@ export class SelectSeasonComponent implements OnInit {
           this._router.navigateByUrl('/application')
 
         }else{
-          console.log(data)
           this.errorMessage = `You have already applied for ${data[0].season.name}!`
-          // localStorage.removeItem('regionId');
-          // localStorage.removeItem('regionName');
-          // localStorage.removeItem('seasonName');
-          // localStorage.removeItem('seasonId');
-          //
-          //
-          // this._router.navigateByUrl('/dashboard')
         }
       },
       error => console.log('error',error)
