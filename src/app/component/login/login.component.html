@@ -4,7 +4,11 @@
     <form materialize (submit)="onSubmit($event)">
       <div class="form-group">
         <label for="school">School Name</label>
-        <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="school" required [(ngModel)]="schoolName" name="shcoolName">
+        <!-- <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="school" required [(ngModel)]="schoolName" name="shcoolName">
+          <option disabled selected>Select School</option>
+          <option *ngFor="let school of schools" [value]="school.name">{{school.name}}</option>
+        </select> -->
+        <select class="form-control" id="school" required [(ngModel)]="schoolName" name="shcoolName">
           <option disabled selected>Select School</option>
           <option *ngFor="let school of schools" [value]="school.name">{{school.name}}</option>
         </select>
