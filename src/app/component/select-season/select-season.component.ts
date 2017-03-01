@@ -36,22 +36,22 @@ export class SelectSeasonComponent implements OnInit {
       .subscribe(
         data  => {
           if (Array.isArray(data)) this.seasons = data; this.regions = data.regions;
+          window.setTimeout(()=>{
+            $('select').material_select();
+          },500);
         },error => console.error('error',error)
       )
-      window.setTimeout(()=>{
-        $('select').material_select();
-      },500);
   }
 
   getRegions(){
     for (let i = 0; i < this.seasons.length; i++) {
         if (this.seasons[i]._id === this.seasonId && this.seasons[i].regions) {
             this.regions = this.seasons[i].regions
+            window.setTimeout(()=>{
+              $('select').material_select();
+            },0);
         };
     }
-    window.setTimeout(()=>{
-      $('select').material_select();
-    },500);
   }
 
   Next(e){
