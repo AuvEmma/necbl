@@ -92,7 +92,7 @@ export class CreategameComponent implements OnInit {
     if(this.home && this.season){
       console.log('1')
 
-      this._applicationService.getPlayers(this.home, this.season).subscribe(
+      this._applicationService.getPlayersForGame(this.home, this.season).subscribe(
         data => {this.homePlayers = data;console.log(this.homePlayers);},
         error => console.error(error)
       )
@@ -100,7 +100,7 @@ export class CreategameComponent implements OnInit {
     if(this.away && this.season){
       console.log('2')
 
-      this._applicationService.getPlayers(this.away, this.season).subscribe(
+      this._applicationService.getPlayersForGame(this.away, this.season).subscribe(
         data => {this.awayPlayers = data;console.log(this.awayPlayers);},
         error => console.error(error)
       )

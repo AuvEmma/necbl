@@ -67,6 +67,14 @@ var ApplicationService = (function () {
     ApplicationService.prototype.getPlayers = function (schoolId, seasonId) {
         var headers = new Headers({ 'Content-Type': 'application/json' });
         var options = new RequestOptions({ headers: headers });
+        var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players?school=' + schoolId;
+        return this._http.get(_path, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    ApplicationService.prototype.getPlayersForGame = function (schoolId, seasonId) {
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
         var _path = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players?school=' + schoolId + '&season=' + seasonId;
         return this._http.get(_path, options)
             .map(this.extractData)

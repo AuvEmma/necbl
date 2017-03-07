@@ -85,11 +85,11 @@ var CreategameComponent = (function () {
         var _this = this;
         if (this.home && this.season) {
             console.log('1');
-            this._applicationService.getPlayers(this.home, this.season).subscribe(function (data) { _this.homePlayers = data; console.log(_this.homePlayers); }, function (error) { return console.error(error); });
+            this._applicationService.getPlayersForGame(this.home, this.season).subscribe(function (data) { _this.homePlayers = data; console.log(_this.homePlayers); }, function (error) { return console.error(error); });
         }
         if (this.away && this.season) {
             console.log('2');
-            this._applicationService.getPlayers(this.away, this.season).subscribe(function (data) { _this.awayPlayers = data; console.log(_this.awayPlayers); }, function (error) { return console.error(error); });
+            this._applicationService.getPlayersForGame(this.away, this.season).subscribe(function (data) { _this.awayPlayers = data; console.log(_this.awayPlayers); }, function (error) { return console.error(error); });
         }
     };
     CreategameComponent.prototype.onSubmit = function (e) {
