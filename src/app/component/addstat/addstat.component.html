@@ -1,3 +1,11 @@
-<p>
-  addstat works!
-</p>
+<div class="container app-wrapper">
+  <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
+  <div class="input-field col s4">
+    <i class="material-icons prefix">account_circle</i>
+    <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="game" required [(ngModel)]="game" name="game">
+      <option disabled selected>Select Game</option>
+      <option *ngFor="let game of games" [value]="game._id">{{game.home.name}} vs {{game.away.name}}</option>
+    </select>
+    <label for="game">Game</label>
+  </div>
+</div>

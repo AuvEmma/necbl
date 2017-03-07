@@ -69,7 +69,7 @@ const appRoutes: Routes = [
   { path: 'creategame', component: CreategameComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'playerstat/:playerid', component: PlayerstatComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'studentservice', component: StudentServiceComponent },
-  { path: 'addstat/:playerid', component: AddstatComponent, canActivate: [AdminRouteValidation] },
+  { path: 'addgamestat', component: AddstatComponent, canActivate: [AdminRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
