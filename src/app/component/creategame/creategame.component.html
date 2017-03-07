@@ -1,10 +1,11 @@
 <div class="container app-wrapper">
     <h4>Create Game</h4>
+    <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
     <form (submit)="onSubmit($event)">
       <div class="row">
         <div class="input-field col s4">
           <i class="material-icons prefix">account_circle</i>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="homeName" required [(ngModel)]="home" name="home">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="onChange()" class="form-control" id="homeName" required [(ngModel)]="home" name="home">
             <option disabled selected>Select Home School</option>
             <option *ngFor="let school of allSchools" [value]="school.name">{{school.name}}</option>
           </select>
@@ -21,7 +22,7 @@
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">account_circle</i>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="awayName" required [(ngModel)]="away" name="away">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="onChange()" class="form-control" id="awayName" required [(ngModel)]="away" name="away">
             <option disabled selected>Select Away School</option>
             <option *ngFor="let school of allSchools" [value]="school.name">{{school.name}}</option>
           </select>
@@ -32,15 +33,15 @@
       <div class="row">
         <div class="input-field col s4">
           <i class="material-icons prefix">account_circle</i>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="season" required [(ngModel)]="season" name="season">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="onChange()" class="form-control" id="season" required [(ngModel)]="season" name="season">
             <option disabled selected>Select Season</option>
-            <option *ngFor="let season of seasons" [value]="season.name">{{season.name}}</option>
+            <option *ngFor="let season of seasons" [value]="season._id">{{season.name}}</option>
           </select>
           <label for="season">Season</label>
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">account_circle</i>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="region" required [(ngModel)]="region" name="region">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="onChange()" class="form-control" id="region" required [(ngModel)]="region" name="region">
             <option disabled selected>Select Region</option>
             <option *ngFor="let region of regions" [value]="region.name">{{region.name}}</option>
           </select>

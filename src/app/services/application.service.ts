@@ -72,11 +72,11 @@ export class ApplicationService {
              .catch(this.handleError);
   }
 
-  getPlayers(schoolId): Observable<any>{
+  getPlayers(schoolId, seasonId): Observable<any>{
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players?school=' + schoolId;
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players?school=' + schoolId + '&season=' + seasonId;
     return this._http.get(_path, options)
              .map(this.extractData)
              .catch(this.handleError);

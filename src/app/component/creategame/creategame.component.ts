@@ -27,10 +27,14 @@ export class CreategameComponent implements OnInit {
   region:any            = '';
   away:any              = '';
   awayId:string         = '';
-  homeId:string          = '';
+  homeId:string         = '';
   home:any              = '';
+  homePlayers:any       = []
+  awayPlayers:any       = []
   selectOptions : any   = [];
   date:any              ='';
+  errorMessage:string   ='';
+  seasonName:string     ='';
 
   constructor(private _gameService: GameService, private _applicationService: ApplicationService, private _router:Router, private _loginService: LoginService) {
     let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
@@ -84,10 +88,29 @@ export class CreategameComponent implements OnInit {
     this.refs.push(ref)
   }
 
+  onChange(){
+    if(this.home && this.season){
+      console.log('1')
+
+      this._applicationService.getPlayers(this.home, this.season).subscribe(
+        data => {this.homePlayers = data;console.log(this.homePlayers);},
+        error => console.error(error)
+      )
+    }
+    if(this.away && this.season){
+      console.log('2')
+
+      this._applicationService.getPlayers(this.away, this.season).subscribe(
+        data => {this.awayPlayers = data;console.log(this.awayPlayers);},
+        error => console.error(error)
+      )
+    }
+  }
+
   onSubmit(e){
     e.preventDefault();
     if(this.home === this.away) {
-      alert('Home and Away can not be the same!');
+      this.errorMessage = 'Home and Away can not be the same!';
       return;
     }
     for (let i = 0; i < this.allSchools.length; i++) {
@@ -97,20 +120,37 @@ export class CreategameComponent implements OnInit {
           this.awayId = this.allSchools[i]._id;
         }
     }
+    for (let i = 0; i < this.seasons.length; i++) {
+      if(this.seasons[i]._id === this.season){
+        this.seasonName = this.seasons[i].name
+      }
+    }
+
     this.date = $('.datepicker').val()
     let teams = [this.home, this.away];
     let ids   = [this.homeId, this.awayId];
     let game ={
       schoolIds: ids,
       schoolNames: teams,
-      home: this.home,
-      away: this.away,
+      home: {
+        name: this.home,
+        id: this.homeId
+      },
+      away: {
+        name: this.away,
+        id: this.awayId
+      },
       date: this.date,
       time: this.time,
-      season: this.season,
+      season: {
+        name:this.seasonName,
+        id: this.season
+      },
       region: this.region,
       ref: this.refs,
-      location: this.location
+      location: this.location,
+      homeplayers: this.homePlayers,
+      awayplayers: this.awayPlayers
     }
     this._gameService.createGame(game).subscribe(
       data => {alert('Success!');this._router.navigateByUrl('/dashboard')},
