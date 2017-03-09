@@ -18,7 +18,7 @@ export class AllgamesComponent implements OnInit {
   ngOnInit() {
     this._gameService.getAllGames().subscribe(
       data => {
-        if (data === 'No_Player_Found') {
+        if (data === 'No_Game_Found') {
           this.errorMessage = "No Games Avaliable";
         }else{
           this.games = data

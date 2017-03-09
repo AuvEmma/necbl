@@ -90,18 +90,14 @@ export class CreategameComponent implements OnInit {
 
   onChange(){
     if(this.home && this.season){
-      console.log('1')
-
       this._applicationService.getPlayersForGame(this.home, this.season).subscribe(
-        data => {this.homePlayers = data;console.log(this.homePlayers);},
+        data => {this.homePlayers = data;},
         error => console.error(error)
       )
     }
     if(this.away && this.season){
-      console.log('2')
-
       this._applicationService.getPlayersForGame(this.away, this.season).subscribe(
-        data => {this.awayPlayers = data;console.log(this.awayPlayers);},
+        data => {this.awayPlayers = data;},
         error => console.error(error)
       )
     }

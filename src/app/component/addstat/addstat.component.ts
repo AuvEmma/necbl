@@ -16,15 +16,15 @@ export class AddstatComponent implements OnInit {
   selectOptions : any = [];
   games:any           =[];
   errorMessage:string ='';
+  gameData:any        =[];
   constructor(protected _route: ActivatedRoute, private _router:Router, private _statService: StatService, private _gameService: GameService) { }
 
   ngOnInit() {
     this._gameService.getAllGames().subscribe(
       data => {
-        if (data === 'No_Player_Found') {
+        if (data === 'No_Game_Found') {
           this.errorMessage = "No Games Avaliable";
         }else{
-          console.log(data)
           this.games = data;
         }
       },
@@ -40,7 +40,12 @@ export class AddstatComponent implements OnInit {
     // this.getPlayer(this.playerId);
 
   }
-
+  getPlayerForGame(gameId){
+    this._gameService.getSingleGame(gameId).subscribe(
+      data => {this.gameData = data[0];console.log(this.gameData)} ,
+      error => console.error(error)
+    )
+  }
   getPlayer(playerid){
     this._statService.getPlayer(playerid).subscribe(
       data => this.player = data[0],

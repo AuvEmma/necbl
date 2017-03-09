@@ -1,11 +1,30 @@
 <div class="container app-wrapper">
   <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
   <div class="input-field col s4">
-    <i class="material-icons prefix">account_circle</i>
-    <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="game" required [(ngModel)]="game" name="game">
+    <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="game" required (change)="getPlayerForGame(game)" [(ngModel)]="game" name="game">
       <option disabled selected>Select Game</option>
-      <option *ngFor="let game of games" [value]="game._id">{{game.home.name}} vs {{game.away.name}}</option>
+      <option *ngFor="let game of games" [value]="game._id">{{game.home.name}} vs {{game.away.name}} on {{game.date}} at {{game.time}}</option>
     </select>
     <label for="game">Game</label>
   </div>
+  <table *ngIf="gameData.homeplayers">
+    <thead>
+      <tr>
+        <th>Home Players</th>
+      </tr>
+      <tr *ngFor="let player of gameData.homeplayers">
+        <td [innerHTML]="player.name"></td>
+      </tr>
+    </thead>
+  </table>
+  <table *ngIf="gameData.awayplayers">
+    <thead>
+      <tr>
+        <th>Away Players</th>
+      </tr>
+      <tr *ngFor="let player of gameData.awayplayers">
+        <td [innerHTML]="player.name"></td>
+      </tr>
+    </thead>
+  </table>
 </div>

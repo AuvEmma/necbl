@@ -38,6 +38,15 @@ export class GameService {
              .map(this.extractData)
              .catch(this.handleError);
   }
+  getSingleGame(gameId): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games?gameId=' +gameId ;
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
 
   private extractData(res: Response) {
     let body = res.json();
