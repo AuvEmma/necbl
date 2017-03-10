@@ -72,7 +72,7 @@ export class ApplicationService {
              .catch(this.handleError);
   }
 
-  getPlayers(schoolId, seasonId): Observable<any>{
+  getPlayers(schoolId): Observable<any>{
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
