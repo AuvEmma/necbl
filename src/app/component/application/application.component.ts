@@ -62,7 +62,6 @@ export class ApplicationComponent implements OnInit {
   }
   onSubmit(e){
     e.preventDefault();
-    console.log(this.players.length)
     if(this.players.length < 5 || this.players.length > 16){
       this.errorMessage = 'You can not have more than 16 players or less than 5 players!'
     }else{

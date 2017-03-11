@@ -3,6 +3,7 @@
     <table>
       <thead>
         <tr>
+          <th>Id</th>
           <th>Season</th>
           <th>Region</th>
           <th>Team Name </th>
@@ -13,6 +14,7 @@
           <th>Captain Phone</th>
         </tr>
         <tr *ngFor="let application of applications">
+          <td><a routerLink="/print/{{application._id}}" href="JavaScript:void(0);">{{application._id}}</a></td>
           <td>{{application.season.name}}</td>
           <td>{{application.region.name}}</td>
           <td>{{application.teamname}}</td>
@@ -21,7 +23,6 @@
           <td>{{application.managerphone}}</td>
           <td>{{application.captainname}}</td>
           <td>{{application.captainphone}}</td>
-
         </tr>
       </thead>
     </table>
