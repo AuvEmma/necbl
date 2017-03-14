@@ -12,7 +12,6 @@ export class PlayerstatComponent implements OnInit {
   playerId:string = '';
   player:any = null;
   selectOptions : any     = [];
-
   constructor(protected _route: ActivatedRoute, private _router:Router, private _statService: StatService) { }
 
   ngOnInit() {
@@ -27,7 +26,10 @@ export class PlayerstatComponent implements OnInit {
 
   getPlayer(playerid){
     this._statService.getPlayer(playerid).subscribe(
-      data => this.player = data[0],
+      data => {
+        this.player = data[0];
+        // console.log(this.player);
+      },
       error => console.error(error)
     )
   }
