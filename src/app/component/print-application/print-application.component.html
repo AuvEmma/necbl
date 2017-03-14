@@ -37,7 +37,6 @@
           <th>Email</th>
         </tr>
         <tr *ngFor="let player of players">
-          <td>{{player.school.name}}</td>
           <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a></td>
           <td>{{player.grade}}</td>
           <td>{{player.position}}</td>
