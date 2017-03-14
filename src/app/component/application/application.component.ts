@@ -66,11 +66,18 @@ export class ApplicationComponent implements OnInit {
       this.errorMessage = 'You can not have more than 16 players or less than 5 players!'
     }else{
       let valueArr = this.players.map(function(item){ return item.number });
+      let emailArr = this.players.map(function(item){ return item.email });
       let isDuplicate = valueArr.some(function(item, idx){
-          return valueArr.indexOf(item) != idx
+          return valueArr.indexOf(item) != idx;
       });
+      let isemailDuplicate = emailArr.some(function(item,idx){
+        return emailArr.indexOf(item) != idx;
+      })
       if(isDuplicate){
         this.errorMessage = 'Duplicate Player numbers detected! 单次申请中球员号码不能重复！'
+        return
+      }else if(isemailDuplicate){
+        this.errorMessage = 'Duplicate Player emails detected! 单次申请中球员邮箱不能重复！'
         return
       }else if(this.description.length < 150){
         this.errorMessage = 'Please enter at least 150 characters in description!'

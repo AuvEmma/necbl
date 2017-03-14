@@ -89,6 +89,7 @@
           </blockquote>
         </div>
       </div>
+      <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
       <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/dashboard">Back</button>
       <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
     </form>
