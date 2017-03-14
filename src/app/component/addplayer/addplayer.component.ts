@@ -64,7 +64,11 @@ export class AddplayerComponent implements OnInit {
 
   onSubmit(e){
     e.preventDefault();
-    if (!this.avatar) {
+    if(!this.email|| !this.position || !this.grade){
+      this.errorMessage='Please fill in all required fields!';
+      return;
+    }
+    if (!this.avatar ) {
         this.avatar = '../../assets/image/default_avatar.png';
     }
     this.season['id']= this.seasonId;

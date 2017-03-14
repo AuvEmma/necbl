@@ -82,6 +82,16 @@ export class ApplicationService {
              .catch(this.handleError);
   }
 
+  getPlayersForGame(schoolId, seasonId): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/players?school=' + schoolId + '&season=' + seasonId;
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
   allPlayers(): Observable<any>{
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -127,6 +137,16 @@ export class ApplicationService {
     let options = new RequestOptions({ headers: headers });
 
     let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/applications';
+    return this._http.get(_path, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
+  printApplication(id): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/applications?applicationid=' + id;
     return this._http.get(_path, options)
              .map(this.extractData)
              .catch(this.handleError);

@@ -1,5 +1,5 @@
 <div class="container app-wrapper">
-    <h4>Application Form <h6>温馨提示：表格一旦提交将无法修改</h6></h4>
+    <h4>Application Form <h6>温馨提示：表格一旦提交将无法修改</h6><h6>每次进入本页面的时候，所有过往球员都会显示，球员一旦添加便不可以删除，请点击DELETE删除非本次球赛参赛球员并确保球员数在5-16人之间，并提交申请即可</h6></h4>
     <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
     <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/addplayer">Add Player</button>
     <table>
@@ -72,8 +72,24 @@
 
       </div>
       <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
-
-      <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
+      <div class="row" id="instruction">
+        <div class="col s12">
+          <blockquote>
+            <h5>申请表填写指南</h5>
+            <p>请点击 <button type="button" name="button" class="btn btn-primary waves-effect" routerLink="/addplayer">ADD PLAYER</button>添加参赛队员， 填写表格过程中请遵守以下规则</p>
+            <ul>
+              <li><i class="material-icons">trending_flat</i>参赛人数不得少于五人</li>
+              <li><i class="material-icons">trending_flat</i>参赛人数不得多余十六人</li>
+              <li><i class="material-icons">trending_flat</i>球衣号码不得重复</li>
+              <li><i class="material-icons">trending_flat</i>请使用真实姓名及邮箱</li>
+              <li><i class="material-icons">trending_flat</i>球队介绍不能少于150字符</li>
+            </ul>
+            <p>填写完毕并提交申请后请尽快提交团队照片，waiver免责声明和定金</p>
+            <p>在所有队伍填写完申请表格后，我们会公布赛程，届时请登录necbl账号并在<button type="button" name="button" class="btn orange btn-primary waves-effect">MY GAMES</button>中查询</p>
+          </blockquote>
+        </div>
+      </div>
       <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/dashboard">Back</button>
+      <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
     </form>
 </div>

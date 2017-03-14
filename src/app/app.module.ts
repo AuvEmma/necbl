@@ -44,6 +44,7 @@ import { MygamesComponent }             from './component/mygames/mygames.compon
 import { PlayerstatComponent }          from './component/playerstat/playerstat.component';
 import { ConfirmationComponent }        from './component/confirmation/confirmation.component';
 import { AddstatComponent }             from './component/addstat/addstat.component';
+import { PrintApplicationComponent }    from './component/print-application/print-application.component';
 
 // import { AgmCoreModule }                from 'angular2-google-maps/core';
 
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
   { path: 'creategame', component: CreategameComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'playerstat/:playerid', component: PlayerstatComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'studentservice', component: StudentServiceComponent },
-  { path: 'addstat/:playerid', component: AddstatComponent, canActivate: [AdminRouteValidation] },
+  { path: 'addgamestat', component: AddstatComponent, canActivate: [AdminRouteValidation] },
+  { path: 'print/:applicationid', component: PrintApplicationComponent, canActivate: [AdminRouteValidation] },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -103,7 +105,8 @@ const appRoutes: Routes = [
     PlayerstatComponent,
     GalleryComponent,
     ConfirmationComponent,
-    AddstatComponent
+    AddstatComponent,
+    PrintApplicationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,144 @@
-<p>
-  addstat works!
-</p>
+<div class="container app-wrapper">
+  <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
+  <div class="input-field col s4">
+    <select materialize="material_select" [materializeSelectOptions]="selectOptions" class="form-control" id="game" required (change)="getPlayerForGame(game)" [(ngModel)]="game" name="game">
+      <option disabled selected>Select Game</option>
+      <option *ngFor="let game of games" [value]="game._id">{{game.home.name}} vs {{game.away.name}} on {{game.date}} at {{game.time}}</option>
+    </select>
+    <label for="game">Game</label>
+  </div>
+  <ul class="collapsible" data-collapsible="accordion" *ngIf="gameData.homeplayers">
+    <h6>Home Players</h6>
+    <li *ngFor="let player of gameData.homeplayers;let index = index;" >
+      <div class="collapsible-header" [innerHTML]="'No.' + player.number + ', ' + player.name"></div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s2">
+            <label for="PTS">PTS总得分</label>
+            <input type="number" name="PTS" id="PTS" value="" [(ngModel)]="PTS">
+          </div>
+          <div class="col s2">
+            <label for="FGM">FGM两分命中</label>
+            <input type="number" name="FGM" id="FGM" value="" [(ngModel)]="FGM">
+          </div>
+          <div class="col s2">
+            <label for="FGA">FGA两分出手</label>
+            <input type="number" name="FGA" id="FGA" value="" [(ngModel)]="FGA">
+          </div>
+          <div class="col s2">
+            <label for="3PM">3PM三分命中</label>
+            <input type="number" name="3PM" id="3PM" value="" [(ngModel)]="ThreePM">
+          </div>
+          <div class="col s2">
+            <label for="3PA">3PA三分出手</label>
+            <input type="number" name="3PA" id="3PA" value="" [(ngModel)]="ThreePA">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s2">
+            <label for="FTM">FTM罚球命中></label>
+            <input type="number" name="FTM" id="FTM" value="" [(ngModel)]="FTM">
+          </div>
+          <div class="col s2">
+            <label for="FTA">FTA罚球出手</label>
+            <input type="number" name="FTA" id="FTA" value="" [(ngModel)]="FTA">
+          </div>
+          <div class="col s2">
+            <label for="AST">AST助攻</label>
+            <input type="number" name="AST" id="AST" value="" [(ngModel)]="AST">
+          </div>
+          <div class="col s2">
+            <label for="STL">STL抢断</label>
+            <input type="number" name="STL" id="STL" value="" [(ngModel)]="STL">
+          </div>
+          <div class="col s1">
+            <label for="PF">PF犯规</label>
+            <input type="number" name="PF" id="PF" value="" [(ngModel)]="PF">
+          </div>
+          <div class="col s1">
+            <label for="BLK">BLK盖帽</label>
+            <input type="number" name="BLK" id="BLK" value="" [(ngModel)]="BLK">
+          </div>
+        </div>
+        <button type="button" id="{{player._id}}" class="btn btn-default waves-effect waves-light" (click)="onSubmit(gameData, player, index, 'homeplayers')">Submit</button>
+      </div>
+    </li>
+  </ul>
+  <ul class="collapsible" data-collapsible="accordion" *ngIf="gameData.awayplayers">
+    <h6>Away Players</h6>
+    <li *ngFor="let player of gameData.awayplayers;let index = index;" >
+      <div class="collapsible-header" [innerHTML]="player.name"></div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s2">
+            <label for="PTS">PTS总得分</label>
+            <input type="number" name="PTS" id="PTS" value="" [(ngModel)]="PTS">
+          </div>
+          <div class="col s2">
+            <label for="FGM">FGM两分命中</label>
+            <input type="number" name="FGM" id="FGM" value="" [(ngModel)]="FGM">
+          </div>
+          <div class="col s2">
+            <label for="FGA">FGA两分出手</label>
+            <input type="number" name="FGA" id="FGA" value="" [(ngModel)]="FGA">
+          </div>
+          <div class="col s2">
+            <label for="3PM">3PM三分命中</label>
+            <input type="number" name="3PM" id="3PM" value="" [(ngModel)]="ThreePM">
+          </div>
+          <div class="col s2">
+            <label for="3PA">3PA三分出手</label>
+            <input type="number" name="3PA" id="3PA" value="" [(ngModel)]="ThreePA">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s2">
+            <label for="FTM">FTM罚球命中></label>
+            <input type="number" name="FTM" id="FTM" value="" [(ngModel)]="FTM">
+          </div>
+          <div class="col s2">
+            <label for="FTA">FTA罚球出手</label>
+            <input type="number" name="FTA" id="FTA" value="" [(ngModel)]="FTA">
+          </div>
+          <div class="col s2">
+            <label for="AST">AST助攻</label>
+            <input type="number" name="AST" id="AST" value="" [(ngModel)]="AST">
+          </div>
+          <div class="col s2">
+            <label for="STL">STL抢断</label>
+            <input type="number" name="STL" id="STL" value="" [(ngModel)]="STL">
+          </div>
+          <div class="col s1">
+            <label for="PF">PF犯规</label>
+            <input type="number" name="PF" id="PF" value="" [(ngModel)]="PF">
+          </div>
+          <div class="col s1">
+            <label for="BLK">BLK盖帽</label>
+            <input type="number" name="BLK" id="BLK" value="" [(ngModel)]="BLK">
+          </div>
+        </div>
+        <button type="button" id="{{player._id}}" class="btn btn-default waves-effect waves-light" (click)="onSubmit(gameData, player, index, 'awayplayers')">Submit</button>
+      </div>
+    </li>
+  </ul>
+  <!-- <table *ngIf="gameData.homeplayers">
+    <thead>
+      <tr>
+        <th>Home Players</th>
+      </tr>
+      <tr *ngFor="let player of gameData.homeplayers">
+        <td [innerHTML]="player.name"></td>
+      </tr>
+    </thead>
+  </table>
+  <table *ngIf="gameData.awayplayers">
+    <thead>
+      <tr>
+        <th>Away Players</th>
+      </tr>
+      <tr *ngFor="let player of gameData.awayplayers">
+        <td [innerHTML]="player.name"></td>
+      </tr>
+    </thead>
+  </table>
+</div> -->

@@ -13,14 +13,14 @@
         <div class="input-field col s4">
           <i class="material-icons prefix">account_circle</i>
           <label for="legalName">Legal Name（姓名)</label>
-          <input type="text" class="form-control" id="legalName" required="" name="legalName"  [(ngModel)]="name" required>
+          <input type="text" class="form-control" id="legalName" required name="legalName"  [(ngModel)]="name" required>
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">class</i>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" required [(ngModel)]="grade" name="grade">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" [(ngModel)]="grade" name="grade">
             <option value="" disabled selected>Choose Grade</option>
             <option value="Freshman">Freshman</option>
-            <option value="Sephomore">Sephomore</option>
+            <option value="Sephomore">Sophomore</option>
             <option value="Junior">Junior</option>
             <option value="Senior">Senior</option>
             <option value="Graduate">Graduate</option>
@@ -31,18 +31,18 @@
         <div class="input-field col s4">
           <i class="material-icons prefix">email</i>
           <label for="email" data-error="Wrong Email Format" data-success="">Email</label>
-          <input type="email" class="form-control validate" id="email" required="" name="email" [(ngModel)]="email" required>
+          <input type="email" class="form-control validate" id="email" required name="email" [(ngModel)]="email" required>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s4">
           <i class="material-icons prefix">person_pin</i>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" required [(ngModel)]="position" name="position">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions"  [(ngModel)]="position" name="position">
             <option value="" disabled selected>Choose Position</option>
             <option value="PG">Point Guard</option>
             <option value="SG">Shooting Guard</option>
-            <option value="PF">Point Forward</option>
+            <option value="PF">Power Forward</option>
             <option value="SF">Small Forward</option>
             <option value="C">Center</option>
           </select>
@@ -52,12 +52,12 @@
         <div class="input-field col s4">
           <i class="material-icons prefix">info</i>
           <label for="height">Height（身高cm)</label>
-          <input type="number" class="form-control" id="height" required="" name="height" [(ngModel)]="height" required>
+          <input type="number" class="form-control" id="height" required name="height" [(ngModel)]="height" required>
         </div>
         <div class="input-field col s4">
           <i class="material-icons prefix">stars</i>
           <label for="number">No.（球衣号码)</label>
-          <input type="number" class="form-control" id="number" required="" name="number" [(ngModel)]="number" required>
+          <input type="number" class="form-control" id="number" required name="number" [(ngModel)]="number" required>
         </div>
       </div>
       <div class="row">
@@ -70,6 +70,7 @@
           <h6>参赛球衣 - 参赛球队必须穿着统一款式，统一颜色的球衣参赛，否则无法参赛</h6>
         </div>
       </div>
+      <p class="red-text">{{errorMessage}}</p>
 
       <button type="submit" class="btn btn-default waves-effect waves-light">Submit</button>
       <button type="button" class="btn btn-default waves-effect waves-light" routerLink="/application">Back</button>

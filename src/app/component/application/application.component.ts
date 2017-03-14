@@ -62,8 +62,8 @@ export class ApplicationComponent implements OnInit {
   }
   onSubmit(e){
     e.preventDefault();
-    if(this.players.length < 5){
-      this.errorMessage = 'Not enough players!'
+    if(this.players.length < 5 || this.players.length > 16){
+      this.errorMessage = 'You can not have more than 16 players or less than 5 players!'
     }else{
       let valueArr = this.players.map(function(item){ return item.number });
       let isDuplicate = valueArr.some(function(item, idx){

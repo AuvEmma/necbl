@@ -1,24 +1,11 @@
-:host {
-	margin-top: 80px;
-	color: black;
+p{
+	margin-top: 0;
 }
-
-.about-us-row {
-	margin-top: 50px;
-	margin-bottom: 50px;
-}
-
 .about-us-title {
 	width: 300px;
 	height: 200px;
 	font-size: 2em;
 	color: #FFF;
-}
-
-.about-us-content {
-	font-size: 1em;
-	margin-left: 50px !important;
-	height: 200px;
 }
 
 .mission {
@@ -47,7 +34,7 @@
 }
 
 .about-us-team-job {
-	
+
 	margin-top: 30px;
 }
 
