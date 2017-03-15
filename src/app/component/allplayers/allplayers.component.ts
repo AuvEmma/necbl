@@ -17,9 +17,9 @@ export class AllplayersComponent implements OnInit {
     if(localStorage.getItem('schoolId')){
       this.schoolId = localStorage.getItem('schoolId');
       this.getPlayers(this.schoolId);
-      window.setTimeout(()=>{
-        $('.modal').modal();
-      },500);
+      // window.setTimeout(()=>{
+      //   $('.modal').modal();
+      // },500);
 
     }else{
       this._router.navigate(['/dashboard']);
@@ -34,7 +34,7 @@ export class AllplayersComponent implements OnInit {
             this.players = [];
           } else {
             this.players = data;
-            $('.modal').modal();
+            // $('.modal').modal();
           }
         },
         error => console.log('error',error)

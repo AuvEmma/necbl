@@ -3,6 +3,7 @@
     <table>
       <thead>
         <tr>
+          <th></th>
           <th>School（学校）</th>
           <th>Legal Name（姓名）</th>
           <th>Grade（年级）</th>
@@ -12,6 +13,7 @@
           <th>Email</th>
         </tr>
         <tr *ngFor="let player of players">
+          <button type="button" class="btn waves-effect waves-light small flat btn-floating" data-target="modal" (click)="deletePlayer($event, player._id)">Delete</button>
           <td>{{player.school.name}}</td>
           <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a></td>
           <td>{{player.grade}}</td>
@@ -19,7 +21,6 @@
           <td>{{player.height}}</td>
           <td>{{player.number}}</td>
           <td>{{player.email}}</td>
-          <button type="button" class="btn waves-effect waves-light small flat" data-target="modal" (click)="deletePlayer($event, player._id)">Delete</button>
           <!-- <div id="modal" class="modal bottom-sheet">
             <div class="modal-content">
               <h4>Delete Player {{player.name}}, {{player._id}}</h4>
