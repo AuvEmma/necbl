@@ -13,12 +13,20 @@
         </tr>
         <tr *ngFor="let player of players">
           <td>{{player.school.name}}</td>
-          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a>  <button type="button" class="btn btn-floating waves-effect waves-light small flat" routerLink="/addstat/{{player._id}}">Stat</button></td>
+          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a></td>
           <td>{{player.grade}}</td>
           <td>{{player.position}}</td>
           <td>{{player.height}}</td>
           <td>{{player.number}}</td>
           <td>{{player.email}}</td>
+          <button type="button" class="btn waves-effect waves-light small flat" data-target="modal">Delete</button>
+          <div id="modal" class="modal bottom-sheet">
+            <div class="modal-content">
+              <h4>Delete Player {{player.name}}, {{player._id}}</h4>
+              <p>You sure?</p>
+              <button type="button" class="btn waves-effect waves-light" data-dismiss="modal" (click)="deletePlayer($event, player._id)">Delete</button>
+            </div>
+          </div>
         </tr>
       </thead>
     </table>
