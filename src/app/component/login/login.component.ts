@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
         data  => {
           if (data != 'No_School_Found') {
             this.schools = data;
-            window.setTimeout(()=>{
-              $('select').material_select();
-            },500);
+            // window.setTimeout(()=>{
+            //   $('select').material_select();
+            // },500);
           }else{
             this.errorMessage = 'No School Found!'
           }
