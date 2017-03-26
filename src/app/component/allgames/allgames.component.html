@@ -7,11 +7,11 @@
           <th></th>
           <th>Home School</th>
           <th>Away School</th>
-          <th>Location</th>
+          <th class="hide-on-small-only">Location</th>
           <th>Date</th>
           <th>Time</th>
-          <th>Season</th>
-          <th>Region</th>
+          <th class="hide-on-small-only">Season</th>
+          <th class="hide-on-small-only">Region</th>
 
         </tr>
       </thead>
@@ -20,11 +20,11 @@
           <td><button type="button" class="btn btn-default waves-effect waves-light" routerLink="/game/{{game._id}}">详情</button></td>
           <td>{{game.home.name}}</td>
           <td>{{game.away.name}}</td>
-          <td>{{game.location}}</td>
+          <td class="hide-on-small-only">{{game.location}}</td>
           <td>{{game.date}}</td>
           <td>{{game.time}}</td>
-          <td>{{game.season.name}}</td>
-          <td>{{game.region}}</td>
+          <td class="hide-on-small-only">{{game.season.name}}</td>
+          <td class="hide-on-small-only">{{game.region}}</td>
         </tr>
       </tbody>
     </table>
