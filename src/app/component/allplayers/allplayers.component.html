@@ -12,6 +12,8 @@
           <th>No.（球衣号码）</th>
           <th>Email</th>
         </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let player of players">
           <button type="button" class="btn waves-effect waves-light small flat btn-floating" data-target="modal" (click)="deletePlayer($event, player._id)">Delete</button>
           <td>{{player.school.name}}</td>
@@ -22,13 +24,13 @@
           <td>{{player.number}}</td>
           <td>{{player.email}}</td>
           <!-- <div id="modal" class="modal bottom-sheet">
-            <div class="modal-content">
-              <h4>Delete Player {{player.name}}, {{player._id}}</h4>
-              <p>You sure?</p>
-              <button type="button" class="btn waves-effect waves-light" data-dismiss="modal" (click)="deletePlayer($event, player._id)">Delete</button>
-            </div>
-          </div> -->
-        </tr>
-      </thead>
+          <div class="modal-content">
+          <h4>Delete Player {{player.name}}, {{player._id}}</h4>
+          <p>You sure?</p>
+          <button type="button" class="btn waves-effect waves-light" data-dismiss="modal" (click)="deletePlayer($event, player._id)">Delete</button>
+        </div>
+      </div> -->
+        </tr>  
+      </tbody>
     </table>
 </div>

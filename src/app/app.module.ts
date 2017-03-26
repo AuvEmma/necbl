@@ -45,6 +45,8 @@ import { PlayerstatComponent }          from './component/playerstat/playerstat.
 import { ConfirmationComponent }        from './component/confirmation/confirmation.component';
 import { AddstatComponent }             from './component/addstat/addstat.component';
 import { PrintApplicationComponent }    from './component/print-application/print-application.component';
+import { ScheduleComponent }            from './component/schedule/schedule.component';
+import { GameDetailPageComponent }      from './component/game-detail-page/game-detail-page.component';
 
 // import { AgmCoreModule }                from 'angular2-google-maps/core';
 
@@ -66,10 +68,12 @@ const appRoutes: Routes = [
   { path: 'thankyou', component: ConfirmationComponent, canActivate: [ApplicationRouteValidation] },
   { path: 'players/all', component: AllplayersComponent, canActivate: [AdminRouteValidation] },
   { path: 'applications/all', component: AllapplicationsComponent, canActivate: [AdminRouteValidation] },
-  { path: 'games/all', component: AllgamesComponent, canActivate: [AdminRouteValidation] },
+  { path: 'games/all', component: AllgamesComponent},
   { path: 'creategame', component: CreategameComponent, canActivate: [ApplicationRouteValidation] },
-  { path: 'playerstat/:playerid', component: PlayerstatComponent, canActivate: [ApplicationRouteValidation] },
+  { path: 'playerstat/:playerid', component: PlayerstatComponent },
   { path: 'studentservice', component: StudentServiceComponent },
+  { path: 'schedule', component: ScheduleComponent },
+  { path: 'game/:gameid', component: GameDetailPageComponent },
   { path: 'addgamestat', component: AddstatComponent, canActivate: [AdminRouteValidation] },
   { path: 'print/:applicationid', component: PrintApplicationComponent, canActivate: [AdminRouteValidation] },
   { path: '', component: HomeComponent },
@@ -106,7 +110,9 @@ const appRoutes: Routes = [
     GalleryComponent,
     ConfirmationComponent,
     AddstatComponent,
-    PrintApplicationComponent
+    PrintApplicationComponent,
+    ScheduleComponent,
+    GameDetailPageComponent
   ],
   imports: [
     BrowserModule,

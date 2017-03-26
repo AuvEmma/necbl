@@ -1,0 +1,80 @@
+<div class="container app-wrapper">
+  <h4 *ngIf="!gameData.home" >Loading Game Data</h4>
+  <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
+  <div class="" *ngIf="gameData.home">
+    <h4>{{gameData.home.name}} vs {{gameData.away.name}}</h4>
+    <h4 *ngIf= "gameData.score"> {{gameData.score.homeScore}}:{{gameData.score.awayScore}}</h4>
+    <h4 *ngIf= "gameData.youtubelink">Youtube: <a href="gameData.youtubelink" target="_blank">{{gameData.youtubelink}}</a></h4>
+    <h4 *ngIf= "gameData.streamlink"> Streaming: <a href="gameData.streamlink" target="_blank">{{gameData.streamlink}}</a></h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Home School</th>
+          <th>Away School</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Season</th>
+          <th>Region</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="gameData.home">
+          <td>{{gameData.home.name}}</td>
+          <td>{{gameData.away.name}}</td>
+          <td>{{gameData.date}}</td>
+          <td>{{gameData.time}}</td>
+          <td>{{gameData.location}}</td>
+          <td>{{gameData.season.name}}</td>
+          <td>{{gameData.region}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>{{gameData.home.name}} Players</h4>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Legal Name（姓名）</th>
+          <th>Grade（年级）</th>
+          <th>Position （位置）</th>
+          <th>Height （身高cm）</th>
+          <th>No.（球衣号码）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of gameData.homeplayers">
+          <td>{{player.school.name}}</td>
+          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a></td>
+          <td>{{player.grade}}</td>
+          <td>{{player.position}}</td>
+          <td>{{player.height}}</td>
+          <td>{{player.number}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>{{gameData.away.name}} Players</h4>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Legal Name（姓名）</th>
+          <th>Grade（年级）</th>
+          <th>Position （位置）</th>
+          <th>Height （身高cm）</th>
+          <th>No.（球衣号码）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of gameData.awayplayers">
+          <td>{{player.school.name}}</td>
+          <td><a href="#" routerLink="/playerstat/{{player._id}}">{{player.name}}</a></td>
+          <td>{{player.grade}}</td>
+          <td>{{player.position}}</td>
+          <td>{{player.height}}</td>
+          <td>{{player.number}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

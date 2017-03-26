@@ -1,9 +1,10 @@
 <div class="container app-wrapper">
     <h4>All Games</h4>
     <p class="red-text" *ngIf="errorMessage">{{errorMessage}}</p>
-    <table>
+    <table class="striped">
       <thead>
         <tr>
+          <th></th>
           <th>Home School</th>
           <th>Away School</th>
           <th>Location</th>
@@ -13,7 +14,10 @@
           <th>Region</th>
 
         </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let game of games">
+          <td><button type="button" class="btn btn-default waves-effect waves-light" routerLink="/game/{{game._id}}">详情</button></td>
           <td>{{game.home.name}}</td>
           <td>{{game.away.name}}</td>
           <td>{{game.location}}</td>
@@ -22,6 +26,6 @@
           <td>{{game.season.name}}</td>
           <td>{{game.region}}</td>
         </tr>
-      </thead>
+      </tbody>
     </table>
 </div>
