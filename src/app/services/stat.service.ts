@@ -48,6 +48,16 @@ export class StatService {
              .catch(this.handleError);
   }
 
+  addScore(data): Observable<any>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    let _path:string = environment.serverProtocol + environment.serverUrl + ':' + environment.serverPort + '/games/stat/score';
+    return this._http.post(_path, data, options)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

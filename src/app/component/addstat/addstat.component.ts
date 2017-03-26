@@ -31,7 +31,8 @@ export class AddstatComponent implements OnInit {
   BLK:number          = 0;
   STL:number          = 0;
   PF:number          = 0;
-
+  homeScore:number = 0;
+  awayScore:number = 0;
   constructor(protected _route: ActivatedRoute, private _router:Router, private _statService: StatService, private _gameService: GameService) { }
 
   ngOnInit() {
@@ -132,5 +133,19 @@ export class AddstatComponent implements OnInit {
       },
       error => console.error(error)
     )
+  }
+  submitScore(gameData){
+    let data = {
+      game: gameData,
+      score : {
+        homeScore : this.homeScore,
+        awayScore : this.awayScore
+      }
+    }
+    this._statService.addScore(data).subscribe(
+      data => console.log(data),
+      error => console.log(data)
+    )
+
   }
 }

@@ -7,6 +7,17 @@
     </select>
     <label for="game">Game</label>
   </div>
+  <div class="row" *ngIf="gameData.homeplayers">
+    <div class="col s6">
+      <label for="homeScore">Home {{gameData.home.name}} Score</label>
+      <input type="text" name="homeScore" id="homeScore" value="" [(ngModel)]="homeScore">
+    </div>
+    <div class="col s6">
+      <label for="awayScore">Away {{gameData.away.name}} Score</label>
+      <input type="text" name="awayScore" id="awayScore" value="" [(ngModel)]="awayScore">
+    </div>
+    <button type="button" class="btn btn-default waves-effect waves-light" (click)="submitScore(gameData)">需要单独记录比分</button>
+  </div>
   <ul class="collapsible" data-collapsible="accordion" *ngIf="gameData.homeplayers">
     <h6>Home Players</h6>
     <li *ngFor="let player of gameData.homeplayers;let index = index;" >
