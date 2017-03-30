@@ -7,9 +7,10 @@
           <i class="material-icons prefix">account_circle</i>
           <select materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="onChange()" class="form-control" id="homeName" required [(ngModel)]="home" name="home">
             <option disabled selected>Select Home School</option>
-            <option *ngFor="let school of allSchools" [value]="school.name">{{school.name}}</option>
+            <option *ngFor="let school of allSchools" [value]="school._id">{{school.name}}</option>
           </select>
           <label for="homeName">Home School</label>
+          <p class="red-text" *ngIf="homeErr">{{homeErr}}</p>
         </div>
         <div class="input-field col s2">
           <i class="material-icons prefix">perm_contact_calendar</i>
@@ -24,9 +25,11 @@
           <i class="material-icons prefix">account_circle</i>
           <select materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="onChange()" class="form-control" id="awayName" required [(ngModel)]="away" name="away">
             <option disabled selected>Select Away School</option>
-            <option *ngFor="let school of allSchools" [value]="school.name">{{school.name}}</option>
+            <option *ngFor="let school of allSchools" [value]="school._id">{{school.name}}</option>
           </select>
           <label for="awayName">Away School</label>
+          <p class="red-text" *ngIf="awayErr">{{awayErr}}</p>
+
         </div>
       </div>
 

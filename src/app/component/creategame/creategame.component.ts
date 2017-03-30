@@ -35,6 +35,9 @@ export class CreategameComponent implements OnInit {
   date:any              ='';
   errorMessage:string   ='';
   seasonName:string     ='';
+  homeErr:string        ='';
+  awayErr:string        ='';
+
 
   constructor(private _gameService: GameService, private _applicationService: ApplicationService, private _router:Router, private _loginService: LoginService) {
     let sub: any = this._loginService.isAdmin$.subscribe(isAdmin => this.isAdmin = isAdmin, error => {/*console.log('Error: ', error)*/});
@@ -90,14 +93,28 @@ export class CreategameComponent implements OnInit {
 
   onChange(){
     if(this.home && this.season){
-      this._applicationService.getPlayersForGame(this.home, this.season).subscribe(
-        data => {this.homePlayers = data;},
+      this._applicationService.getApplication(this.home, this.season).subscribe(
+        data => {
+          if(data === 'No_Application_Found'){
+            this.homeErr = 'Home Application Not Found!'
+          }else{
+            this.homeErr = '';
+            this.homePlayers = data[0].players;
+          }
+        },
         error => console.error(error)
       )
     }
     if(this.away && this.season){
-      this._applicationService.getPlayersForGame(this.away, this.season).subscribe(
-        data => {this.awayPlayers = data;},
+      this._applicationService.getApplication(this.away, this.season).subscribe(
+        data => {
+          if(data === 'No_Application_Found'){
+            this.awayErr = 'Away Application Not Found!'
+          }else{
+            this.awayErr = '';
+            this.awayPlayers = data[0].players;
+          }
+        },
         error => console.error(error)
       )
     }
@@ -107,6 +124,9 @@ export class CreategameComponent implements OnInit {
     e.preventDefault();
     if(this.home === this.away) {
       this.errorMessage = 'Home and Away can not be the same!';
+      return;
+    }else if(!this.homePlayers.length || !this.awayPlayers.length ){
+      this.errorMessage = 'Players missing for home players or away players';
       return;
     }
     for (let i = 0; i < this.allSchools.length; i++) {
