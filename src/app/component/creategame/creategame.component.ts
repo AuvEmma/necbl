@@ -26,8 +26,8 @@ export class CreategameComponent implements OnInit {
   season:any            = '';
   region:any            = '';
   away:any              = '';
-  awayId:string         = '';
-  homeId:string         = '';
+  awayName:string         = '';
+  homeName:string         = '';
   home:any              = '';
   homePlayers:any       = []
   awayPlayers:any       = []
@@ -130,10 +130,10 @@ export class CreategameComponent implements OnInit {
       return;
     }
     for (let i = 0; i < this.allSchools.length; i++) {
-        if(this.allSchools[i].name === this.home){
-          this.homeId = this.allSchools[i]._id;
-        }else if(this.allSchools[i].name === this.away){
-          this.awayId = this.allSchools[i]._id;
+        if(this.allSchools[i]._id === this.home){
+          this.homeName = this.allSchools[i].name;
+        }else if(this.allSchools[i]._id === this.away){
+          this.awayName = this.allSchools[i].name;
         }
     }
     for (let i = 0; i < this.seasons.length; i++) {
@@ -143,18 +143,18 @@ export class CreategameComponent implements OnInit {
     }
 
     this.date = $('.datepicker').val()
-    let teams = [this.home, this.away];
-    let ids   = [this.homeId, this.awayId];
+    let teams = [this.homeName, this.awayName];
+    let ids   = [this.home, this.away];
     let game ={
       schoolIds: ids,
       schoolNames: teams,
       home: {
-        name: this.home,
-        id: this.homeId
+        name: this.homeName,
+        id: this.home
       },
       away: {
-        name: this.away,
-        id: this.awayId
+        name: this.awayName,
+        id: this.away
       },
       date: this.date,
       time: this.time,
