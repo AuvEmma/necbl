@@ -4,8 +4,8 @@
   <div class="" *ngIf="gameData.home">
     <h4>{{gameData.home.name}} vs {{gameData.away.name}}</h4>
     <h4 *ngIf= "gameData.score"> {{gameData.score.homeScore}}:{{gameData.score.awayScore}}</h4>
-    <h4 *ngIf= "gameData.youtubelink">Youtube: <a href="gameData.youtubelink" target="_blank">{{gameData.youtubelink}}</a></h4>
-    <h4 *ngIf= "gameData.streamlink"> Streaming: <a href="gameData.streamlink" target="_blank">{{gameData.streamlink}}</a></h4>
+    <h4 *ngIf= "gameData.youtubelink">Youtube: <a href="http://{{gameData.youtubelink}}" target="_blank">{{gameData.youtubelink}}</a></h4>
+    <h4 *ngIf= "gameData.livelink"> Streaming: <a href="http://{{gameData.livelink}}" target="_blank">{{gameData.livelink}}</a></h4>
     <table>
       <thead>
         <tr>
